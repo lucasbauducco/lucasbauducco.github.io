@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100&display=swap');
 :root {
-    --color-1: #ffffc2;
-    --color-2: #f0ffc2;
-    --color-3: #d3fda9;
-    --color-4: #b6fc9f;
-    --color-5: #a3fda3;
-    --text: #fafadc;
-    --text-night: rgb(73, 73, 66);
+    --color-1: #e0f7fa;  
+    --color-2: #b2ebf2;  
+    --color-3: #80deea;  
+    --color-4: #4dd0e1;   
+    --color-5: #26c6da;  
+    --text: #003f4e;      
+    --text-night: #e6f9fc;
 }
 /* Personalizar estilos adicionales aquí */
 body {
