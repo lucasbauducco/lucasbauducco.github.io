@@ -261,6 +261,14 @@
       carousel.style.transform = `translateX(-${scrollAmount}px)`;
     }
   </script>
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+  
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
   <!-- Font Awesome (para íconos) -->
   <script src="https://kit.fontawesome.com/a2e00da08d.js" crossorigin="anonymous"></script>
 </body>
