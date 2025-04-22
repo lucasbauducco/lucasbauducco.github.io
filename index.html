@@ -44,13 +44,35 @@
 
   <!-- Navbar -->
   <nav class="bg-gray-900 py-4 sticky top-0 z-50 border-b border-gray-700">
-    <div class="container mx-auto flex justify-between items-center px-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <!-- Logo / Imagen -->
       <img src="assets/img/IMG_20220618_131440991.jpg" alt="Lucas" class="w-10 h-10 rounded-full border-2 border-blue-500">
-      <ul class="flex space-x-6 font-semibold text-sm md:text-base">
+
+      <!-- Botón hamburguesa -->
+      <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <!-- Menú de navegación -->
+      <ul id="menu" class="hidden md:flex space-x-6 font-semibold text-sm md:text-base text-white">
         <li><a href="#sobre-mi" class="hover:text-blue-400">Sobre mí</a></li>
         <li><a href="#certificados" class="hover:text-blue-400">Certificados</a></li>
         <li><a href="#proyectos-carousel" class="hover:text-blue-400">Proyectos</a></li>
         <li><a href="#contacto" class="hover:text-blue-400">Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="md:hidden hidden px-4 mt-2">
+      <ul class="flex flex-col space-y-2 font-semibold text-white">
+        <li><a href="#sobre-mi" class="block hover:text-blue-400">Sobre mí</a></li>
+        <li><a href="#certificados" class="block hover:text-blue-400">Certificados</a></li>
+        <li><a href="#proyectos-carousel" class="block hover:text-blue-400">Proyectos</a></li>
+        <li><a href="#contacto" class="block hover:text-blue-400">Contacto</a></li>
       </ul>
     </div>
   </nav>
