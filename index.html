@@ -178,53 +178,60 @@
     </div>
   </section>
   <!-- proyectos-carousel -->
-  <section id="proyectos-carousel" class="px-4 py-12 bg-gray-900 text-white">
+  <section id="proyectos-carousel" class="px-4 py-16 bg-gray-900 text-white">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-6 text-center border-b border-gray-700 pb-2">Mis Proyectos</h2>
+      <h2 class="text-3xl font-bold text-blue-400 mb-10 text-center border-b border-gray-700 pb-4">Mis Proyectos</h2>
+      
       <div class="relative">
-        <!-- Contenedor deslizable horizontalmente en mobile -->
-        <div id="carousel" class="flex overflow-x-auto sm:overflow-hidden scroll-smooth transition-transform duration-500 ease-in-out space-x-4 sm:space-x-6">
+        <!-- Contenedor deslizable -->
+        <div id="carousel" class="flex overflow-x-auto sm:overflow-hidden scroll-smooth space-x-6 pb-4 sm:pb-0 transition-transform duration-500 ease-in-out">
+          
           <!-- Proyecto 1 -->
-          <div class="flex-shrink-0 w-72 sm:min-w-[300px] sm:max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
-            <img class="h-48 w-full object-cover" src="assets/img/ApiRest.png" alt="Proyecto Api Rest en Symfony">
+          <div class="flex-shrink-0 w-72 sm:w-80 bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+            <img class="h-48 w-full object-cover rounded-t-xl" src="assets/img/ApiRest.png" alt="Proyecto Api Rest en Symfony">
             <div class="p-4">
-              <h3 class="text-lg sm:text-xl font-semibold mb-2">Api Rest (Symfony)</h3>
-              <a href="https://intranet.unraf.edu.ar/ApiRest/docs" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base">Ver Proyecto</a>
+              <h3 class="text-xl font-semibold mb-2">Api Rest (Symfony)</h3>
+              <a href="https://intranet.unraf.edu.ar/ApiRest/docs" target="_blank" class="inline-block mt-2 px-5 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-white text-sm">Ver Proyecto</a>
             </div>
           </div>
 
           <!-- Proyecto 2 -->
-          <div class="flex-shrink-0 w-64 sm:min-w-[300px] sm:max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
-            <img class="h-48 w-full object-contain bg-gray-700" src="assets/img/appUNRaf.jpg" alt="Proyecto 2">
+          <div class="flex-shrink-0 w-72 sm:w-80 bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+            <img class="h-48 w-full object-contain bg-gray-700 rounded-t-xl" src="assets/img/appUNRaf.jpg" alt="PWA y App móvil">
             <div class="p-4">
-              <h3 class="text-lg sm:text-xl font-semibold mb-2">PWA y App móvil (Ionic + Vue.js)</h3>
-              <a href="https://app.unraf.edu.ar/unraf/" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base">Ver Proyecto</a>
+              <h3 class="text-xl font-semibold mb-2">PWA y App móvil (Ionic + Vue.js)</h3>
+              <a href="https://app.unraf.edu.ar/unraf/" target="_blank" class="inline-block mt-2 px-5 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-white text-sm">Ver Proyecto</a>
             </div>
           </div>
 
           <!-- Proyecto 3 -->
-          <div class="flex-shrink-0 w-72 sm:min-w-[300px] sm:max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
-            <img class="h-48 w-full object-cover" src="assets/img/sist-pasantias.png" alt="Proyecto 3">
+          <div class="flex-shrink-0 w-72 sm:w-80 bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+            <img class="h-48 w-full object-cover rounded-t-xl" src="assets/img/sist-pasantias.png" alt="Sistema de Pasantías">
             <div class="p-4">
-              <h3 class="text-lg sm:text-xl font-semibold mb-2">Sistema de Pasantías (Symfony)</h3>
-              <a href="#" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base">Ver Proyecto</a>
+              <h3 class="text-xl font-semibold mb-2">Sistema de Pasantías (Symfony)</h3>
+              <a href="#" target="_blank" class="inline-block mt-2 px-5 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-white text-sm">Ver Proyecto</a>
             </div>
           </div>
-        </div>
-        <!-- Proyecto 4 -->
-        <div class="flex-shrink-0 w-72 sm:min-w-[300px] sm:max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
-          <img class="h-48 w-full object-cover" src="assets/img/ocr-read.png" alt="Proyecto 3">
-          <div class="p-4">
-            <h3 class="text-lg sm:text-xl font-semibold mb-2"> OCR de lectura de facturas y tickets BETA (DJANGO)</h3>
-            <a href="https://github.com/lucasbauducco/zygo_api" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base">Ver Proyecto</a>
-          </div>
-        </div>
-      </div>
 
-        <!-- Botones de navegación solo visibles en pantallas grandes -->
-        <div class="hidden sm:flex justify-between mt-6">
-          <button onclick="moveSlide(-1)" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white">←</button>
-          <button onclick="moveSlide(1)" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white">→</button>
+          <!-- Proyecto 4 -->
+          <div class="flex-shrink-0 w-72 sm:w-80 bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+            <img class="h-48 w-full object-cover rounded-t-xl" src="assets/img/ocr-read.png" alt="OCR de facturas y tickets">
+            <div class="p-4">
+              <h3 class="text-xl font-semibold mb-2">OCR de Facturas y Tickets (Django)</h3>
+              <a href="https://github.com/lucasbauducco/zygo_api" target="_blank" class="inline-block mt-2 px-5 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-white text-sm">Ver Proyecto</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Botones de navegación (solo en escritorio) -->
+        <div class="hidden sm:flex justify-between absolute top-1/2 transform -translate-y-1/2 w-full px-4">
+          <button onclick="moveSlide(-1)" class="bg-blue-500 hover:bg-blue-600 p-3 rounded-full shadow-md">
+            ←
+          </button>
+          <button onclick="moveSlide(1)" class="bg-blue-500 hover:bg-blue-600 p-3 rounded-full shadow-md">
+            →
+          </button>
         </div>
       </div>
     </div>
@@ -264,13 +271,14 @@
     © 2025 Lucas Bauducco. Todos los derechos reservados.
   </footer>
   <script>
-    let carousel = document.getElementById('carousel');
-    let scrollAmount = 0;
+    const carousel = document.getElementById('carousel');
   
     function moveSlide(direction) {
-      const slideWidth = carousel.querySelector('div').offsetWidth + 24; // ancho + espacio
-      scrollAmount += direction * slideWidth;
-      carousel.style.transform = `translateX(-${scrollAmount}px)`;
+      const slideWidth = carousel.querySelector('div').offsetWidth + 24; // width + espacio
+      carousel.scrollBy({
+        left: slideWidth * direction,
+        behavior: 'smooth'
+      });
     }
   </script>
   <script>
