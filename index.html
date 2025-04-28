@@ -177,47 +177,59 @@
       </div>
     </div>
   </section>
- <!-- proyectos-carousel -->
-  <section id="proyectos-carousel" class="px-6 py-16 bg-gray-900 text-white">
+  <!-- proyectos-carousel -->
+  <section id="proyectos-carousel" class="px-4 py-12 bg-gray-900 text-white">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-blue-400 mb-8 text-center border-b border-gray-700 pb-2">Mis Proyectos</h2>
-      <div class="relative overflow-hidden">
-        <div id="carousel" class="flex transition-transform duration-500 ease-in-out space-x-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-6 text-center border-b border-gray-700 pb-2">Mis Proyectos</h2>
+      <div class="relative">
+        <!-- Contenedor deslizable horizontalmente en mobile -->
+        <div id="carousel" class="flex overflow-x-auto sm:overflow-hidden scroll-smooth transition-transform duration-500 ease-in-out space-x-4 sm:space-x-6">
           <!-- Proyecto 1 -->
-          <div class="min-w-[300px] max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
-            <img class="h-48 w-full object-cover" src="assets/img/ApiRest.png" width="400" height="200" alt="Proyecto Api Rest en Symfony">
+          <div class="flex-shrink-0 w-72 sm:min-w-[300px] sm:max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
+            <img class="h-48 w-full object-cover" src="assets/img/ApiRest.png" alt="Proyecto Api Rest en Symfony">
             <div class="p-4">
-              <h3 class="text-xl font-semibold mb-2">Api Rest (Symfony)</h3>
-              <a href="https://intranet.unraf.edu.ar/ApiRest/docs" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Ver Proyecto</a>
+              <h3 class="text-lg sm:text-xl font-semibold mb-2">Api Rest (Symfony)</h3>
+              <a href="https://intranet.unraf.edu.ar/ApiRest/docs" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base">Ver Proyecto</a>
             </div>
           </div>
+
           <!-- Proyecto 2 -->
-          <div class="min-w-[200px] max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
-            <img class="h-48 w-full object-contain" src="assets/img/appUNRaf.jpg" alt="Proyecto 2">
+          <div class="flex-shrink-0 w-64 sm:min-w-[300px] sm:max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
+            <img class="h-48 w-full object-contain bg-gray-700" src="assets/img/appUNRaf.jpg" alt="Proyecto 2">
             <div class="p-4">
-              <h3 class="text-xl font-semibold mb-2">PWA y Creación de App movil (Ionic y vue.js)</h3>
-              <a href="https://app.unraf.edu.ar/unraf/" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Ver Proyecto</a>
+              <h3 class="text-lg sm:text-xl font-semibold mb-2">PWA y App móvil (Ionic + Vue.js)</h3>
+              <a href="https://app.unraf.edu.ar/unraf/" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base">Ver Proyecto</a>
             </div>
           </div>
+
           <!-- Proyecto 3 -->
-          <div class="min-w-[300px] max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
+          <div class="flex-shrink-0 w-72 sm:min-w-[300px] sm:max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
             <img class="h-48 w-full object-cover" src="assets/img/sist-pasantias.png" alt="Proyecto 3">
             <div class="p-4">
-              <h3 class="text-xl font-semibold mb-2">Sistema de control y seguimiento de Pasantías (Symfony)</h3>
-              <a href="#" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"></a>
+              <h3 class="text-lg sm:text-xl font-semibold mb-2">Sistema de Pasantías (Symfony)</h3>
+              <a href="#" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base">Ver Proyecto</a>
             </div>
           </div>
-          <!-- Agrega más proyectos acá -->
         </div>
-  
-        <!-- Botones del carrusel -->
-        <div class="flex justify-between mt-6">
+        <!-- Proyecto 4 -->
+        <div class="flex-shrink-0 w-72 sm:min-w-[300px] sm:max-w-sm bg-gray-800 rounded-xl shadow-md overflow-hidden">
+          <img class="h-48 w-full object-cover" src="assets/img/ocr-read.png" alt="Proyecto 3">
+          <div class="p-4">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2"> OCR de lectura de facturas y tickets BETA (DJANGO)</h3>
+            <a href="https://github.com/lucasbauducco/zygo_api" target="_blank" class="inline-block mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm sm:text-base">Ver Proyecto</a>
+          </div>
+        </div>
+      </div>
+
+        <!-- Botones de navegación solo visibles en pantallas grandes -->
+        <div class="hidden sm:flex justify-between mt-6">
           <button onclick="moveSlide(-1)" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white">←</button>
           <button onclick="moveSlide(1)" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white">→</button>
         </div>
       </div>
     </div>
   </section>
+
   <!-- GitHub -->
   <section class="bg-gray-900 text-white px-6 py-16">
     <div class="max-w-4xl mx-auto text-center">
