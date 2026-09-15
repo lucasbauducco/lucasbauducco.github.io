@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Lucas Bauducco · Backend Developer">
   <meta property="og:description" content="Backend, APIs y productos digitales construidos con criterio técnico y flujos de desarrollo asistidos por IA.">
-  <meta property="og:image" content="assets/img/IMG_20230310_113859179.jpg">
+  <meta property="og:image" content="https://lucasbauducco.github.io/assets/img/profile-professional.png">
   <title>Lucas Bauducco · Backend Developer</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%23071a2b%22/><text x=%2232%22 y=%2241%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2226%22 font-weight=%22700%22 fill=%22%238ed8e8%22>LB</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +33,7 @@
 
       <nav class="nav-menu" id="nav-menu" aria-label="Navegación principal" data-i18n-aria="mainNav">
         <a href="#sobre-mi" data-i18n="navAbout">Sobre mí</a>
+        <a href="#experiencia" data-i18n="navExperience">Experiencia</a>
         <a href="#proyectos" data-i18n="navProjects">Proyectos</a>
         <a href="#stack" data-i18n="navStack">Stack</a>
         <a href="#flujo-ia" data-i18n="navAi">Flujo IA</a>
@@ -73,7 +74,7 @@
             </a>
           </div>
           <ul class="hero-facts" aria-label="Datos profesionales" data-i18n-aria="factsAria">
-            <li><strong>4+</strong><span data-i18n="years">años de experiencia</span></li>
+            <li><strong>2020</strong><span data-i18n="years">desarrollando software</span></li>
             <li><strong>AR</strong><span data-i18n="location">Argentina · Remoto</span></li>
             <li><strong>API</strong><span data-i18n="specialty">Backend & integraciones</span></li>
           </ul>
@@ -81,7 +82,7 @@
 
         <figure class="portrait-card">
           <div class="portrait-frame">
-            <img src="assets/img/IMG_20220618_131440991.jpg" alt="Retrato de Lucas Bauducco en la montaña" data-i18n-alt="portraitAlt">
+            <img src="assets/img/profile-professional.png" alt="Retrato profesional de Lucas Bauducco en la montaña" data-i18n-alt="portraitAlt">
           </div>
           <figcaption>
             <span data-i18n="portraitCaption">Rafaela, Santa Fe</span>
@@ -109,80 +110,180 @@
       </div>
     </section>
 
+    <section class="section experience-section" id="experiencia" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section-heading experience-heading">
+          <div>
+            <p class="eyebrow" data-i18n="experienceEyebrow">Trayectoria</p>
+            <h2 id="experience-title" data-i18n="experienceTitle">Experiencia construyendo y evolucionando sistemas.</h2>
+          </div>
+          <p data-i18n="experienceIntro">Desde 2020 trabajo en productos, integraciones y sistemas de negocio, adaptándome a stacks modernos y plataformas legacy.</p>
+        </div>
+
+        <ol class="experience-timeline">
+          <li class="experience-card">
+            <div class="experience-period"><span>01</span><strong data-i18n="unrafDuration">Desde 2020 · casi 4 años</strong></div>
+            <div class="experience-company">
+              <h3>UNRaf</h3>
+              <p data-i18n="unrafRole">Desarrollo web y APIs</p>
+            </div>
+            <p data-i18n="unrafText">Desarrollo de sistemas institucionales, APIs REST, portales administrativos y soluciones móviles con Symfony como base backend.</p>
+            <div class="experience-stack"><span>Symfony</span><span>PHP</span><span>API Platform</span><span>Vue.js</span><span>Ionic</span></div>
+          </li>
+          <li class="experience-card">
+            <div class="experience-period"><span>02</span><strong data-i18n="bertolachiniDuration">1 año</strong></div>
+            <div class="experience-company">
+              <h3>Bertolachini S.A.</h3>
+              <p data-i18n="bertolachiniRole">Desarrollo e integración</p>
+            </div>
+            <p data-i18n="bertolachiniText">Desarrollo con Python, creación de APIs e integración con sistemas de negocio legacy construidos en Progress ABL.</p>
+            <div class="experience-stack"><span>Python</span><span>Progress ABL</span><span>APIs REST</span><span data-i18n="legacySystems">Sistemas legacy</span></div>
+          </li>
+          <li class="experience-card experience-card-current">
+            <div class="experience-period"><span>03</span><strong data-i18n="nimbusDuration">Actualidad</strong></div>
+            <div class="experience-company">
+              <h3>Sistemas Nimbus</h3>
+              <p data-i18n="nimbusRole">Desarrollo de sistemas</p>
+            </div>
+            <p data-i18n="nimbusText">Trabajo actual en desarrollo y mantenimiento de sistemas, APIs y automatizaciones, incorporando flujos asistidos por IA con planificación, tests y revisión.</p>
+            <div class="experience-stack"><span>Python</span><span>APIs</span><span data-i18n="aiShort">IA</span><span>Tests</span><span data-i18n="integrations">Integraciones</span></div>
+            <span class="current-badge" data-i18n="currentBadge">Posición actual</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <section class="section projects-section" id="proyectos" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-heading">
           <div>
             <p class="eyebrow" data-i18n="projectsEyebrow">Trabajo seleccionado</p>
-            <h2 id="projects-title" data-i18n="projectsTitle">Proyectos que conectan sistemas y personas.</h2>
+            <h2 id="projects-title" data-i18n="projectsTitle">Sistemas reales, decisiones técnicas visibles.</h2>
           </div>
           <p data-i18n="projectsIntro">Una selección de APIs, aplicaciones y automatizaciones construidas para contextos reales.</p>
         </div>
 
         <div class="project-grid">
-          <article class="project-card project-featured">
-            <div class="project-media">
-              <img src="assets/img/ApiRest.png" alt="Documentación OpenAPI del sistema académico" data-i18n-alt="apiAlt">
-              <span class="project-number" aria-hidden="true">01</span>
+          <article class="project-card project-card-featured">
+            <div class="project-media project-visual project-visual-report" role="img" aria-label="Vista conceptual de un panel de registros y reportes" data-i18n-aria="reportVisualAlt">
+              <div class="product-window" aria-hidden="true">
+                <div class="window-bar"><i></i><i></i><i></i><span>REPORT+</span></div>
+                <div class="report-preview">
+                  <aside><b>R+</b><i></i><i></i><i></i><i></i></aside>
+                  <div class="report-content">
+                    <div class="preview-heading"><span></span><button></button></div>
+                    <div class="preview-filters"><i></i><i></i><i></i><i></i></div>
+                    <div class="preview-table"><b></b><i></i><i></i><i></i><i></i></div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="project-body">
-              <div class="project-meta">
-                <span>Symfony</span><span>API Platform</span><span>JWT</span>
+              <div class="project-kicker"><span>01</span><strong data-i18n="reportType">Aplicación de gestión</strong></div>
+              <h3>Report+</h3>
+              <p data-i18n="reportDescription">Frontend para gestionar registros de horas y reportes con autenticación, filtros avanzados y exportación de información.</p>
+              <ul class="project-points">
+                <li data-i18n="reportPoint1">CRUD, paginación y filtros por empresa, usuario, tarea y fechas.</li>
+                <li data-i18n="reportPoint2">JWT con renovación automática y control de rutas.</li>
+                <li data-i18n="reportPoint3">Generación y descarga asíncrona de reportes Excel.</li>
+              </ul>
+              <div class="project-meta"><span>Vue 3</span><span>Quasar</span><span>Pinia</span><span>Axios</span><span>Electron</span></div>
+              <div class="project-actions">
+                <a class="text-link" href="https://github.com/lucasbauducco/front_report" target="_blank" rel="noopener noreferrer"><span data-i18n="viewRepository">Ver repositorio</span><span aria-hidden="true">↗</span></a>
               </div>
+            </div>
+          </article>
+
+          <article class="project-card project-card-featured">
+            <div class="project-media project-visual project-visual-market" role="img" aria-label="Vista conceptual de un marketplace con múltiples tiendas" data-i18n-aria="marketVisualAlt">
+              <div class="product-window" aria-hidden="true">
+                <div class="window-bar"><i></i><i></i><i></i><span>MULTI-MARKET</span></div>
+                <div class="market-preview">
+                  <div class="market-nav"><b>M</b><span></span><i></i></div>
+                  <div class="market-copy"><strong></strong><span></span></div>
+                  <div class="market-products"><i></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>02</span><strong data-i18n="marketType">Plataforma full stack</strong></div>
+              <h3>Multi-Market</h3>
+              <p data-i18n="marketDescription">Marketplace que organiza múltiples tiendas, sus catálogos y productos mediante una API Django y un cliente Vue.</p>
+              <ul class="project-points">
+                <li data-i18n="marketPoint1">Usuarios, tiendas, categorías, subcategorías y productos.</li>
+                <li data-i18n="marketPoint2">Búsqueda, filtros por tienda y categoría, y descuentos.</li>
+                <li data-i18n="marketPoint3">Frontend desacoplado que consume la API mediante Axios.</li>
+              </ul>
+              <div class="project-meta"><span>Django REST</span><span>Vue 3</span><span>Vuex</span><span>JWT</span></div>
+              <div class="project-actions">
+                <a class="text-link" href="https://github.com/lucasbauducco/backend-multi-market" target="_blank" rel="noopener noreferrer"><span data-i18n="viewBackend">Ver backend</span><span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="https://github.com/lucasbauducco/FrontEnd-multi-market" target="_blank" rel="noopener noreferrer"><span data-i18n="viewFrontend">Ver frontend</span><span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media project-capture project-capture-api">
+              <div class="capture-window">
+                <div class="window-bar"><i></i><i></i><i></i><span>OPENAPI</span></div>
+                <img src="assets/img/ApiRest.png" alt="Documentación OpenAPI del sistema académico" data-i18n-alt="apiAlt">
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>03</span><strong data-i18n="apiType">Integración institucional</strong></div>
               <h3 data-i18n="apiTitle">API REST · Sistema académico</h3>
-              <p data-i18n="apiDescription">Servicio de integración para información académica, con autenticación y documentación interactiva de endpoints.</p>
-              <a class="text-link" href="https://intranet.unraf.edu.ar/ApiRest/docs" target="_blank" rel="noopener noreferrer">
-                <span data-i18n="viewCase">Ver proyecto</span><span aria-hidden="true">↗</span>
-              </a>
+              <p data-i18n="apiDescription">Servicio documentado para integrar información académica y exponer operaciones protegidas con autenticación JWT.</p>
+              <ul class="project-points"><li data-i18n="apiPoint1">Contrato OpenAPI navegable con endpoints agrupados.</li><li data-i18n="apiPoint2">Autenticación y renovación de tokens para clientes externos.</li></ul>
+              <div class="project-meta"><span>Symfony</span><span>API Platform</span><span>JWT</span><span>OpenAPI</span></div>
+              <div class="project-actions"><a class="text-link" href="https://intranet.unraf.edu.ar/ApiRest/docs" target="_blank" rel="noopener noreferrer"><span data-i18n="viewDocumentation">Ver documentación</span><span aria-hidden="true">↗</span></a></div>
             </div>
           </article>
 
           <article class="project-card">
-            <div class="project-media">
+            <div class="project-media project-visual project-visual-api" role="img" aria-label="Vista conceptual de documentación para una API Django" data-i18n-aria="djangoVisualAlt">
+              <div class="api-preview" aria-hidden="true">
+                <header><span>REST / JWT</span><i></i></header>
+                <div><b>POST</b><i></i><span></span></div><div><b>GET</b><i></i><span></span></div><div><b>PUT</b><i></i><span></span></div><div><b>DELETE</b><i></i><span></span></div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>04</span><strong data-i18n="djangoType">API demostrable</strong></div>
+              <h3 data-i18n="djangoTitle">API REST · Productos y autenticación</h3>
+              <p data-i18n="djangoDescription">Backend reproducible para administrar productos mediante operaciones protegidas y documentación automática.</p>
+              <ul class="project-points"><li data-i18n="djangoPoint1">Registro, listado, actualización y eliminación de productos.</li><li data-i18n="djangoPoint2">JWT, rutas protegidas, Swagger y Redoc.</li></ul>
+              <div class="project-meta"><span>Django</span><span>DRF</span><span>SimpleJWT</span><span>Swagger</span></div>
+              <div class="project-actions"><a class="text-link" href="https://github.com/lucasbauducco/api_djago_jwt" target="_blank" rel="noopener noreferrer"><span data-i18n="viewRepository">Ver repositorio</span><span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media project-capture project-capture-phone">
+              <div class="phone-shell"><span aria-hidden="true"></span><img src="assets/img/appUNRaf.jpg" alt="Aplicación móvil de UNRaf" data-i18n-alt="appAlt"></div>
+              <div class="phone-caption" aria-hidden="true"><i></i><i></i><i></i></div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>05</span><strong data-i18n="appType">Producto multiplataforma</strong></div>
+              <h3 data-i18n="appTitle">PWA y aplicación universitaria</h3>
+              <p data-i18n="appDescription">Cliente móvil e instalable que acerca servicios académicos a estudiantes desde una única base web.</p>
+              <ul class="project-points"><li data-i18n="appPoint1">Experiencia responsive para navegador y dispositivos móviles.</li><li data-i18n="appPoint2">Arquitectura Ionic + Vue preparada para integración nativa con Capacitor.</li></ul>
+              <div class="project-meta"><span>Ionic</span><span>Vue.js</span><span>Capacitor</span><span>PWA</span></div>
+              <div class="project-actions"><a class="text-link" href="https://app.unraf.edu.ar/unraf/" target="_blank" rel="noopener noreferrer"><span data-i18n="viewDemo">Ver aplicación</span><span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/lucasbauducco/app_movil_ionic_vue" target="_blank" rel="noopener noreferrer"><span data-i18n="viewRepository">Ver repositorio</span><span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media project-capture project-capture-ocr">
+              <div class="ocr-grid" aria-hidden="true"></div>
               <img src="assets/img/ocr-read.png" alt="Ilustración del lector OCR de documentos" data-i18n-alt="ocrAlt">
-              <span class="project-number" aria-hidden="true">02</span>
+              <span class="scan-line" aria-hidden="true"></span>
             </div>
             <div class="project-body">
-              <div class="project-meta">
-                <span>Django</span><span>OCR</span><span>REST</span>
-              </div>
-              <h3 data-i18n="ocrTitle">Procesamiento de documentos · OCR</h3>
-              <p data-i18n="ocrDescription">API para extraer y estructurar información de facturas y tickets mediante procesamiento de imágenes.</p>
-              <a class="text-link" href="https://github.com/lucasbauducco/zygo_api" target="_blank" rel="noopener noreferrer">
-                <span data-i18n="viewRepository">Ver repositorio</span><span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media project-media-contain">
-              <img src="assets/img/appUNRaf.jpg" alt="Aplicación móvil de UNRaf" data-i18n-alt="appAlt">
-              <span class="project-number" aria-hidden="true">03</span>
-            </div>
-            <div class="project-body">
-              <div class="project-meta">
-                <span>Ionic</span><span>Vue.js</span><span>PWA</span>
-              </div>
-              <h3 data-i18n="appTitle">PWA y aplicación móvil</h3>
-              <p data-i18n="appDescription">Experiencia multiplataforma que acerca servicios universitarios a dispositivos móviles y navegadores.</p>
-              <a class="text-link" href="https://app.unraf.edu.ar/unraf/" target="_blank" rel="noopener noreferrer">
-                <span data-i18n="viewCase">Ver proyecto</span><span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              <img src="assets/img/sist-pasantias.png" alt="Interfaz del sistema de gestión de pasantías" data-i18n-alt="internshipAlt">
-              <span class="project-number" aria-hidden="true">04</span>
-            </div>
-            <div class="project-body">
-              <div class="project-meta">
-                <span>Symfony</span><span>Web</span><span data-i18n="managementTag">Gestión</span>
-              </div>
-              <h3 data-i18n="internshipTitle">Sistema de pasantías</h3>
-              <p data-i18n="internshipDescription">Plataforma institucional para organizar y acompañar el circuito administrativo de pasantías.</p>
-              <span class="project-status" data-i18n="institutionalProject">Proyecto institucional</span>
+              <div class="project-kicker"><span>06</span><strong data-i18n="ocrType">Prototipo experimental</strong></div>
+              <h3 data-i18n="ocrTitle">Extracción de comprobantes · OCR</h3>
+              <p data-i18n="ocrDescription">Exploración para convertir facturas y tickets en datos estructurados mediante OCR, preprocesamiento y reglas de extracción.</p>
+              <ul class="project-points"><li data-i18n="ocrPoint1">Carga de imágenes o PDF y respuesta estructurada.</li><li data-i18n="ocrPoint2">EasyOCR, OpenCV y expresiones regulares; precisión aún en iteración.</li></ul>
+              <div class="project-meta"><span>Django</span><span>EasyOCR</span><span>OpenCV</span><span>Regex</span></div>
+              <div class="project-actions"><a class="text-link" href="https://github.com/lucasbauducco/zygo_api" target="_blank" rel="noopener noreferrer"><span data-i18n="viewExperiment">Ver experimento</span><span aria-hidden="true">↗</span></a></div>
             </div>
           </article>
         </div>
@@ -218,7 +319,7 @@
             <span class="stack-index">03</span>
             <h3 data-i18n="dataTitle">Datos & entrega</h3>
             <ul>
-              <li>PostgreSQL</li><li>MySQL</li><li>Docker</li><li>Git</li><li>OpenAPI</li><li data-i18n="agile">Metodologías ágiles</li>
+              <li>PostgreSQL</li><li>MySQL</li><li>Progress ABL</li><li>Docker</li><li>Git</li><li>OpenAPI</li><li data-i18n="agile">Metodologías ágiles</li>
             </ul>
           </article>
         </div>
@@ -233,7 +334,7 @@
           <p data-i18n="aiIntro">Uso Claude Code como colaborador técnico dentro de un proceso controlado: contexto claro, alcance verificable y evidencia antes de dar una tarea por terminada.</p>
           <div class="ai-statement">
             <span aria-hidden="true">“</span>
-            <p data-i18n="aiQuote">Más velocidad para iterar. El mismo rigor para entregar.</p>
+            <p data-i18n="aiQuote">La IA forma parte del proceso; la validación técnica define el resultado.</p>
           </div>
         </div>
 
@@ -318,7 +419,7 @@
         <span class="brand-mark brand-mark-small" aria-hidden="true">LB</span>
         <p>© <span id="current-year">2026</span> Lucas Bauducco</p>
       </div>
-      <p data-i18n="footerNote">Backend con criterio. IA con control.</p>
+      <p data-i18n="footerNote">Backend, integraciones y calidad de software.</p>
       <a href="#inicio"><span data-i18n="backTop">Volver arriba</span> ↑</a>
     </div>
   </footer>
@@ -331,34 +432,55 @@
         ogDescription: "Backend, APIs y productos digitales construidos con criterio técnico y flujos de desarrollo asistidos por IA.",
         skip: "Saltar al contenido", brandAria: "Lucas Bauducco — inicio", menuOpen: "Abrir menú",
         menuClose: "Cerrar menú", mainNav: "Navegación principal", languageLabel: "Seleccionar idioma",
-        navAbout: "Sobre mí", navProjects: "Proyectos", navStack: "Stack", navAi: "Flujo IA", navContact: "Contacto",
+        navAbout: "Sobre mí", navExperience: "Experiencia", navProjects: "Proyectos", navStack: "Stack", navAi: "Flujo IA", navContact: "Contacto",
         availability: "Disponible para nuevos desafíos", role: "Backend Developer",
         heroLead: "Construyo APIs y sistemas web robustos, combinando experiencia backend con un flujo de desarrollo asistido por IA, verificable de principio a fin.",
-        viewProjects: "Ver proyectos", downloadCv: "Descargar CV", years: "años de experiencia",
+        viewProjects: "Ver proyectos", downloadCv: "Descargar CV", years: "desarrollando software",
         location: "Argentina · Remoto", specialty: "Backend & integraciones", factsAria: "Datos profesionales",
-        portraitAlt: "Retrato de Lucas Bauducco en la montaña", portraitCaption: "Rafaela, Santa Fe",
+        portraitAlt: "Retrato profesional de Lucas Bauducco en la montaña", portraitCaption: "Rafaela, Santa Fe",
         portraitNote: "Código con perspectiva humana.", scrollAria: "Continuar hacia Sobre mí", explore: "Explorar",
         aboutEyebrow: "Perfil profesional", aboutTitle: "Soluciones simples para problemas que no lo son.",
         aboutP1: "Soy desarrollador web con foco en backend. Trabajo con Symfony, Django y APIs REST para convertir procesos complejos en productos mantenibles, seguros y fáciles de evolucionar.",
         aboutP2: "También construí portales administrativos, aplicaciones móviles con Vue.js e Ionic, automatizaciones y servicios para organizaciones públicas y privadas.",
         aboutQuote: "La IA acelera el proceso; la ingeniería sigue definiendo la calidad.",
-        projectsEyebrow: "Trabajo seleccionado", projectsTitle: "Proyectos que conectan sistemas y personas.",
-        projectsIntro: "Una selección de APIs, aplicaciones y automatizaciones construidas para contextos reales.",
-        apiAlt: "Documentación OpenAPI del sistema académico", apiTitle: "API REST · Sistema académico",
-        apiDescription: "Servicio de integración para información académica, con autenticación y documentación interactiva de endpoints.",
-        ocrAlt: "Ilustración del lector OCR de documentos", ocrTitle: "Procesamiento de documentos · OCR",
-        ocrDescription: "API para extraer y estructurar información de facturas y tickets mediante procesamiento de imágenes.",
-        appAlt: "Aplicación móvil de UNRaf", appTitle: "PWA y aplicación móvil",
-        appDescription: "Experiencia multiplataforma que acerca servicios universitarios a dispositivos móviles y navegadores.",
-        internshipAlt: "Interfaz del sistema de gestión de pasantías", internshipTitle: "Sistema de pasantías",
-        internshipDescription: "Plataforma institucional para organizar y acompañar el circuito administrativo de pasantías.",
-        managementTag: "Gestión", viewCase: "Ver proyecto", viewRepository: "Ver repositorio", institutionalProject: "Proyecto institucional",
+        experienceEyebrow: "Trayectoria", experienceTitle: "Experiencia construyendo y evolucionando sistemas.",
+        experienceIntro: "Desde 2020 trabajo en productos, integraciones y sistemas de negocio, adaptándome a stacks modernos y plataformas legacy.",
+        unrafDuration: "Desde 2020 · casi 4 años", unrafRole: "Desarrollo web y APIs",
+        unrafText: "Desarrollo de sistemas institucionales, APIs REST, portales administrativos y soluciones móviles con Symfony como base backend.",
+        bertolachiniDuration: "1 año", bertolachiniRole: "Desarrollo e integración",
+        bertolachiniText: "Desarrollo con Python, creación de APIs e integración con sistemas de negocio legacy construidos en Progress ABL.",
+        nimbusDuration: "Actualidad", nimbusRole: "Desarrollo de sistemas",
+        nimbusText: "Trabajo actual en desarrollo y mantenimiento de sistemas, APIs y automatizaciones, incorporando flujos asistidos por IA con planificación, tests y revisión.",
+        legacySystems: "Sistemas legacy", integrations: "Integraciones", aiShort: "IA", currentBadge: "Posición actual",
+        projectsEyebrow: "Trabajo seleccionado", projectsTitle: "Sistemas reales, decisiones técnicas visibles.",
+        projectsIntro: "Casos seleccionados por lo que demuestran: integración, producto, automatización y capacidad de entrega.",
+        reportVisualAlt: "Vista conceptual de un panel de registros y reportes", reportType: "Aplicación de gestión",
+        reportDescription: "Frontend para gestionar registros de horas y reportes con autenticación, filtros avanzados y exportación de información.",
+        reportPoint1: "CRUD, paginación y filtros por empresa, usuario, tarea y fechas.", reportPoint2: "JWT con renovación automática y control de rutas.",
+        reportPoint3: "Generación y descarga asíncrona de reportes Excel.",
+        marketVisualAlt: "Vista conceptual de un marketplace con múltiples tiendas", marketType: "Plataforma full stack",
+        marketDescription: "Marketplace que organiza múltiples tiendas, sus catálogos y productos mediante una API Django y un cliente Vue.",
+        marketPoint1: "Usuarios, tiendas, categorías, subcategorías y productos.", marketPoint2: "Búsqueda, filtros por tienda y categoría, y descuentos.",
+        marketPoint3: "Frontend desacoplado que consume la API mediante Axios.", viewBackend: "Ver backend", viewFrontend: "Ver frontend",
+        apiAlt: "Documentación OpenAPI del sistema académico", apiType: "Integración institucional", apiTitle: "API REST · Sistema académico",
+        apiDescription: "Servicio documentado para integrar información académica y exponer operaciones protegidas con autenticación JWT.",
+        apiPoint1: "Contrato OpenAPI navegable con endpoints agrupados.", apiPoint2: "Autenticación y renovación de tokens para clientes externos.",
+        viewDocumentation: "Ver documentación", djangoVisualAlt: "Vista conceptual de documentación para una API Django", djangoType: "API demostrable",
+        djangoTitle: "API REST · Productos y autenticación", djangoDescription: "Backend reproducible para administrar productos mediante operaciones protegidas y documentación automática.",
+        djangoPoint1: "Registro, listado, actualización y eliminación de productos.", djangoPoint2: "JWT, rutas protegidas, Swagger y Redoc.",
+        appAlt: "Aplicación móvil de UNRaf", appType: "Producto multiplataforma", appTitle: "PWA y aplicación universitaria",
+        appDescription: "Cliente móvil e instalable que acerca servicios académicos a estudiantes desde una única base web.",
+        appPoint1: "Experiencia responsive para navegador y dispositivos móviles.", appPoint2: "Arquitectura Ionic + Vue preparada para integración nativa con Capacitor.",
+        viewDemo: "Ver aplicación", ocrAlt: "Ilustración del lector OCR de documentos", ocrType: "Prototipo experimental",
+        ocrTitle: "Extracción de comprobantes · OCR", ocrDescription: "Exploración para convertir facturas y tickets en datos estructurados mediante OCR, preprocesamiento y reglas de extracción.",
+        ocrPoint1: "Carga de imágenes o PDF y respuesta estructurada.", ocrPoint2: "EasyOCR, OpenCV y expresiones regulares; precisión aún en iteración.",
+        viewExperiment: "Ver experimento", viewRepository: "Ver repositorio",
         stackEyebrow: "Herramientas", stackTitle: "Stack técnico actual.",
         stackIntro: "Tecnologías elegidas según el problema, con una base fuerte en backend e integración de sistemas.",
         backendTitle: "Backend & APIs", frontendTitle: "Producto & frontend", dataTitle: "Datos & entrega", agile: "Metodologías ágiles",
         aiEyebrow: "Ingeniería aumentada", aiTitle: "IA aplicada al ciclo de desarrollo.",
         aiIntro: "Uso Claude Code como colaborador técnico dentro de un proceso controlado: contexto claro, alcance verificable y evidencia antes de dar una tarea por terminada.",
-        aiQuote: "Más velocidad para iterar. El mismo rigor para entregar.",
+        aiQuote: "La IA forma parte del proceso; la validación técnica define el resultado.",
         workflowPlanTitle: "Planificación automática", workflowPlanText: "Análisis del repositorio, alcance, riesgos y criterios de aceptación antes de modificar código.",
         workflowClaudeText: "Implementación guiada por instrucciones persistentes, contexto del proyecto y objetivos concretos.",
         workflowMcpText: "Herramientas y procesos reutilizables para conectar documentación, servicios y tareas especializadas.",
@@ -370,7 +492,7 @@
         jsCourse: "JavaScript: de principiante a profesional", contactEyebrow: "Hablemos",
         contactTitle: "¿Tenés un desafío backend en mente?",
         contactText: "Estoy abierto a proyectos y oportunidades donde pueda aportar experiencia técnica, autonomía y una mirada práctica.",
-        sendEmail: "Enviar un correo", footerNote: "Backend con criterio. IA con control.", backTop: "Volver arriba"
+        sendEmail: "Enviar un correo", footerNote: "Backend, integraciones y calidad de software.", backTop: "Volver arriba"
       },
       en: {
         pageTitle: "Lucas Bauducco · Backend Developer",
@@ -378,34 +500,55 @@
         ogDescription: "Backend systems, APIs and digital products built with technical judgment and AI-assisted development workflows.",
         skip: "Skip to content", brandAria: "Lucas Bauducco — home", menuOpen: "Open menu",
         menuClose: "Close menu", mainNav: "Main navigation", languageLabel: "Select language",
-        navAbout: "About", navProjects: "Projects", navStack: "Stack", navAi: "AI workflow", navContact: "Contact",
+        navAbout: "About", navExperience: "Experience", navProjects: "Projects", navStack: "Stack", navAi: "AI workflow", navContact: "Contact",
         availability: "Open to new opportunities", role: "Backend Developer",
         heroLead: "I build robust APIs and web systems, combining backend experience with an AI-assisted development workflow that is verifiable from start to finish.",
-        viewProjects: "View projects", downloadCv: "Download résumé", years: "years of experience",
+        viewProjects: "View projects", downloadCv: "Download résumé", years: "building software",
         location: "Argentina · Remote", specialty: "Backend & integrations", factsAria: "Professional facts",
-        portraitAlt: "Portrait of Lucas Bauducco in the mountains", portraitCaption: "Rafaela, Santa Fe",
+        portraitAlt: "Professional portrait of Lucas Bauducco in the mountains", portraitCaption: "Rafaela, Santa Fe",
         portraitNote: "Code with a human perspective.", scrollAria: "Continue to About", explore: "Explore",
         aboutEyebrow: "Professional profile", aboutTitle: "Simple solutions for problems that are not.",
         aboutP1: "I am a web developer focused on backend engineering. I use Symfony, Django and REST APIs to turn complex processes into maintainable, secure products that are easy to evolve.",
         aboutP2: "I have also built administration portals, mobile applications with Vue.js and Ionic, automations and services for public and private organizations.",
         aboutQuote: "AI accelerates the process; engineering still defines the quality.",
-        projectsEyebrow: "Selected work", projectsTitle: "Projects that connect systems and people.",
-        projectsIntro: "A selection of APIs, applications and automations built for real-world contexts.",
-        apiAlt: "OpenAPI documentation for the academic system", apiTitle: "REST API · Academic system",
-        apiDescription: "Integration service for academic information, with authentication and interactive endpoint documentation.",
-        ocrAlt: "Illustration of the document OCR reader", ocrTitle: "Document processing · OCR",
-        ocrDescription: "API that extracts and structures information from invoices and receipts through image processing.",
-        appAlt: "UNRaf mobile application", appTitle: "PWA and mobile application",
-        appDescription: "A cross-platform experience that brings university services to mobile devices and web browsers.",
-        internshipAlt: "Internship management system interface", internshipTitle: "Internship management system",
-        internshipDescription: "Institutional platform that organizes and supports the administrative internship workflow.",
-        managementTag: "Management", viewCase: "View project", viewRepository: "View repository", institutionalProject: "Institutional project",
+        experienceEyebrow: "Career", experienceTitle: "Experience building and evolving systems.",
+        experienceIntro: "Since 2020, I have worked on products, integrations and business systems across modern stacks and legacy platforms.",
+        unrafDuration: "Since 2020 · nearly 4 years", unrafRole: "Web and API development",
+        unrafText: "Development of institutional systems, REST APIs, administration portals and mobile solutions with Symfony as the backend foundation.",
+        bertolachiniDuration: "1 year", bertolachiniRole: "Development and integration",
+        bertolachiniText: "Python development, API creation and integration with legacy business systems built with Progress ABL.",
+        nimbusDuration: "Present", nimbusRole: "Systems development",
+        nimbusText: "Current work on developing and maintaining systems, APIs and automations, incorporating AI-assisted workflows with planning, tests and review.",
+        legacySystems: "Legacy systems", integrations: "Integrations", aiShort: "AI", currentBadge: "Current position",
+        projectsEyebrow: "Selected work", projectsTitle: "Real systems, visible technical decisions.",
+        projectsIntro: "Cases selected for what they demonstrate: integration, product thinking, automation and delivery capability.",
+        reportVisualAlt: "Conceptual view of a records and reporting dashboard", reportType: "Management application",
+        reportDescription: "Frontend for managing time records and reports with authentication, advanced filtering and data exports.",
+        reportPoint1: "CRUD, pagination and filters by company, user, task and date.", reportPoint2: "JWT with automatic refresh and route control.",
+        reportPoint3: "Asynchronous generation and download of Excel reports.",
+        marketVisualAlt: "Conceptual view of a multi-store marketplace", marketType: "Full-stack platform",
+        marketDescription: "Marketplace that organizes multiple stores, catalogs and products through a Django API and a Vue client.",
+        marketPoint1: "Users, stores, categories, subcategories and products.", marketPoint2: "Search, store and category filters, and discounts.",
+        marketPoint3: "Decoupled frontend that consumes the API through Axios.", viewBackend: "View backend", viewFrontend: "View frontend",
+        apiAlt: "OpenAPI documentation for the academic system", apiType: "Institutional integration", apiTitle: "REST API · Academic system",
+        apiDescription: "Documented service for integrating academic information and exposing operations protected with JWT authentication.",
+        apiPoint1: "Browsable OpenAPI contract with grouped endpoints.", apiPoint2: "Authentication and token refresh for external clients.",
+        viewDocumentation: "View documentation", djangoVisualAlt: "Conceptual documentation view for a Django API", djangoType: "Reproducible API",
+        djangoTitle: "REST API · Products and authentication", djangoDescription: "Reproducible backend for managing products through protected operations and automatic documentation.",
+        djangoPoint1: "Create, list, update and delete product operations.", djangoPoint2: "JWT, protected routes, Swagger and Redoc.",
+        appAlt: "UNRaf mobile application", appType: "Cross-platform product", appTitle: "University PWA and application",
+        appDescription: "Mobile and installable client that brings academic services to students from a single web codebase.",
+        appPoint1: "Responsive experience for browsers and mobile devices.", appPoint2: "Ionic + Vue architecture prepared for native integration through Capacitor.",
+        viewDemo: "View application", ocrAlt: "Illustration of the document OCR reader", ocrType: "Experimental prototype",
+        ocrTitle: "Receipt extraction · OCR", ocrDescription: "Exploration for converting invoices and receipts into structured data through OCR, preprocessing and extraction rules.",
+        ocrPoint1: "Image or PDF upload with a structured response.", ocrPoint2: "EasyOCR, OpenCV and regular expressions; accuracy is still being iterated.",
+        viewExperiment: "View experiment", viewRepository: "View repository",
         stackEyebrow: "Toolkit", stackTitle: "Current technical stack.",
         stackIntro: "Technologies selected for the problem at hand, grounded in backend engineering and systems integration.",
         backendTitle: "Backend & APIs", frontendTitle: "Product & frontend", dataTitle: "Data & delivery", agile: "Agile methodologies",
         aiEyebrow: "Augmented engineering", aiTitle: "AI across the development lifecycle.",
         aiIntro: "I use Claude Code as a technical collaborator within a controlled process: clear context, verifiable scope and evidence before considering a task complete.",
-        aiQuote: "More speed to iterate. The same rigor to deliver.",
+        aiQuote: "AI is part of the process; technical validation defines the outcome.",
         workflowPlanTitle: "Automated planning", workflowPlanText: "Repository analysis, scope, risks and acceptance criteria before changing code.",
         workflowClaudeText: "Implementation guided by persistent instructions, project context and concrete objectives.",
         workflowMcpText: "Reusable tools and processes that connect documentation, services and specialized tasks.",
@@ -417,7 +560,7 @@
         jsCourse: "JavaScript: beginner to professional", contactEyebrow: "Let's talk",
         contactTitle: "Have a backend challenge in mind?",
         contactText: "I am open to projects and opportunities where I can contribute technical experience, autonomy and a practical perspective.",
-        sendEmail: "Send an email", footerNote: "Backend with judgment. AI with control.", backTop: "Back to top"
+        sendEmail: "Send an email", footerNote: "Backend, integrations and software quality.", backTop: "Back to top"
       }
     };
 
