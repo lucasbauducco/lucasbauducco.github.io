@@ -16,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
+  <script src="assets/js/report-demo.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido" data-i18n="skip">Saltar al contenido</a>
@@ -116,6 +117,7 @@
           <p data-i18n="experienceIntro">Desde 2020 trabajo en productos, integraciones y sistemas de negocio, adaptándome a stacks modernos y plataformas legacy.</p>
         </div>
 
+        <p class="journey-caption"><span aria-hidden="true">↗</span><span data-i18n="journeyCaption">Un recorrido, distintos desafíos.</span></p>
         <ol class="experience-timeline">
           <li class="experience-card">
             <div class="experience-period"><span>01</span><strong data-i18n="unrafDuration">Desde 2020 · casi 4 años</strong></div>
@@ -184,11 +186,69 @@
                 <li data-i18n="reportPoint3">Generación y descarga asíncrona de reportes Excel.</li>
               </ul>
               <div class="project-meta"><span>Vue 3</span><span>Quasar</span><span>Pinia</span><span>Axios</span><span>Electron</span></div>
+              <details class="project-case">
+                <summary data-i18n-aria="reportCaseAria" aria-label="Cómo lo resolví: Report+"><span data-i18n="caseToggle">Cómo lo resolví</span><span class="case-toggle-icon" aria-hidden="true">+</span></summary>
+                <dl>
+                  <div><dt data-i18n="caseProblem">El problema</dt><dd data-i18n="reportCaseProblem">Centralizar registros de horas y convertir una selección por empresa, persona o fecha en un reporte.</dd></div>
+                  <div><dt data-i18n="caseContribution">Mi aporte</dt><dd data-i18n="reportCaseContribution">Desarrollé el frontend para crear, editar y consultar registros, aplicar filtros y solicitar reportes.</dd></div>
+                  <div><dt data-i18n="caseDecision">La decisión técnica</dt><dd data-i18n="reportCaseDecision">Separé las llamadas a la API en servicios y manejé la renovación de JWT y el estado de los reportes asíncronos.</dd></div>
+                  <div><dt data-i18n="caseOutcome">El resultado</dt><dd data-i18n="reportCaseOutcome">Un cliente con CRUD, filtros y descarga de Excel conectado a una API. La demo de abajo permite probar una versión acotada del flujo con datos ficticios.</dd></div>
+                </dl>
+              </details>
               <div class="project-actions">
+                <a class="text-link" href="#demo-report"><span data-i18n="demoTry">Probá la demo</span><span aria-hidden="true">↓</span></a>
                 <a class="text-link" href="https://github.com/lucasbauducco/front_report" target="_blank" rel="noopener noreferrer"><span data-i18n="viewRepository">Ver repositorio</span><span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
+
+          <section class="report-demo" id="demo-report" aria-labelledby="demo-title">
+            <div class="demo-heading">
+              <div><p class="eyebrow" data-i18n="demoEyebrow">Del código a la experiencia</p><h3 id="demo-title" data-i18n="demoTitle">Probá un pequeño Report+.</h3></div>
+              <p data-i18n="demoIntro">Elegí una empresa, una persona o un período. Explorá los registros y abrí el reporte para ver cómo se distribuyen las horas.</p>
+            </div>
+            <div class="demo-dashboard">
+              <div class="demo-toolbar"><strong><span aria-hidden="true">R+</span> Report+</strong><span class="demo-badge" data-i18n="demoBadge">Demo interactiva</span></div>
+              <div class="demo-dashboard-body">
+                <p class="demo-sample" data-i18n="demoSample">Datos ficticios · septiembre 2026</p>
+                <p class="demo-fallback" data-i18n="demoFallback">Activá JavaScript para probar los filtros y el reporte interactivo. Podés seguir explorando los proyectos y sus casos de estudio.</p>
+                <form>
+                  <fieldset class="demo-filters" disabled>
+                    <legend class="visually-hidden" data-i18n="demoFilters">Filtrar registros de ejemplo</legend>
+                    <label for="demo-company"><span data-i18n="demoCompany">Empresa</span><select id="demo-company" name="company"><option value="" data-i18n="demoAllCompanies">Todas las empresas</option><option>Estudio Sur</option><option>Faro Digital</option></select></label>
+                    <label for="demo-person"><span data-i18n="demoPerson">Persona</span><select id="demo-person" name="person"><option value="" data-i18n="demoAllPeople">Todas las personas</option><option>Ana</option><option>Martín</option><option>Lucía</option></select></label>
+                    <label for="demo-period"><span data-i18n="demoPeriod">Período</span><select id="demo-period" name="period"><option value="" data-i18n="demoAllPeriods">Todo el período</option><option value="first" data-i18n="demoFirstWeek">7–11 de septiembre</option><option value="second" data-i18n="demoSecondWeek">14–18 de septiembre</option></select></label>
+                    <button class="demo-reset" type="button" data-demo-reset data-i18n="demoReset">Limpiar filtros</button>
+                  </fieldset>
+                </form>
+                <div class="demo-results" hidden>
+                  <p class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-demo-status></p>
+                  <dl class="demo-metrics">
+                    <div><dt data-i18n="demoHours">Horas registradas</dt><dd data-demo-total></dd></div>
+                    <div><dt data-i18n="demoCount">Registros</dt><dd data-demo-count></dd></div>
+                    <div><dt data-i18n="demoCompanies">Empresas</dt><dd data-demo-companies></dd></div>
+                  </dl>
+                  <div class="demo-table-wrap" role="region" tabindex="0" data-i18n-aria="demoTable" aria-label="Registros de horas de ejemplo filtrados">
+                    <table><caption class="visually-hidden" data-i18n="demoTable">Registros de horas de ejemplo filtrados</caption>
+                      <thead><tr><th scope="col" data-i18n="demoDate">Fecha</th><th scope="col" data-i18n="demoPerson">Persona</th><th scope="col" data-i18n="demoCompany">Empresa</th><th scope="col" data-i18n="demoTask">Tarea</th><th scope="col" data-i18n="demoDuration">Tiempo</th></tr></thead>
+                      <tbody></tbody>
+                    </table>
+                  </div>
+                  <p class="demo-scroll-hint" data-i18n="demoScrollHint">Deslizá la tabla para ver todas las columnas.</p>
+                  <div class="demo-empty" hidden><strong data-i18n="demoEmptyTitle">No hay registros con estos filtros.</strong><p data-i18n="demoEmptyText">Probá otra combinación o limpiá los filtros para volver a empezar.</p></div>
+                  <details class="demo-report">
+                    <summary><span data-i18n="demoReportToggle">Ver reporte por empresa</span><span class="case-toggle-icon" aria-hidden="true">+</span></summary>
+                    <div class="demo-report-content"><h4 data-i18n="demoReportTitle">Así se distribuye el tiempo.</h4><p data-i18n="demoReportIntro">El reporte sigue los filtros que elegiste y se actualiza con cada cambio.</p>
+                      <ul class="demo-report-groups"></ul>
+                      <p class="demo-report-empty" data-i18n="demoReportEmpty" hidden>Sin horas para distribuir con esta selección.</p>
+                      <p class="demo-report-total"><span data-i18n="demoReportTotal">Total del período filtrado</span><strong data-demo-report-total></strong></p>
+                    </div>
+                  </details>
+                </div>
+                <p class="demo-privacy" data-i18n="demoPrivacy">Una muestra para explorar. Los nombres y registros son ficticios; tus filtros se quedan en este navegador.</p>
+              </div>
+            </div>
+          </section>
 
           <article class="project-card project-card-featured">
             <div class="project-media project-visual project-visual-market" role="img" aria-label="Vista conceptual de un marketplace con múltiples tiendas" data-i18n-aria="marketVisualAlt">
@@ -211,6 +271,15 @@
                 <li data-i18n="marketPoint3">Frontend desacoplado que consume la API mediante Axios.</li>
               </ul>
               <div class="project-meta"><span>Django REST</span><span>Vue 3</span><span>Vuex</span><span>JWT</span></div>
+              <details class="project-case">
+                <summary data-i18n-aria="marketCaseAria" aria-label="Cómo lo resolví: Multi-Market"><span data-i18n="caseToggle">Cómo lo resolví</span><span class="case-toggle-icon" aria-hidden="true">+</span></summary>
+                <dl>
+                  <div><dt data-i18n="caseProblem">El problema</dt><dd data-i18n="marketCaseProblem">Organizar tiendas y catálogos en una plataforma común, con productos que puedan buscarse y filtrarse.</dd></div>
+                  <div><dt data-i18n="caseContribution">Mi aporte</dt><dd data-i18n="marketCaseContribution">Trabajé en la API del catálogo y en el cliente que presenta tiendas, categorías y productos.</dd></div>
+                  <div><dt data-i18n="caseDecision">La decisión técnica</dt><dd data-i18n="marketCaseDecision">Desacoplé el backend Django REST del frontend Vue, con Axios como punto de comunicación.</dd></div>
+                  <div><dt data-i18n="caseOutcome">El resultado</dt><dd data-i18n="marketCaseOutcome">Dos proyectos complementarios: una API para el catálogo y una interfaz para explorarlo por tienda y categoría.</dd></div>
+                </dl>
+              </details>
               <div class="project-actions">
                 <a class="text-link" href="https://github.com/lucasbauducco/backend-multi-market" target="_blank" rel="noopener noreferrer"><span data-i18n="viewBackend">Ver backend</span><span aria-hidden="true">↗</span></a>
                 <a class="text-link" href="https://github.com/lucasbauducco/FrontEnd-multi-market" target="_blank" rel="noopener noreferrer"><span data-i18n="viewFrontend">Ver frontend</span><span aria-hidden="true">↗</span></a>
@@ -231,6 +300,15 @@
               <p data-i18n="apiDescription">Servicio documentado para integrar información académica y exponer operaciones protegidas con autenticación JWT.</p>
               <ul class="project-points"><li data-i18n="apiPoint1">Contrato OpenAPI navegable con endpoints agrupados.</li><li data-i18n="apiPoint2">Autenticación y renovación de tokens para clientes externos.</li></ul>
               <div class="project-meta"><span>Symfony</span><span>API Platform</span><span>JWT</span><span>OpenAPI</span></div>
+              <details class="project-case">
+                <summary data-i18n-aria="academicCaseAria" aria-label="Cómo lo resolví: API académica"><span data-i18n="caseToggle">Cómo lo resolví</span><span class="case-toggle-icon" aria-hidden="true">+</span></summary>
+                <dl>
+                  <div><dt data-i18n="caseProblem">El problema</dt><dd data-i18n="academicCaseProblem">Exponer información académica para que otros sistemas puedan integrarse mediante un contrato claro.</dd></div>
+                  <div><dt data-i18n="caseContribution">Mi aporte</dt><dd data-i18n="academicCaseContribution">Desarrollé una API institucional y su documentación de operaciones para clientes externos.</dd></div>
+                  <div><dt data-i18n="caseDecision">La decisión técnica</dt><dd data-i18n="academicCaseDecision">Usé Symfony y API Platform para publicar el contrato OpenAPI, con JWT para las operaciones protegidas.</dd></div>
+                  <div><dt data-i18n="caseOutcome">El resultado</dt><dd data-i18n="academicCaseOutcome">Endpoints agrupados en una documentación navegable y un flujo de autenticación y renovación de tokens para integraciones.</dd></div>
+                </dl>
+              </details>
               <div class="project-actions"><a class="text-link" href="https://intranet.unraf.edu.ar/ApiRest/docs" target="_blank" rel="noopener noreferrer"><span data-i18n="viewDocumentation">Ver documentación</span><span aria-hidden="true">↗</span></a></div>
             </div>
           </article>
@@ -248,6 +326,15 @@
               <p data-i18n="djangoDescription">Backend reproducible para administrar productos mediante operaciones protegidas y documentación automática.</p>
               <ul class="project-points"><li data-i18n="djangoPoint1">Registro, listado, actualización y eliminación de productos.</li><li data-i18n="djangoPoint2">JWT, rutas protegidas, Swagger y Redoc.</li></ul>
               <div class="project-meta"><span>Django</span><span>DRF</span><span>SimpleJWT</span><span>Swagger</span></div>
+              <details class="project-case">
+                <summary data-i18n-aria="djangoCaseAria" aria-label="Cómo lo resolví: API de productos"><span data-i18n="caseToggle">Cómo lo resolví</span><span class="case-toggle-icon" aria-hidden="true">+</span></summary>
+                <dl>
+                  <div><dt data-i18n="caseProblem">El problema</dt><dd data-i18n="djangoCaseProblem">Construir una API de productos que pueda ejecutarse localmente y permita probar operaciones autenticadas.</dd></div>
+                  <div><dt data-i18n="caseContribution">Mi aporte</dt><dd data-i18n="djangoCaseContribution">Implementé el registro, listado, actualización y eliminación de productos, junto con la autenticación.</dd></div>
+                  <div><dt data-i18n="caseDecision">La decisión técnica</dt><dd data-i18n="djangoCaseDecision">Separé modelos, serializers y vistas con Django REST Framework; usé SimpleJWT y documentación Swagger/Redoc.</dd></div>
+                  <div><dt data-i18n="caseOutcome">El resultado</dt><dd data-i18n="djangoCaseOutcome">Un backend reproducible con CRUD, rutas protegidas y documentación pública para explorar el contrato de la API.</dd></div>
+                </dl>
+              </details>
               <div class="project-actions"><a class="text-link" href="https://github.com/lucasbauducco/api_djago_jwt" target="_blank" rel="noopener noreferrer"><span data-i18n="viewRepository">Ver repositorio</span><span aria-hidden="true">↗</span></a></div>
             </div>
           </article>
@@ -263,6 +350,15 @@
               <p data-i18n="appDescription">Cliente móvil e instalable que acerca servicios académicos a estudiantes desde una única base web.</p>
               <ul class="project-points"><li data-i18n="appPoint1">Experiencia responsive para navegador y dispositivos móviles.</li><li data-i18n="appPoint2">Arquitectura Ionic + Vue preparada para integración nativa con Capacitor.</li></ul>
               <div class="project-meta"><span>Ionic</span><span>Vue.js</span><span>Capacitor</span><span>PWA</span></div>
+              <details class="project-case">
+                <summary data-i18n-aria="mobileCaseAria" aria-label="Cómo lo resolví: Aplicación UNRaf"><span data-i18n="caseToggle">Cómo lo resolví</span><span class="case-toggle-icon" aria-hidden="true">+</span></summary>
+                <dl>
+                  <div><dt data-i18n="caseProblem">El problema</dt><dd data-i18n="mobileCaseProblem">Acercar servicios universitarios a estudiantes desde una experiencia que funcione en distintos dispositivos.</dd></div>
+                  <div><dt data-i18n="caseContribution">Mi aporte</dt><dd data-i18n="mobileCaseContribution">Desarrollé el cliente de la aplicación con Ionic y Vue, reutilizando una base de interfaz web.</dd></div>
+                  <div><dt data-i18n="caseDecision">La decisión técnica</dt><dd data-i18n="mobileCaseDecision">Elegí Ionic para la interfaz y Capacitor como puente para preparar compilaciones nativas.</dd></div>
+                  <div><dt data-i18n="caseOutcome">El resultado</dt><dd data-i18n="mobileCaseOutcome">Una aplicación web adaptable y una base preparada para Android e iOS mediante Capacitor.</dd></div>
+                </dl>
+              </details>
               <div class="project-actions"><a class="text-link" href="https://app.unraf.edu.ar/unraf/" target="_blank" rel="noopener noreferrer"><span data-i18n="viewDemo">Ver aplicación</span><span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/lucasbauducco/app_movil_ionic_vue" target="_blank" rel="noopener noreferrer"><span data-i18n="viewRepository">Ver repositorio</span><span aria-hidden="true">↗</span></a></div>
             </div>
           </article>
@@ -279,6 +375,15 @@
               <p data-i18n="ocrDescription">Exploración para convertir facturas y tickets en datos estructurados mediante OCR, preprocesamiento y reglas de extracción.</p>
               <ul class="project-points"><li data-i18n="ocrPoint1">Carga de imágenes o PDF y respuesta estructurada.</li><li data-i18n="ocrPoint2">EasyOCR, OpenCV y expresiones regulares; precisión aún en iteración.</li></ul>
               <div class="project-meta"><span>Django</span><span>EasyOCR</span><span>OpenCV</span><span>Regex</span></div>
+              <details class="project-case">
+                <summary data-i18n-aria="ocrCaseAria" aria-label="Cómo lo resolví: Prototipo OCR"><span data-i18n="caseToggle">Cómo lo resolví</span><span class="case-toggle-icon" aria-hidden="true">+</span></summary>
+                <dl>
+                  <div><dt data-i18n="caseProblem">El problema</dt><dd data-i18n="ocrCaseProblem">Explorar cómo pasar de una imagen de un comprobante a campos que otro sistema pueda procesar.</dd></div>
+                  <div><dt data-i18n="caseContribution">Mi aporte</dt><dd data-i18n="ocrCaseContribution">Construí un prototipo de carga de archivos, lectura OCR y extracción de campos.</dd></div>
+                  <div><dt data-i18n="caseDecision">La decisión técnica</dt><dd data-i18n="ocrCaseDecision">Combiné preprocesamiento con OpenCV, lectura con EasyOCR y reglas con expresiones regulares.</dd></div>
+                  <div><dt data-i18n="caseOutcome">El resultado</dt><dd data-i18n="ocrCaseOutcome">Un flujo experimental de archivo a respuesta estructurada. La extracción todavía presenta errores y requiere iteración según el documento.</dd></div>
+                </dl>
+              </details>
               <div class="project-actions"><a class="text-link" href="https://github.com/lucasbauducco/zygo_api" target="_blank" rel="noopener noreferrer"><span data-i18n="viewExperiment">Ver experimento</span><span aria-hidden="true">↗</span></a></div>
             </div>
           </article>
@@ -423,6 +528,80 @@
   <script>
     const translations = {
       es: {
+        "caseToggle": "Cómo lo resolví",
+        "caseProblem": "El problema",
+        "caseContribution": "Mi aporte",
+        "caseDecision": "La decisión técnica",
+        "caseOutcome": "El resultado",
+        "demoTry": "Probá la demo",
+        "demoEyebrow": "Del código a la experiencia",
+        "demoTitle": "Probá un pequeño Report+.",
+        "demoIntro": "Elegí una empresa, una persona o un período. Explorá los registros y abrí el reporte para ver cómo se distribuyen las horas.",
+        "demoBadge": "Demo interactiva",
+        "demoSample": "Datos ficticios · septiembre 2026",
+        "demoPrivacy": "Una muestra para explorar. Los nombres y registros son ficticios; tus filtros se quedan en este navegador.",
+        "demoFilters": "Filtrar registros de ejemplo",
+        "demoCompany": "Empresa",
+        "demoAllCompanies": "Todas las empresas",
+        "demoPerson": "Persona",
+        "demoAllPeople": "Todas las personas",
+        "demoPeriod": "Período",
+        "demoAllPeriods": "Todo el período",
+        "demoFirstWeek": "7–11 de septiembre",
+        "demoSecondWeek": "14–18 de septiembre",
+        "demoReset": "Limpiar filtros",
+        "demoHours": "Horas registradas",
+        "demoCount": "Registros",
+        "demoCompanies": "Empresas",
+        "demoDate": "Fecha",
+        "demoTask": "Tarea",
+        "demoDuration": "Tiempo",
+        "demoTable": "Registros de horas de ejemplo filtrados",
+        "demoScrollHint": "Deslizá la tabla para ver todas las columnas.",
+        "demoEmptyTitle": "No hay registros con estos filtros.",
+        "demoEmptyText": "Probá otra combinación o limpiá los filtros para volver a empezar.",
+        "demoReportToggle": "Ver reporte por empresa",
+        "demoReportTitle": "Así se distribuye el tiempo.",
+        "demoReportIntro": "El reporte sigue los filtros que elegiste y se actualiza con cada cambio.",
+        "demoReportTotal": "Total del período filtrado",
+        "demoReportEmpty": "Sin horas para distribuir con esta selección.",
+        "demoStatus": "{count} registros encontrados. Total: {duration}.",
+        "demoTaskBackend": "Desarrollo backend",
+        "demoTaskIntegration": "Integración de API",
+        "demoTaskTests": "Tests y revisión",
+        "demoTaskSupport": "Soporte y mantenimiento",
+        "demoFallback": "Activá JavaScript para probar los filtros y el reporte interactivo. Podés seguir explorando los proyectos y sus casos de estudio.",
+        "journeyCaption": "Un recorrido, distintos desafíos.",
+        "ocrCaseAria": "Cómo lo resolví: Prototipo OCR",
+        "ocrCaseProblem": "Explorar cómo pasar de una imagen de un comprobante a campos que otro sistema pueda procesar.",
+        "ocrCaseContribution": "Construí un prototipo de carga de archivos, lectura OCR y extracción de campos.",
+        "ocrCaseDecision": "Combiné preprocesamiento con OpenCV, lectura con EasyOCR y reglas con expresiones regulares.",
+        "ocrCaseOutcome": "Un flujo experimental de archivo a respuesta estructurada. La extracción todavía presenta errores y requiere iteración según el documento.",
+        "mobileCaseAria": "Cómo lo resolví: Aplicación UNRaf",
+        "mobileCaseProblem": "Acercar servicios universitarios a estudiantes desde una experiencia que funcione en distintos dispositivos.",
+        "mobileCaseContribution": "Desarrollé el cliente de la aplicación con Ionic y Vue, reutilizando una base de interfaz web.",
+        "mobileCaseDecision": "Elegí Ionic para la interfaz y Capacitor como puente para preparar compilaciones nativas.",
+        "mobileCaseOutcome": "Una aplicación web adaptable y una base preparada para Android e iOS mediante Capacitor.",
+        "djangoCaseAria": "Cómo lo resolví: API de productos",
+        "djangoCaseProblem": "Construir una API de productos que pueda ejecutarse localmente y permita probar operaciones autenticadas.",
+        "djangoCaseContribution": "Implementé el registro, listado, actualización y eliminación de productos, junto con la autenticación.",
+        "djangoCaseDecision": "Separé modelos, serializers y vistas con Django REST Framework; usé SimpleJWT y documentación Swagger/Redoc.",
+        "djangoCaseOutcome": "Un backend reproducible con CRUD, rutas protegidas y documentación pública para explorar el contrato de la API.",
+        "academicCaseAria": "Cómo lo resolví: API académica",
+        "academicCaseProblem": "Exponer información académica para que otros sistemas puedan integrarse mediante un contrato claro.",
+        "academicCaseContribution": "Desarrollé una API institucional y su documentación de operaciones para clientes externos.",
+        "academicCaseDecision": "Usé Symfony y API Platform para publicar el contrato OpenAPI, con JWT para las operaciones protegidas.",
+        "academicCaseOutcome": "Endpoints agrupados en una documentación navegable y un flujo de autenticación y renovación de tokens para integraciones.",
+        "marketCaseAria": "Cómo lo resolví: Multi-Market",
+        "marketCaseProblem": "Organizar tiendas y catálogos en una plataforma común, con productos que puedan buscarse y filtrarse.",
+        "marketCaseContribution": "Trabajé en la API del catálogo y en el cliente que presenta tiendas, categorías y productos.",
+        "marketCaseDecision": "Desacoplé el backend Django REST del frontend Vue, con Axios como punto de comunicación.",
+        "marketCaseOutcome": "Dos proyectos complementarios: una API para el catálogo y una interfaz para explorarlo por tienda y categoría.",
+        "reportCaseAria": "Cómo lo resolví: Report+",
+        "reportCaseProblem": "Centralizar registros de horas y convertir una selección por empresa, persona o fecha en un reporte.",
+        "reportCaseContribution": "Desarrollé el frontend para crear, editar y consultar registros, aplicar filtros y solicitar reportes.",
+        "reportCaseDecision": "Separé las llamadas a la API en servicios y manejé la renovación de JWT y el estado de los reportes asíncronos.",
+        "reportCaseOutcome": "Un cliente con CRUD, filtros y descarga de Excel conectado a una API. La demo de abajo permite probar una versión acotada del flujo con datos ficticios.",
         pageTitle: "Lucas Bauducco · Backend Developer",
         description: "Portfolio de Lucas Bauducco, Backend Developer especializado en Symfony, Django, APIs y desarrollo asistido por IA.",
         ogDescription: "Backend, APIs y productos digitales construidos con criterio técnico y flujos de desarrollo asistidos por IA.",
@@ -490,6 +669,80 @@
         sendEmail: "Enviar un correo", footerNote: "Backend, integraciones y calidad de software.", backTop: "Volver arriba"
       },
       en: {
+        "caseToggle": "How I built it",
+        "caseProblem": "The problem",
+        "caseContribution": "My contribution",
+        "caseDecision": "The technical decision",
+        "caseOutcome": "The outcome",
+        "demoTry": "Try the demo",
+        "demoEyebrow": "From code to experience",
+        "demoTitle": "Try a little Report+.",
+        "demoIntro": "Choose a company, a person or a period. Explore the records and open the report to see how time is distributed.",
+        "demoBadge": "Interactive demo",
+        "demoSample": "Fictional data · September 2026",
+        "demoPrivacy": "A sample to explore. Names and records are fictional; your filters stay in this browser.",
+        "demoFilters": "Filter sample records",
+        "demoCompany": "Company",
+        "demoAllCompanies": "All companies",
+        "demoPerson": "Person",
+        "demoAllPeople": "All people",
+        "demoPeriod": "Period",
+        "demoAllPeriods": "Entire period",
+        "demoFirstWeek": "7–11 September",
+        "demoSecondWeek": "14–18 September",
+        "demoReset": "Clear filters",
+        "demoHours": "Hours logged",
+        "demoCount": "Records",
+        "demoCompanies": "Companies",
+        "demoDate": "Date",
+        "demoTask": "Task",
+        "demoDuration": "Time",
+        "demoTable": "Filtered sample time records",
+        "demoScrollHint": "Swipe the table to see all columns.",
+        "demoEmptyTitle": "No records match these filters.",
+        "demoEmptyText": "Try another combination or clear the filters to start again.",
+        "demoReportToggle": "View report by company",
+        "demoReportTitle": "How the time adds up.",
+        "demoReportIntro": "The report follows your selected filters and updates with every change.",
+        "demoReportTotal": "Total for the filtered period",
+        "demoReportEmpty": "No hours to distribute for this selection.",
+        "demoStatus": "{count} records found. Total: {duration}.",
+        "demoTaskBackend": "Backend development",
+        "demoTaskIntegration": "API integration",
+        "demoTaskTests": "Tests and review",
+        "demoTaskSupport": "Support and maintenance",
+        "demoFallback": "Enable JavaScript to try the filters and interactive report. You can still explore the projects and their case studies.",
+        "journeyCaption": "One journey, different challenges.",
+        "ocrCaseAria": "How I built it: OCR prototype",
+        "ocrCaseProblem": "Explore how to turn a receipt image into fields another system can process.",
+        "ocrCaseContribution": "I built a prototype for file uploads, OCR reading and field extraction.",
+        "ocrCaseDecision": "I combined OpenCV preprocessing, EasyOCR reading and regular-expression rules.",
+        "ocrCaseOutcome": "An experimental file-to-structured-response flow. Extraction still produces errors and requires iteration depending on the document.",
+        "mobileCaseAria": "How I built it: UNRaf application",
+        "mobileCaseProblem": "Bring university services to students through an experience that works across devices.",
+        "mobileCaseContribution": "I developed the application client with Ionic and Vue, reusing a web interface codebase.",
+        "mobileCaseDecision": "I chose Ionic for the interface and Capacitor as a bridge for preparing native builds.",
+        "mobileCaseOutcome": "A responsive web application and a codebase prepared for Android and iOS through Capacitor.",
+        "djangoCaseAria": "How I built it: Product API",
+        "djangoCaseProblem": "Build a product API that can run locally and supports testing authenticated operations.",
+        "djangoCaseContribution": "I implemented product creation, listing, updates and deletion, along with authentication.",
+        "djangoCaseDecision": "I separated models, serializers and views with Django REST Framework, using SimpleJWT and Swagger/Redoc documentation.",
+        "djangoCaseOutcome": "A reproducible backend with CRUD, protected routes and public documentation to explore the API contract.",
+        "academicCaseAria": "How I built it: Academic API",
+        "academicCaseProblem": "Expose academic information so other systems can integrate through a clear contract.",
+        "academicCaseContribution": "I developed an institutional API and documented its operations for external clients.",
+        "academicCaseDecision": "I used Symfony and API Platform to publish the OpenAPI contract, with JWT for protected operations.",
+        "academicCaseOutcome": "Endpoints grouped in browsable documentation and a token authentication and renewal flow for integrations.",
+        "marketCaseAria": "How I built it: Multi-Market",
+        "marketCaseProblem": "Organize stores and catalogs in a shared platform where products can be searched and filtered.",
+        "marketCaseContribution": "I worked on the catalog API and the client that displays stores, categories and products.",
+        "marketCaseDecision": "I decoupled the Django REST backend from the Vue frontend, using Axios for communication.",
+        "marketCaseOutcome": "Two complementary projects: a catalog API and an interface to explore it by store and category.",
+        "reportCaseAria": "How I built it: Report+",
+        "reportCaseProblem": "Bring time records together and turn a selection by company, person or date into a report.",
+        "reportCaseContribution": "I built the frontend to create, edit and browse records, apply filters and request reports.",
+        "reportCaseDecision": "I separated API calls into services and handled JWT renewal and the state of asynchronous reports.",
+        "reportCaseOutcome": "An API-connected client with CRUD, filters and Excel downloads. The demo below lets you try a small part of the flow with fictional data.",
         pageTitle: "Lucas Bauducco · Backend Developer",
         description: "Portfolio of Lucas Bauducco, a Backend Developer specializing in Symfony, Django, APIs and AI-assisted development.",
         ogDescription: "Backend systems, APIs and digital products built with technical judgment and AI-assisted development workflows.",
@@ -600,6 +853,8 @@
       });
       menuToggle.setAttribute("aria-label", copy[navMenu.classList.contains("is-open") ? "menuClose" : "menuOpen"]);
 
+      document.dispatchEvent(new CustomEvent("portfolio:languagechange"));
+
       if (persist) {
         try { localStorage.setItem("portfolio-language", selected); } catch (_) { /* Storage can be unavailable. */ }
       }
@@ -632,7 +887,7 @@
 
       const targets = Array.from(document.querySelectorAll([
         ".intro-grid > *", ".section-heading", ".experience-card", ".project-card",
-        ".stack-card", ".ai-intro", ".workflow-list > li",
+        ".stack-card", ".ai-intro", ".workflow-list > li", ".report-demo",
         ".education-grid > div:first-child", ".credentials > *", ".contact-content > *"
       ].join(", ")));
       // Keep the initial viewport and restored scroll positions immediately readable.

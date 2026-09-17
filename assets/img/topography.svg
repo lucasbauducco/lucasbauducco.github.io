@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-450 -320 900 640" fill="none" stroke="#79999c" stroke-width="1">
+  <defs>
+    <path id="contour" d="M-230-80C-210-180-85-210 0-172S142-198 205-112 180 7 240 86 112 207 24 178-120 218-198 144-173 13-230-80Z"/>
+  </defs>
+  <g transform="rotate(-24)">
+    <use href="#contour" transform="scale(1.8)"/>
+    <use href="#contour" transform="scale(1.62)"/>
+    <use href="#contour" transform="scale(1.44)"/>
+    <use href="#contour" transform="scale(1.26)"/>
+    <use href="#contour" transform="scale(1.08)"/>
+    <use href="#contour" transform="scale(.9)"/>
+    <use href="#contour" transform="scale(.72)"/>
+    <use href="#contour" transform="scale(.54)"/>
+    <use href="#contour" transform="scale(.36)"/>
+    <use href="#contour" transform="scale(.18)"/>
+  </g>
+</svg>
