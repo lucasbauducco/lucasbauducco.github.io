@@ -147,7 +147,7 @@ test('demo controls and report work through keyboard and announce results', () =
   await page.keyboard.press('Enter');
   assert.equal(await page.locator('#demo-company').inputValue(), 'Estudio Sur');
   assert.equal(await text(page, '[data-demo-count]'), '4');
-  assert.match(await text(page, '[role="status"]'), /4 registros encontrados/);
+  assert.match(await text(page, '#demo-report [role="status"]'), /4 registros encontrados/);
   await page.locator('.demo-report summary').focus();
   await page.keyboard.press('Enter');
   assert.equal(await page.locator('.demo-report-content').isVisible(), true);
@@ -217,4 +217,261 @@ test('demo becomes visible when scrolled into view with animations enabled', () 
   assert.equal(await page.locator('#demo-company').isEnabled(), true);
   await select(page, 'company', 'Faro Digital');
   assert.equal(await text(page, '[data-demo-total]'), '10 h 15 min');
+}, { reducedMotion: 'no-preference' }));
+
+const marketCards = page => page.locator('.market-product');
+const marketIds = page => marketCards(page).evaluateAll(cards => cards.map(card => card.dataset.productId));
+const marketSelect = (page, field, value) => page.locator(`#market-${field}`).selectOption(value);
+const marketSearch = (page, value) => page.locator('#market-search').fill(value);
+const marketRequest = page => text(page, '[data-market-request]');
+
+test('market shows six illustrated sample products with ARS prices and independent Report+ data', () => withPage(async page => {
+  assert.equal(await marketCards(page).count(), 6);
+  assert.match(await text(page, '.market-sample'), /Catálogo ficticio.*ARS.*sin compras/);
+  assert.equal(await page.locator('.market-fallback').isVisible(), false);
+  assert.equal(await page.locator('#market-search').isEnabled(), true);
+  assert.deepEqual(await page.locator('.market-product-shop').allTextContents(), ['Sendero', 'Refugio', 'Sendero', 'Refugio', 'Lago', 'Lago']);
+  const images = await page.locator('.market-product img').evaluateAll(nodes => nodes.map(image => ({ loaded: image.complete && image.naturalWidth > 0, src: image.getAttribute('src') })));
+  assert.equal(images.length, 6);
+  assert.ok(images.every(image => image.loaded && image.src.startsWith('assets/img/market/')));
+  assert.ok((await page.locator('.market-product-price strong').allTextContents()).every(price => price.startsWith('ARS')));
+  await marketSelect(page, 'shop', '1');
+  await select(page, 'person', 'Ana');
+  assert.deepEqual(await marketIds(page), ['101', '103']);
+  assert.equal(await text(page, '[data-demo-count]'), '3');
+  await page.locator('[data-market-reset]').click();
+  assert.equal(await text(page, '[data-demo-count]'), '3');
+}));
+
+test('market search ignores accents, case and extra outer spaces; intersects both filters', () => withPage(async page => {
+  await marketSearch(page, '  TERMICA  ');
+  assert.deepEqual(await marketIds(page), ['102']);
+  assert.equal(await text(page, '[data-market-count]'), '1 producto para explorar');
+  await marketSearch(page, '');
+  await marketSelect(page, 'shop', '1');
+  await marketSelect(page, 'category', '1');
+  assert.deepEqual(await marketIds(page), ['101']);
+  await marketSearch(page, 'polar');
+  assert.equal(await marketCards(page).count(), 0);
+  assert.equal(await page.locator('.market-grid').isVisible(), false);
+  assert.equal(await page.locator('.market-empty').isVisible(), true);
+  assert.match(await text(page, '[data-market-count]'), /^0 productos/);
+  await page.locator('[data-market-empty-reset]').click();
+  assert.equal(await marketCards(page).count(), 6);
+  assert.equal(await page.locator('#market-search').inputValue(), '');
+  assert.equal(await page.locator('#market-shop').inputValue(), '');
+  assert.equal(await page.locator('#market-category').inputValue(), '');
+  assert.equal(await page.locator('#market-search').evaluate(node => node === document.activeElement), true);
+  assert.equal(await page.locator('.market-empty').isVisible(), false);
+  await marketSearch(page, 'REFUGIO');
+  assert.deepEqual(await marketIds(page), ['102', '104']);
+  await marketSearch(page, 'indumentaria');
+  assert.deepEqual(await marketIds(page), ['103', '105']);
+}));
+
+test('opening a search result works on its first click when the search input loses focus', () => withPage(async page => {
+  await marketSearch(page, 'mochila');
+  assert.equal(await page.locator('#market-search').evaluate(node => node === document.activeElement), true);
+  await marketCards(page).first().click();
+  assert.equal(await page.locator('#market-product-dialog').isVisible(), true);
+  assert.equal(await text(page, '#market-dialog-title'), 'Mochila Andina');
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => document.activeElement?.dataset.productId === '101');
+}));
+
+test('market API panel shows real route combinations and discloses local search refinement', () => withPage(async page => {
+  await page.locator('.market-api summary').focus();
+  await page.keyboard.press('Enter');
+  assert.equal(await page.locator('.market-api-content').isVisible(), true);
+  assert.equal(await marketRequest(page), 'GET /api/products/search/');
+  assert.match(await text(page, '[data-i18n="marketApiIntro"]'), /datos locales.*no envía solicitudes/);
+  await marketSelect(page, 'shop', '3');
+  assert.equal(await marketRequest(page), 'GET /api/products/shop/3/');
+  await marketSelect(page, 'category', '1');
+  assert.equal(await marketRequest(page), 'GET /api/products/shop/3/category/1/?page=1&limit=6');
+  assert.deepEqual(await marketIds(page), ['106']);
+  await marketSelect(page, 'shop', '');
+  assert.equal(await marketRequest(page), 'GET /api/products/category/1/?page=1&limit=6');
+  await marketSearch(page, 'Mochila Andina');
+  assert.equal(await marketRequest(page), 'GET /api/products/search/?query=Mochila+Andina');
+  assert.equal(await page.locator('[data-market-local-filter]').isVisible(), true);
+  await page.locator('[data-market-reset]').click();
+  assert.equal(await page.locator('[data-market-local-filter]').isVisible(), false);
+  assert.equal(await page.locator('.market-api').getAttribute('open'), '');
+  assert.equal(await marketRequest(page), 'GET /api/products/search/');
+  await page.locator('.market-api summary').focus();
+  await page.keyboard.press('Space');
+  assert.equal(await page.locator('.market-api-content').isVisible(), false);
+}));
+
+test('market safely displays encoded queries and does not submit or call an API', async () => {
+  const apiRequests = [];
+  await withPage(async page => {
+    const before = page.url();
+    await marketSearch(page, '<img src=x onerror=alert(1)> & +');
+    await page.keyboard.press('Enter');
+    assert.equal(page.url(), before);
+    assert.equal(await marketCards(page).count(), 0);
+    assert.equal(await page.locator('[data-market-request] img').count(), 0);
+    assert.equal(await marketRequest(page), 'GET /api/products/search/?query=%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E+%26+%2B');
+    await page.locator('[data-market-reset]').click();
+    await marketCards(page).first().click();
+    await page.locator('[data-market-close]').click();
+    assert.deepEqual(apiRequests, []);
+  }, {}, undefined, page => page.on('request', request => {
+    if (['fetch', 'xhr'].includes(request.resourceType())) apiRequests.push(request.url());
+  }));
+});
+
+test('market product dialog supports keyboard, focus containment, Escape and all close controls', () => withPage(async page => {
+  const card = page.locator('[data-product-id="101"]');
+  const dialog = page.locator('#market-product-dialog');
+  await card.focus();
+  await page.keyboard.press('Enter');
+  assert.equal(await dialog.isVisible(), true);
+  assert.equal(await text(page, '#market-dialog-title'), 'Mochila Andina');
+  assert.match(await text(page, '[data-market-description]'), /24 litros/);
+  assert.equal(await text(page, '[data-market-shop]'), 'Sendero');
+  assert.equal(await text(page, '[data-market-category]'), 'Equipamiento');
+  assert.match(await page.locator('.market-dialog-visual img').getAttribute('src'), /pack.svg$/);
+  assert.equal(await page.locator('[data-market-close]').evaluate(node => node === document.activeElement), true);
+  assert.equal(await page.locator('body').evaluate(node => getComputedStyle(node).overflow), 'hidden');
+  await page.keyboard.press('Shift+Tab');
+  await page.keyboard.press('Tab');
+  assert.equal(await dialog.evaluate(node => node.contains(document.activeElement)), true);
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !document.body.classList.contains('market-dialog-open'));
+  assert.equal(await dialog.isVisible(), false);
+  assert.equal(await card.evaluate(node => node === document.activeElement), true);
+  await card.click();
+  await page.locator('[data-market-close]').click();
+  assert.equal(await dialog.isVisible(), false);
+  await card.click();
+  await page.mouse.click(4, 4);
+  assert.equal(await dialog.isVisible(), false);
+  await page.waitForFunction(() => document.activeElement?.dataset.productId === '101');
+}));
+
+test('all product details keep prices, discounts and images consistent with their cards', () => withPage(async page => {
+  const expected = [
+    ['101', '57.800', '68.000', '15%'], ['102', '24.000', null, null],
+    ['103', '46.800', '52.000', '10%'], ['104', '12.500', null, null],
+    ['105', '18.000', null, null], ['106', '43.700', '46.000', '5%']
+  ];
+  for (const [id, price, original, discount] of expected) {
+    const card = page.locator(`[data-product-id="${id}"]`);
+    await card.click();
+    const shownPrice = await text(page, '[data-market-price]');
+    assert.equal(shownPrice, await card.locator('.market-product-price strong').textContent());
+    assert.ok(shownPrice.includes(price));
+    assert.equal(await text(page, '#market-dialog-title'), await card.locator('.market-product-name').textContent());
+    assert.equal(await page.locator('.market-dialog-visual img').getAttribute('src'), await card.locator('img').getAttribute('src'));
+    assert.equal(await page.locator('.market-dialog del').isVisible(), !!original);
+    assert.equal(await page.locator('.market-dialog-discount').isVisible(), !!discount);
+    if (original) {
+      assert.ok((await text(page, '.market-dialog del')).includes(original));
+      assert.ok((await text(page, '.market-dialog-discount')).startsWith(discount));
+    }
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !document.body.classList.contains('market-dialog-open'));
+  }
+}));
+
+test('market language switch preserves filters and translates an open dialog without losing its return focus', () => withPage(async page => {
+  await marketSearch(page, 'térmica');
+  await marketSelect(page, 'shop', '2');
+  await page.locator('[data-language="en"]').click();
+  assert.deepEqual(await marketIds(page), ['102']);
+  assert.equal(await page.locator('#market-search').inputValue(), 'térmica');
+  assert.equal(await page.locator('#market-shop').inputValue(), '2');
+  assert.equal(await text(page, '.market-product-name'), 'Insulated bottle');
+  assert.equal(await text(page, '[data-market-count]'), '1 product to explore');
+  assert.equal(await page.locator('#market-search').getAttribute('placeholder'), 'Backpack, bottle, Sendero…');
+  await marketCards(page).first().click();
+  assert.equal(await text(page, '#market-dialog-title'), 'Insulated bottle');
+  assert.match(await text(page, '[data-market-description]'), /750 ml steel bottle/);
+  assert.match(await text(page, '[data-market-price]'), /ARS.*24,000/);
+  // The page language control is inert while modal; emulate an external language change.
+  await page.evaluate(() => setLanguage('es'));
+  assert.equal(await text(page, '#market-dialog-title'), 'Botella térmica');
+  assert.match(await text(page, '[data-market-close]'), /Cerrar/);
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => document.activeElement?.dataset.productId === '102');
+  assert.deepEqual(await marketIds(page), ['102']);
+}));
+
+test('market starts in persisted English with all dynamic strings present', () => withPage(async page => {
+  assert.equal(await text(page, '#market-demo-title'), 'Three shops. One place.');
+  assert.match(await text(page, '.market-grid'), /Andina backpack.*Insulated bottle.*Fleece pullover.*Camping mug.*Wool beanie.*Weekend duffel/s);
+  assert.doesNotMatch(await text(page, '.market-grid'), /undefined/);
+  await marketSearch(page, ' CLOTHING ');
+  assert.deepEqual(await marketIds(page), ['103', '105']);
+}, {}, 'en'));
+
+test('market without JavaScript is explicitly unavailable with disabled filters', () => withPage(async page => {
+  assert.equal(await page.locator('.market-fallback').isVisible(), true);
+  assert.equal(await page.locator('.market-results').isVisible(), false);
+  for (const control of await page.locator('.market-filters input, .market-filters select, .market-filters button').all()) {
+    assert.equal(await control.isEnabled(), false);
+  }
+  assert.equal(await page.locator('#market-product-dialog').isVisible(), false);
+}, { javaScriptEnabled: false }));
+
+test('a missing market script leaves a fallback and Report+ still works', () => withPage(async page => {
+  assert.equal(await page.locator('.market-fallback').isVisible(), true);
+  assert.equal(await page.locator('#market-search').isEnabled(), false);
+  assert.equal(await page.locator('.market-results').isVisible(), false);
+  await select(page, 'company', 'Faro Digital');
+  assert.equal(await text(page, '[data-demo-total]'), '10 h 15 min');
+}, {}, undefined, page => page.route('**/assets/js/market-demo.js', route => route.abort())));
+
+for (const width of [1440, 980, 760, 390, 320]) {
+  test(`market and product dialog fit ${width}px with usable controls`, () => withPage(async page => {
+    await page.locator('.market-api summary').click();
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+    for (const control of await page.locator('.market-filters input, .market-filters select, .market-filters button').all()) {
+      const box = await control.boundingBox();
+      assert.ok(box.x >= 0 && box.x + box.width <= width && box.height >= 44);
+    }
+    const output = process.env.PORTFOLIO_SCREENSHOTS && path.resolve(process.env.PORTFOLIO_SCREENSHOTS);
+    if (output) {
+      fs.mkdirSync(output, { recursive: true });
+      const section = page.locator('#demo-market');
+      const box = await section.boundingBox();
+      await page.setViewportSize({ width, height: Math.ceil(box.height) });
+      await section.evaluate(node => window.scrollTo({ top: node.getBoundingClientRect().top + scrollY, behavior: 'instant' }));
+      await page.screenshot({ path: path.join(output, `market-${width}.png`) });
+      await page.setViewportSize({ width, height: 844 });
+    }
+    await marketCards(page).first().click();
+    const dialog = page.locator('#market-product-dialog');
+    const box = await dialog.boundingBox();
+    assert.ok(box.x >= 0 && box.x + box.width <= width && box.y >= 0 && box.y + box.height <= 844);
+    assert.equal(await dialog.evaluate(node => node.scrollWidth <= node.clientWidth), true);
+    assert.ok((await page.locator('[data-market-close]').boundingBox()).height >= 44);
+    await page.locator('.market-dialog-note').scrollIntoViewIfNeeded();
+    assert.equal(await page.locator('.market-dialog-note').isVisible(), true);
+    if (output) {
+      await dialog.evaluate(node => node.scrollTop = 0);
+      await page.screenshot({ path: path.join(output, `market-dialog-${width}.png`) });
+    }
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !document.body.classList.contains('market-dialog-open'));
+  }, { viewport: { width, height: 844 } }, width === 320 ? 'en' : undefined));
+}
+
+test('market reveals on scroll and respects a switch to reduced motion', () => withPage(async page => {
+  await page.locator('#demo-market').evaluate(node => node.scrollIntoView({ behavior: 'instant', block: 'start' }));
+  await page.waitForFunction(() => {
+    const demo = document.getElementById('demo-market');
+    return getComputedStyle(demo).opacity === '1' && demo.getAnimations().length === 0;
+  });
+  await marketSearch(page, 'mochila');
+  assert.deepEqual(await marketIds(page), ['101']);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  // The portfolio's global reduced-motion rule caps transitions at 0.01 ms.
+  const durations = await marketCards(page).first().evaluate(node => getComputedStyle(node).transitionDuration.split(',').map(parseFloat));
+  assert.ok(durations.every(seconds => seconds <= 0.00001));
+  await marketCards(page).first().click();
+  assert.equal(await page.locator('#market-product-dialog').isVisible(), true);
 }, { reducedMotion: 'no-preference' }));

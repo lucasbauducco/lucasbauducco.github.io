@@ -1,0 +1,451 @@
+.market-demo {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin-block: 1rem 2rem;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  border: 1px solid var(--stone-300);
+  border-radius: var(--radius-lg);
+  background: #eeeae2;
+}
+
+.market-demo [hidden],
+.market-dialog [hidden] {
+  display: none !important;
+}
+
+.market-storefront {
+  overflow: hidden;
+  border: 1px solid rgba(13, 42, 61, 0.16);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: 0 18px 42px rgba(4, 17, 29, 0.08);
+}
+
+.market-storefront-body {
+  padding: clamp(1rem, 2.8vw, 1.8rem);
+}
+
+.market-sample,
+.market-count {
+  color: var(--stone-600);
+  font-size: 0.76rem;
+}
+
+.market-sample {
+  margin: 0 0 1.2rem;
+}
+
+.market-fallback {
+  padding: 1rem;
+  border-left: 3px solid var(--burgundy);
+  background: var(--stone-50);
+  font-size: 0.9rem;
+}
+
+.market-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr)) auto;
+  align-items: end;
+  gap: 0.8rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.market-filters label {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+  color: var(--navy-800);
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.market-filters input,
+.market-filters select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.65rem 0.5rem;
+  border: 1px solid var(--stone-300);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 400;
+}
+
+.market-filters input::placeholder {
+  color: var(--stone-600);
+  opacity: 1;
+}
+
+.market-filters:disabled {
+  opacity: 0.55;
+}
+
+.market-filters:disabled button {
+  cursor: default;
+}
+
+.market-count {
+  margin: 1.6rem 0 0.9rem;
+}
+
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.market-product {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--stone-100);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.market-product:hover,
+.market-product:focus-visible {
+  border-color: var(--navy-700);
+  box-shadow: 0 6px 20px rgba(4, 17, 29, 0.1);
+}
+
+.market-product-visual {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: var(--stone-50);
+}
+
+.market-product-visual img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+
+.market-discount {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 5px;
+  background: var(--burgundy);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.market-product-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  padding: 1rem;
+}
+
+.market-product-shop {
+  color: var(--burgundy);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.market-product-name {
+  margin: 0.3rem 0 0.1rem;
+  color: var(--navy-900);
+  font-size: 0.95rem;
+}
+
+.market-product-category {
+  margin-bottom: 0.7rem;
+  color: var(--stone-600);
+  font-size: 0.73rem;
+}
+
+.market-product-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.6rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+.market-product-price del {
+  color: var(--stone-600);
+  font-size: 0.68rem;
+}
+
+.market-product-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.85rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--stone-100);
+  color: var(--navy-700);
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.market-product-action > span {
+  font-size: 1rem;
+}
+
+.market-empty {
+  padding: 2rem 1rem;
+  border: 1px dashed var(--stone-300);
+  border-radius: 12px;
+  background: var(--stone-50);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.market-empty p {
+  color: var(--stone-600);
+}
+
+.market-api {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--stone-100);
+}
+
+.market-api summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 48px;
+  padding-top: 0.6rem;
+  color: var(--navy-700);
+  font-size: 0.8rem;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+
+.market-api summary::-webkit-details-marker {
+  display: none;
+}
+
+.market-api-content {
+  color: var(--stone-600);
+  font-size: 0.8rem;
+}
+
+.market-api-content code {
+  display: block;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--navy-900);
+  color: var(--glacier-300);
+  overflow-wrap: anywhere;
+  font-size: 0.78rem;
+}
+
+.market-api-content .text-link {
+  min-height: 44px;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+}
+
+body.market-dialog-open {
+  overflow: hidden;
+}
+
+.market-dialog {
+  width: min(820px, calc(100% - 2rem));
+  max-width: none;
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--stone-300);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: var(--shadow-dark);
+}
+
+.market-dialog::backdrop {
+  background: rgba(4, 17, 29, 0.76);
+}
+
+.market-dialog-inner {
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.market-dialog-close {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 44px;
+  margin: 0 0 1rem auto;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--stone-300);
+  border-radius: 8px;
+  background: var(--stone-50);
+  color: var(--navy-900);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.market-dialog-close > span:last-child {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.market-dialog-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 2rem;
+}
+
+.market-dialog-visual {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.market-dialog-visual img {
+  width: 100%;
+  height: auto;
+}
+
+.market-dialog-copy .eyebrow {
+  margin: 0 0 0.5rem;
+}
+
+.market-dialog-copy h3 {
+  margin: 0;
+  color: var(--navy-900);
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  line-height: 1.25;
+}
+
+.market-dialog-copy > p {
+  color: var(--stone-600);
+  font-size: 0.85rem;
+}
+
+.market-dialog-copy dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-block: 1.25rem;
+  font-size: 0.8rem;
+}
+
+.market-dialog-copy dt {
+  color: var(--stone-600);
+  font-size: 0.7rem;
+}
+
+.market-dialog-copy dd {
+  margin: 0.2rem 0 0;
+  font-weight: 700;
+}
+
+.market-dialog-prices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.market-dialog-prices strong {
+  font-size: 1.35rem;
+}
+
+.market-dialog-prices del {
+  color: var(--stone-600);
+  font-size: 0.8rem;
+}
+
+.market-dialog-copy .market-dialog-discount {
+  margin: 0.35rem 0 0;
+  color: var(--burgundy);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.market-dialog-copy .market-dialog-note {
+  margin: 1.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--stone-100);
+  font-size: 0.73rem;
+}
+
+@media (max-width: 980px) {
+  .market-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .market-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .market-filters input,
+  .market-filters select {
+    font-size: 1rem;
+  }
+
+  .market-dialog-layout {
+    grid-template-columns: 1fr;
+    gap: 1.3rem;
+  }
+
+  .market-dialog-visual img {
+    max-height: 230px;
+    object-fit: contain;
+    background: var(--stone-50);
+  }
+}
+
+@media (max-width: 520px) {
+  .market-demo {
+    border-radius: var(--radius-md);
+  }
+
+  .market-filters,
+  .market-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .market-product-body {
+    padding: 0.9rem;
+  }
+
+  .market-demo .demo-toolbar {
+    gap: 0.5rem;
+  }
+
+  .market-demo .demo-toolbar > strong {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .market-demo .demo-badge {
+    padding-inline: 0.45rem;
+    font-size: 0.6rem;
+    text-align: center;
+  }
+}

@@ -16,4 +16,6 @@ $env:PORTFOLIO_SCREENSHOTS = '.codex/validation/portfolio'
 node --test tests/portfolio.test.cjs
 ```
 
-`PORTFOLIO_SCREENSHOTS` es opcional. Las pruebas abren el HTML local en contextos de navegador aislados y usan únicamente los datos ficticios de la demo. Cubren filtros combinados, límites de períodos, totales exactos, reporte actualizado, estado vacío, reset, traducciones, teclado, ausencia de JavaScript, movimiento reducido y viewports de 320 a 1440 px.
+`PORTFOLIO_SCREENSHOTS` es opcional. Las pruebas abren el HTML local en contextos de navegador aislados y usan únicamente los datos ficticios de las demos. Cubren filtros combinados, límites de períodos, totales exactos, reporte actualizado, estado vacío, reset, traducciones, teclado, ausencia de JavaScript, movimiento reducido y viewports de 320 a 1440 px.
+
+Multi-Market agrega búsqueda sin distinción de tildes o mayúsculas, catálogo ilustrado, precios y descuentos, combinaciones de rutas equivalentes del backend, consultas codificadas sin solicitudes de red y fichas de producto con foco, Escape y cierre por botón o fondo. También verifica que sus filtros y los de Report+ funcionen de forma independiente. Las capturas opcionales incluyen catálogo y ficha en escritorio y móvil.

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs><pattern id="knit" width="8" height="8" patternUnits="userSpaceOnUse"><path d="m2 2 2 2" stroke="#f5ead6" stroke-opacity=".2" stroke-linecap="round"/></pattern></defs>
+  <rect width="400" height="300" fill="#eee5db"/>
+  <circle cx="294" cy="223" r="112" fill="#e4d6c5" opacity=".6"/>
+  <ellipse cx="201" cy="267" rx="100" ry="10" fill="#503d2c" opacity=".1"/>
+  <path d="m172 55-46 15-51 117 40 19 28-57-3 109h120l-3-109 28 57 40-19-51-117-46-15Z" fill="#b39473" stroke="#8a7056" stroke-width="2" stroke-linejoin="round"/>
+  <path d="m172 55-46 15-51 117 40 19 28-57-3 109h120l-3-109 28 57 40-19-51-117-46-15Z" fill="url(#knit)"/>
+  <path d="M175 44h50l9 35-34 19-34-19Z" fill="#8c7154" stroke="#705a46" stroke-width="2"/>
+  <path d="M180 44v30l20 13 20-13V44" fill="#c9b194"/>
+  <path d="M200 49v96" stroke="#544c43" stroke-width="3"/>
+  <rect x="197" y="93" width="6" height="12" rx="2" fill="#d8d1c4"/>
+  <path d="M145 173h36m74 0h-36M154 184v36m92-36v36" stroke="#8a7056" stroke-width="2" stroke-linecap="round"/>
+  <path d="M142 249h116M80 178l39 18m162 0 39-18" stroke="#8a7056" stroke-width="7"/>
+  <rect x="224" y="112" width="22" height="18" rx="3" fill="#324d40"/>
+  <path d="m229 124 6-7 6 7" stroke="#d4dfce" stroke-width="1.5"/>
+</svg>

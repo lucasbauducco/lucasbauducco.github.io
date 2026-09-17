@@ -16,7 +16,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/market-demo.css">
   <script src="assets/js/report-demo.js" defer></script>
+  <script src="assets/js/market-demo.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido" data-i18n="skip">Saltar al contenido</a>
@@ -281,11 +283,49 @@
                 </dl>
               </details>
               <div class="project-actions">
+                <a class="text-link" href="#demo-market"><span data-i18n="demoTry">Probá la demo</span><span aria-hidden="true">↓</span></a>
                 <a class="text-link" href="https://github.com/lucasbauducco/backend-multi-market" target="_blank" rel="noopener noreferrer"><span data-i18n="viewBackend">Ver backend</span><span aria-hidden="true">↗</span></a>
                 <a class="text-link" href="https://github.com/lucasbauducco/FrontEnd-multi-market" target="_blank" rel="noopener noreferrer"><span data-i18n="viewFrontend">Ver frontend</span><span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
+
+          <section class="market-demo" id="demo-market" aria-labelledby="market-demo-title">
+            <div class="demo-heading">
+              <div><p class="eyebrow" data-i18n="demoEyebrow">Del código a la experiencia</p><h3 id="market-demo-title" data-i18n="marketDemoTitle">Tres tiendas. Un solo lugar.</h3></div>
+              <p data-i18n="marketDemoIntro">Buscá algo para tu próxima salida, combiná tiendas y categorías, y abrí un producto para conocerlo mejor.</p>
+            </div>
+            <div class="market-storefront">
+              <div class="demo-toolbar"><strong><span aria-hidden="true">M</span> Multi-Market</strong><span class="demo-badge" data-i18n="demoBadge">Demo interactiva</span></div>
+              <div class="market-storefront-body">
+                <p class="market-sample" data-i18n="marketSample">Catálogo ficticio · precios de ejemplo en ARS · sin compras</p>
+                <p class="market-fallback" data-i18n="marketFallback">Activá JavaScript para explorar el catálogo y abrir los productos. Podés seguir leyendo el caso del proyecto y visitar sus repositorios.</p>
+                <form>
+                  <fieldset class="market-filters" disabled>
+                    <legend class="visually-hidden" data-i18n="marketFilters">Filtrar el catálogo de ejemplo</legend>
+                    <label for="market-search"><span data-i18n="marketSearch">Buscar</span><input type="search" id="market-search" name="search" maxlength="80" placeholder="Mochila, térmica, Sendero…" autocomplete="off"></label>
+                    <label for="market-shop"><span data-i18n="marketShop">Tienda</span><select id="market-shop" name="shop"><option value="" data-i18n="marketAllShops">Todas las tiendas</option><option value="1">Sendero</option><option value="2">Refugio</option><option value="3">Lago</option></select></label>
+                    <label for="market-category"><span data-i18n="marketCategory">Categoría</span><select id="market-category" name="category"><option value="" data-i18n="marketAllCategories">Todas las categorías</option><option value="1" data-i18n="marketEquipment">Equipamiento</option><option value="2" data-i18n="marketAccessories">Accesorios</option><option value="3" data-i18n="marketClothing">Indumentaria</option></select></label>
+                    <button class="demo-reset" type="button" data-market-reset data-i18n="demoReset">Limpiar filtros</button>
+                  </fieldset>
+                </form>
+                <div class="market-results" hidden>
+                  <p class="market-count" role="status" aria-live="polite" aria-atomic="true" data-market-count></p>
+                  <ul class="market-grid"></ul>
+                  <div class="market-empty" hidden><strong data-i18n="marketEmptyTitle">No encontramos productos con esos filtros.</strong><p data-i18n="marketEmptyText">Probá otra búsqueda o volvé a explorar el catálogo completo.</p><button type="button" class="demo-reset" data-market-empty-reset data-i18n="marketExploreAll">Ver todos los productos</button></div>
+                  <details class="market-api">
+                    <summary><span data-i18n="marketApiToggle">Qué consulta hace la API</span><span class="case-toggle-icon" aria-hidden="true">+</span></summary>
+                    <div class="market-api-content">
+                      <p data-i18n="marketApiIntro">Esta es la ruta equivalente en el backend de Multi-Market. La demo usa datos locales y no envía solicitudes a la API.</p>
+                      <code data-market-request></code>
+                      <p data-market-local-filter data-i18n="marketApiLocal" hidden>La búsqueda usa su propia ruta; en esta combinación, la tienda y la categoría se filtran después en el navegador.</p>
+                      <a class="text-link" href="https://github.com/lucasbauducco/backend-multi-market/blob/main/shop/urls.py" target="_blank" rel="noopener noreferrer"><span data-i18n="marketApiSource">Explorar las rutas en el código</span><span aria-hidden="true">↗</span></a>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </section>
 
           <article class="project-card">
             <div class="project-media project-capture project-capture-api">
@@ -525,9 +565,67 @@
     </div>
   </footer>
 
+  <dialog id="market-product-dialog" class="market-dialog" aria-labelledby="market-dialog-title" aria-describedby="market-dialog-description">
+    <div class="market-dialog-inner">
+      <button class="market-dialog-close" type="button" data-market-close autofocus><span data-i18n="marketClose">Cerrar</span><span aria-hidden="true">×</span></button>
+      <div class="market-dialog-layout">
+        <div class="market-dialog-visual"><img width="400" height="300" alt=""></div>
+        <div class="market-dialog-copy">
+          <p class="eyebrow" data-i18n="marketProductDetail">En detalle</p>
+          <h3 id="market-dialog-title"></h3>
+          <p id="market-dialog-description" data-market-description></p>
+          <dl><div><dt data-i18n="marketShop">Tienda</dt><dd data-market-shop></dd></div><div><dt data-i18n="marketCategory">Categoría</dt><dd data-market-category></dd></div></dl>
+          <div class="market-dialog-prices"><strong data-market-price></strong><del hidden></del></div>
+          <p class="market-dialog-discount" hidden></p>
+          <p class="market-dialog-note" data-i18n="marketDetailNote">Producto y precio ficticios para explorar la demo. No disponible para comprar.</p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
   <script>
     const translations = {
       es: {
+        "marketDemoTitle": "Tres tiendas. Un solo lugar.",
+        "marketDemoIntro": "Buscá algo para tu próxima salida, combiná tiendas y categorías, y abrí un producto para conocerlo mejor.",
+        "marketSample": "Catálogo ficticio · precios de ejemplo en ARS · sin compras",
+        "marketFallback": "Activá JavaScript para explorar el catálogo y abrir los productos. Podés seguir leyendo el caso del proyecto y visitar sus repositorios.",
+        "marketFilters": "Filtrar el catálogo de ejemplo",
+        "marketSearch": "Buscar",
+        "marketSearchPlaceholder": "Mochila, térmica, Sendero…",
+        "marketShop": "Tienda",
+        "marketCategory": "Categoría",
+        "marketAllShops": "Todas las tiendas",
+        "marketAllCategories": "Todas las categorías",
+        "marketEquipment": "Equipamiento",
+        "marketAccessories": "Accesorios",
+        "marketClothing": "Indumentaria",
+        "marketCount": "{count} productos para explorar",
+        "marketCountOne": "{count} producto para explorar",
+        "marketEmptyTitle": "No encontramos productos con esos filtros.",
+        "marketEmptyText": "Probá otra búsqueda o volvé a explorar el catálogo completo.",
+        "marketExploreAll": "Ver todos los productos",
+        "marketViewProduct": "Ver producto",
+        "marketDiscount": "{discount}% de descuento",
+        "marketApiToggle": "Qué consulta hace la API",
+        "marketApiIntro": "Esta es la ruta equivalente en el backend de Multi-Market. La demo usa datos locales y no envía solicitudes a la API.",
+        "marketApiLocal": "La búsqueda usa su propia ruta; en esta combinación, la tienda y la categoría se filtran después en el navegador.",
+        "marketApiSource": "Explorar las rutas en el código",
+        "marketClose": "Cerrar",
+        "marketProductDetail": "En detalle",
+        "marketDetailNote": "Producto y precio ficticios para explorar la demo. No disponible para comprar.",
+        "marketPackName": "Mochila Andina",
+        "marketPackDescription": "Una mochila de 24 litros para salidas de un día. Compartimento principal amplio, bolsillo frontal y correas ajustables.",
+        "marketBottleName": "Botella térmica",
+        "marketBottleDescription": "Botella de acero de 750 ml, con doble pared y tapa a rosca. Un diseño simple para llevar agua o una bebida caliente.",
+        "marketFleeceName": "Buzo de polar",
+        "marketFleeceDescription": "Una capa liviana de abrigo con cuello alto y medio cierre. Corte cómodo para caminar o disfrutar de una tarde al aire libre.",
+        "marketMugName": "Taza de campamento",
+        "marketMugDescription": "Taza enlozada de 350 ml con borde oscuro y asa amplia. Pensada para una pausa frente a las montañas.",
+        "marketBeanieName": "Gorro de lana",
+        "marketBeanieDescription": "Tejido suave, punto acanalado y borde doblado. Un accesorio sencillo para los días frescos del sur.",
+        "marketDuffelName": "Bolso de viaje",
+        "marketDuffelDescription": "Bolso de 40 litros con asas reforzadas, cierre superior y correa desmontable. Espacio para una escapada de fin de semana.",
         "caseToggle": "Cómo lo resolví",
         "caseProblem": "El problema",
         "caseContribution": "Mi aporte",
@@ -669,6 +767,46 @@
         sendEmail: "Enviar un correo", footerNote: "Backend, integraciones y calidad de software.", backTop: "Volver arriba"
       },
       en: {
+        "marketDemoTitle": "Three shops. One place.",
+        "marketDemoIntro": "Find something for your next outing, combine shops and categories, and open a product to take a closer look.",
+        "marketSample": "Fictional catalog · sample prices in ARS · no purchases",
+        "marketFallback": "Enable JavaScript to explore the catalog and open products. You can still read the project case study and visit its repositories.",
+        "marketFilters": "Filter the sample catalog",
+        "marketSearch": "Search",
+        "marketSearchPlaceholder": "Backpack, bottle, Sendero…",
+        "marketShop": "Shop",
+        "marketCategory": "Category",
+        "marketAllShops": "All shops",
+        "marketAllCategories": "All categories",
+        "marketEquipment": "Equipment",
+        "marketAccessories": "Accessories",
+        "marketClothing": "Clothing",
+        "marketCount": "{count} products to explore",
+        "marketCountOne": "{count} product to explore",
+        "marketEmptyTitle": "No products match these filters.",
+        "marketEmptyText": "Try another search or explore the full catalog again.",
+        "marketExploreAll": "View all products",
+        "marketViewProduct": "View product",
+        "marketDiscount": "{discount}% off",
+        "marketApiToggle": "The API behind this view",
+        "marketApiIntro": "This is the equivalent route in the Multi-Market backend. The demo uses local data and makes no API requests.",
+        "marketApiLocal": "Search has its own route; in this combination, shop and category filters are applied afterward in the browser.",
+        "marketApiSource": "Explore the routes in the code",
+        "marketClose": "Close",
+        "marketProductDetail": "A closer look",
+        "marketDetailNote": "Fictional product and price for this demo. Not available to purchase.",
+        "marketPackName": "Andina backpack",
+        "marketPackDescription": "A 24-liter backpack for day trips. A spacious main compartment, front pocket and adjustable shoulder straps.",
+        "marketBottleName": "Insulated bottle",
+        "marketBottleDescription": "A 750 ml steel bottle with double walls and a screw cap. A simple design for water or a hot drink.",
+        "marketFleeceName": "Fleece pullover",
+        "marketFleeceDescription": "A lightweight layer with a high collar and half zip. A comfortable fit for a walk or an afternoon outdoors.",
+        "marketMugName": "Camping mug",
+        "marketMugDescription": "A 350 ml enamel mug with a dark rim and a generous handle. Made for a break with a mountain view.",
+        "marketBeanieName": "Wool beanie",
+        "marketBeanieDescription": "Soft yarn, ribbed knitting and a folded brim. A simple accessory for cooler days in the south.",
+        "marketDuffelName": "Weekend duffel",
+        "marketDuffelDescription": "A 40-liter bag with reinforced handles, a top zip and a detachable strap. Room for a weekend getaway.",
         "caseToggle": "How I built it",
         "caseProblem": "The problem",
         "caseContribution": "My contribution",
@@ -887,7 +1025,7 @@
 
       const targets = Array.from(document.querySelectorAll([
         ".intro-grid > *", ".section-heading", ".experience-card", ".project-card",
-        ".stack-card", ".ai-intro", ".workflow-list > li", ".report-demo",
+        ".stack-card", ".ai-intro", ".workflow-list > li", ".report-demo", ".market-demo",
         ".education-grid > div:first-child", ".credentials > *", ".contact-content > *"
       ].join(", ")));
       // Keep the initial viewport and restored scroll positions immediately readable.
