@@ -290,12 +290,23 @@ body.market-dialog-open {
   padding: clamp(1rem, 3vw, 2rem);
 }
 
+.market-dialog-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  background: var(--white);
+}
+
 .market-dialog-close {
   display: flex;
   align-items: center;
   gap: 0.8rem;
   min-height: 44px;
-  margin: 0 0 1rem auto;
+  margin: 0;
   padding: 0.5rem 0.8rem;
   border: 1px solid var(--stone-300);
   border-radius: 8px;
@@ -392,22 +403,24 @@ body.market-dialog-open {
   font-size: 0.73rem;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1100px) {
   .market-filters {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .market-filters input,
+  .market-filters select {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 980px) {
   .market-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 760px) {
-  .market-filters input,
-  .market-filters select {
-    font-size: 1rem;
-  }
-
   .market-dialog-layout {
     grid-template-columns: 1fr;
     gap: 1.3rem;
@@ -422,7 +435,12 @@ body.market-dialog-open {
 
 @media (max-width: 520px) {
   .market-demo {
+    padding: 0.75rem;
     border-radius: var(--radius-md);
+  }
+
+  .market-storefront-body {
+    padding: 0.75rem;
   }
 
   .market-filters,
@@ -431,7 +449,37 @@ body.market-dialog-open {
   }
 
   .market-product-body {
-    padding: 0.9rem;
+    min-width: 0;
+    padding: 0.75rem;
+  }
+
+  .market-product {
+    display: grid;
+    grid-template-columns: minmax(80px, 0.8fr) minmax(0, 1.5fr);
+  }
+
+  .market-product-visual img {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .market-discount {
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .market-product-name {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .market-product-category {
+    margin-bottom: 0.5rem;
+  }
+
+  .market-product-action {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
   }
 
   .market-demo .demo-toolbar {
@@ -447,5 +495,16 @@ body.market-dialog-open {
     padding-inline: 0.45rem;
     font-size: 0.6rem;
     text-align: center;
+  }
+}
+
+@media (min-width: 380px) and (max-width: 520px) {
+  .market-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .market-filters label:first-of-type,
+  .market-filters .demo-reset {
+    grid-column: 1 / -1;
   }
 }

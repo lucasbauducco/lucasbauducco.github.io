@@ -50,10 +50,17 @@
     filtered.forEach((record) => {
       byCompany.set(record.company, (byCompany.get(record.company) || 0) + record.minutes);
       const row = document.createElement("tr");
+      row.setAttribute("role", "row");
       const values = [dateFormat.format(new Date(`${record.date}T12:00:00Z`)), record.person, record.company, copy[record.task], duration(record.minutes)];
-      values.forEach((value) => {
+      const labels = [copy.demoDate, copy.demoPerson, copy.demoCompany, copy.demoTask, copy.demoDuration];
+      values.forEach((value, index) => {
         const cell = document.createElement("td");
-        cell.textContent = value;
+        cell.setAttribute("role", "cell");
+        const label = document.createElement("span");
+        label.className = "demo-cell-label";
+        label.setAttribute("aria-hidden", "true");
+        label.textContent = labels[index];
+        cell.append(label, document.createTextNode(value));
         row.append(cell);
       });
       fragment.append(row);

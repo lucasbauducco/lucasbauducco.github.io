@@ -219,6 +219,105 @@ test('demo becomes visible when scrolled into view with animations enabled', () 
   assert.equal(await text(page, '[data-demo-total]'), '10 h 15 min');
 }, { reducedMotion: 'no-preference' }));
 
+for (const [width, height] of [[320, 568], [390, 844], [768, 1024], [844, 390], [1024, 768]]) {
+  test(`compact navigation stays reachable and fits a touch screen at ${width}x${height}`, () => withPage(async page => {
+    for (const selector of ['.menu-toggle', '[data-language="es"]', '[data-language="en"]']) {
+      const box = await page.locator(selector).boundingBox();
+      assert.ok(box && box.width >= 44 && box.height >= 44, `${selector}: 44px touch target`);
+    }
+    await page.locator('#demo-market').evaluate(node => node.scrollIntoView({ block: 'start', behavior: 'instant' }));
+    const header = await page.locator('.site-header').boundingBox();
+    assert.ok(header.y >= 0 && header.y + header.height < height, 'Header remains on screen');
+    assert.ok((await page.locator('#demo-market').boundingBox()).y >= header.y + header.height, 'Anchor clears the header');
+    await page.locator('.menu-toggle').tap();
+    const menu = await page.locator('.nav-menu').boundingBox();
+    assert.ok(menu.y >= header.y + header.height && menu.y + menu.height <= height, 'Menu fits the available height');
+    await page.locator('.nav-menu a[href="#contacto"]').tap();
+    assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'false');
+    assert.ok((await page.locator('#contacto').boundingBox()).y >= header.height - 1, 'Contact is not hidden behind header');
+    await page.locator('.menu-toggle').tap();
+    await page.touchscreen.tap(width - 3, height - 3);
+    assert.equal(await page.locator('.nav-menu').isVisible(), false, 'Outside touch dismisses the menu');
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  }, { viewport: { width, height }, isMobile: true, hasTouch: true }));
+}
+
+test('compact navigation handles Escape, focus leaving and breakpoint changes', () => withPage(async page => {
+  const toggle = page.locator('.menu-toggle');
+  await toggle.focus();
+  await page.keyboard.press('Enter');
+  await page.keyboard.press('Tab');
+  assert.equal(await page.locator('.nav-menu a').first().evaluate(node => node === document.activeElement), true);
+  await page.keyboard.press('Escape');
+  assert.equal(await toggle.evaluate(node => node === document.activeElement), true);
+  await toggle.click();
+  await page.locator('[data-language="en"]').focus();
+  assert.equal(await page.locator('.nav-menu').isVisible(), false);
+  await toggle.click();
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.waitForFunction(() => document.querySelector('.menu-toggle').getAttribute('aria-expanded') === 'false');
+  assert.equal(await toggle.isVisible(), false);
+  assert.equal(await page.locator('.nav-menu').isVisible(), true);
+  await page.locator('.nav-menu a').first().focus();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.waitForFunction(() => document.activeElement === document.querySelector('.menu-toggle'));
+  assert.equal(await page.locator('.nav-menu').isVisible(), false);
+}, { viewport: { width: 390, height: 844 } }));
+
+test('wide tablet keeps navigation visible and language buttons large enough for touch', () => withPage(async page => {
+  await page.locator('#demo-market').evaluate(node => node.scrollIntoView({ block: 'start', behavior: 'instant' }));
+  const header = await page.locator('.site-header').boundingBox();
+  assert.equal(header.y, 0);
+  assert.equal(await page.locator('.nav-menu').isVisible(), true);
+  for (const button of await page.locator('.language-switch button').all()) {
+    const box = await button.boundingBox();
+    assert.ok(box.width >= 44 && box.height >= 44);
+  }
+  for (const link of await page.locator('.nav-menu a').all()) {
+    assert.ok((await link.boundingBox()).height >= 44);
+  }
+  await page.locator('[data-language="en"]').tap();
+  assert.equal(await page.locator('html').getAttribute('lang'), 'en');
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+}, { viewport: { width: 1366, height: 1024 }, isMobile: true, hasTouch: true }));
+
+test('mobile navigation remains available without JavaScript', () => withPage(async page => {
+  assert.equal(await page.locator('.menu-toggle').isVisible(), false);
+  assert.equal(await page.locator('.nav-menu').isVisible(), true);
+  await page.locator('.nav-menu a[href="#proyectos"]').click();
+  assert.ok((await page.locator('#proyectos').boundingBox()).y >= 0);
+}, { viewport: { width: 390, height: 844 }, javaScriptEnabled: false }));
+
+test('mobile report shows all fields without side scrolling and updates their labels with language', () => withPage(async page => {
+  const table = page.locator('.demo-table-wrap');
+  assert.equal(await table.evaluate(node => node.scrollWidth <= node.clientWidth), true);
+  const firstRow = page.locator('#demo-report tbody tr').first();
+  assert.deepEqual(await firstRow.locator('.demo-cell-label').allTextContents(), ['Fecha', 'Persona', 'Empresa', 'Tarea', 'Tiempo']);
+  assert.equal(await firstRow.getByRole('cell').count(), 5);
+  for (const cell of await firstRow.locator('td').all()) {
+    const box = await cell.boundingBox();
+    assert.ok(box.x >= 0 && box.x + box.width <= 390);
+  }
+  await select(page, 'company', 'Faro Digital');
+  await page.locator('[data-language="en"]').click();
+  assert.deepEqual(await firstRow.locator('.demo-cell-label').allTextContents(), ['Date', 'Person', 'Company', 'Task', 'Time']);
+  assert.equal(await text(page, '[data-demo-total]'), '10 h 15 min');
+  await page.setViewportSize({ width: 1024, height: 768 });
+  assert.equal(await firstRow.locator('.demo-cell-label').first().isVisible(), false);
+  assert.equal(await page.locator('#demo-report thead').isVisible(), true);
+}, { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true }));
+
+test('mobile catalog is compact and product close stays available after scrolling in landscape', () => withPage(async page => {
+  assert.ok((await page.locator('#demo-market').boundingBox()).height < 2400, 'Catalog is shorter than the 3248px baseline');
+  await page.locator('.market-product').first().tap();
+  await page.setViewportSize({ width: 844, height: 390 });
+  await page.locator('.market-dialog-note').scrollIntoViewIfNeeded();
+  const close = await page.locator('[data-market-close]').boundingBox();
+  assert.ok(close.y >= 0 && close.y + close.height <= 390, 'Close remains visible after scrolling details');
+  await page.locator('[data-market-close]').tap();
+  assert.equal(await page.locator('#market-product-dialog').isVisible(), false);
+}, { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true }));
+
 const marketCards = page => page.locator('.market-product');
 const marketIds = page => marketCards(page).evaluateAll(cards => cards.map(card => card.dataset.productId));
 const marketSelect = (page, field, value) => page.locator(`#market-${field}`).selectOption(value);

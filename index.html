@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Portfolio de Lucas Bauducco, Backend Developer especializado en Symfony, Django, APIs y desarrollo asistido por IA.">
   <meta name="author" content="Lucas Bauducco">
   <meta name="theme-color" content="#071a2b">
@@ -53,7 +53,7 @@
 
   <main id="contenido">
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-landscape" src="assets/img/IMG_20230310_113859179.jpg" alt="">
+      <img class="hero-landscape" src="assets/img/IMG_20230310_113859179.jpg" width="4000" height="2250" fetchpriority="high" alt="">
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-grid container">
         <div class="hero-copy">
@@ -85,7 +85,7 @@
 
         <figure class="portrait-card">
           <div class="portrait-frame">
-            <img src="assets/img/profile-professional.png" alt="Retrato profesional de Lucas Bauducco en la montaña" data-i18n-alt="portraitAlt">
+            <img src="assets/img/profile-professional.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Retrato profesional de Lucas Bauducco en la montaña" data-i18n-alt="portraitAlt">
           </div>
         </figure>
       </div>
@@ -124,25 +124,25 @@
           <li class="experience-card">
             <div class="experience-period"><span>01</span><strong data-i18n="unrafDuration">Desde 2020 · casi 4 años</strong></div>
             <div class="experience-company">
-              <h3>UNRaf</h3>
+              <h3><a class="experience-employer" href="https://unraf.edu.ar/" target="_blank" rel="noopener noreferrer">UNRaf<span class="experience-employer-name">Universidad Nacional de Rafaela</span></a></h3>
               <p data-i18n="unrafRole">Desarrollo web y APIs</p>
             </div>
             <p data-i18n="unrafText">Desarrollo de sistemas institucionales, APIs REST, portales administrativos y soluciones móviles con Symfony como base backend.</p>
             <div class="experience-stack"><span>Symfony</span><span>PHP</span><span>API Platform</span><span>Vue.js</span><span>Ionic</span></div>
           </li>
           <li class="experience-card">
-            <div class="experience-period"><span>02</span><strong data-i18n="bertolachiniDuration">1 año</strong></div>
+            <div class="experience-period"><span>02</span><strong data-i18n="bertolacciniDuration">1 año</strong></div>
             <div class="experience-company">
-              <h3>Bertolachini S.A.</h3>
-              <p data-i18n="bertolachiniRole">Desarrollo e integración</p>
+              <h3><a class="experience-employer" href="https://www.bertolaccini.com/" target="_blank" rel="noopener noreferrer">Bertolaccini S.A.</a></h3>
+              <p data-i18n="bertolacciniRole">Desarrollo e integración</p>
             </div>
-            <p data-i18n="bertolachiniText">Desarrollo con Python, creación de APIs e integración con sistemas de negocio legacy construidos en Progress ABL.</p>
+            <p data-i18n="bertolacciniText">Desarrollo con Python, creación de APIs e integración con sistemas de negocio legacy construidos en Progress ABL.</p>
             <div class="experience-stack"><span>Python</span><span>Progress ABL</span><span>APIs REST</span><span data-i18n="legacySystems">Sistemas legacy</span></div>
           </li>
           <li class="experience-card experience-card-current">
             <div class="experience-period"><span>03</span><strong data-i18n="nimbusDuration">Actualidad</strong></div>
             <div class="experience-company">
-              <h3>Sistemas Nimbus</h3>
+              <h3><a class="experience-employer" href="https://sistemasnimbus.com/" target="_blank" rel="noopener noreferrer">Sistemas Nimbus</a></h3>
               <p data-i18n="nimbusRole">Desarrollo de sistemas</p>
             </div>
             <p data-i18n="nimbusText">Trabajo actual en desarrollo y mantenimiento de sistemas, APIs y automatizaciones, incorporando flujos asistidos por IA con planificación, tests y revisión.</p>
@@ -231,9 +231,9 @@
                     <div><dt data-i18n="demoCompanies">Empresas</dt><dd data-demo-companies></dd></div>
                   </dl>
                   <div class="demo-table-wrap" role="region" tabindex="0" data-i18n-aria="demoTable" aria-label="Registros de horas de ejemplo filtrados">
-                    <table><caption class="visually-hidden" data-i18n="demoTable">Registros de horas de ejemplo filtrados</caption>
-                      <thead><tr><th scope="col" data-i18n="demoDate">Fecha</th><th scope="col" data-i18n="demoPerson">Persona</th><th scope="col" data-i18n="demoCompany">Empresa</th><th scope="col" data-i18n="demoTask">Tarea</th><th scope="col" data-i18n="demoDuration">Tiempo</th></tr></thead>
-                      <tbody></tbody>
+                    <table role="table"><caption class="visually-hidden" data-i18n="demoTable">Registros de horas de ejemplo filtrados</caption>
+                      <thead role="rowgroup"><tr role="row"><th role="columnheader" scope="col" data-i18n="demoDate">Fecha</th><th role="columnheader" scope="col" data-i18n="demoPerson">Persona</th><th role="columnheader" scope="col" data-i18n="demoCompany">Empresa</th><th role="columnheader" scope="col" data-i18n="demoTask">Tarea</th><th role="columnheader" scope="col" data-i18n="demoDuration">Tiempo</th></tr></thead>
+                      <tbody role="rowgroup"></tbody>
                     </table>
                   </div>
                   <p class="demo-scroll-hint" data-i18n="demoScrollHint">Deslizá la tabla para ver todas las columnas.</p>
@@ -331,7 +331,7 @@
             <div class="project-media project-capture project-capture-api">
               <div class="capture-window">
                 <div class="window-bar"><i></i><i></i><i></i><span>OPENAPI</span></div>
-                <img src="assets/img/ApiRest.png" alt="Documentación OpenAPI del sistema académico" data-i18n-alt="apiAlt">
+                <img src="assets/img/ApiRest.png" width="1366" height="681" loading="lazy" decoding="async" alt="Documentación OpenAPI del sistema académico" data-i18n-alt="apiAlt">
               </div>
             </div>
             <div class="project-body">
@@ -381,7 +381,7 @@
 
           <article class="project-card">
             <div class="project-media project-capture project-capture-phone">
-              <div class="phone-shell"><span aria-hidden="true"></span><img src="assets/img/appUNRaf.jpg" alt="Aplicación móvil de UNRaf" data-i18n-alt="appAlt"></div>
+              <div class="phone-shell"><span aria-hidden="true"></span><img src="assets/img/appUNRaf.jpg" width="225" height="500" loading="lazy" decoding="async" alt="Aplicación móvil de UNRaf" data-i18n-alt="appAlt"></div>
               <div class="phone-caption" aria-hidden="true"><i></i><i></i><i></i></div>
             </div>
             <div class="project-body">
@@ -406,7 +406,7 @@
           <article class="project-card">
             <div class="project-media project-capture project-capture-ocr">
               <div class="ocr-grid" aria-hidden="true"></div>
-              <img src="assets/img/ocr-read.png" alt="Ilustración del lector OCR de documentos" data-i18n-alt="ocrAlt">
+              <img src="assets/img/ocr-read.png" width="300" height="168" loading="lazy" decoding="async" alt="Ilustración del lector OCR de documentos" data-i18n-alt="ocrAlt">
               <span class="scan-line" aria-hidden="true"></span>
             </div>
             <div class="project-body">
@@ -567,7 +567,7 @@
 
   <dialog id="market-product-dialog" class="market-dialog" aria-labelledby="market-dialog-title" aria-describedby="market-dialog-description">
     <div class="market-dialog-inner">
-      <button class="market-dialog-close" type="button" data-market-close autofocus><span data-i18n="marketClose">Cerrar</span><span aria-hidden="true">×</span></button>
+      <div class="market-dialog-toolbar"><button class="market-dialog-close" type="button" data-market-close autofocus><span data-i18n="marketClose">Cerrar</span><span aria-hidden="true">×</span></button></div>
       <div class="market-dialog-layout">
         <div class="market-dialog-visual"><img width="400" height="300" alt=""></div>
         <div class="market-dialog-copy">
@@ -595,8 +595,8 @@
         "marketSearchPlaceholder": "Mochila, térmica, Sendero…",
         "marketShop": "Tienda",
         "marketCategory": "Categoría",
-        "marketAllShops": "Todas las tiendas",
-        "marketAllCategories": "Todas las categorías",
+        "marketAllShops": "Todas",
+        "marketAllCategories": "Todas",
         "marketEquipment": "Equipamiento",
         "marketAccessories": "Accesorios",
         "marketClothing": "Indumentaria",
@@ -719,8 +719,8 @@
         experienceIntro: "Desde 2020 trabajo en productos, integraciones y sistemas de negocio, adaptándome a stacks modernos y plataformas legacy.",
         unrafDuration: "Desde 2020 · casi 4 años", unrafRole: "Desarrollo web y APIs",
         unrafText: "Desarrollo de sistemas institucionales, APIs REST, portales administrativos y soluciones móviles con Symfony como base backend.",
-        bertolachiniDuration: "1 año", bertolachiniRole: "Desarrollo e integración",
-        bertolachiniText: "Desarrollo con Python, creación de APIs e integración con sistemas de negocio legacy construidos en Progress ABL.",
+        bertolacciniDuration: "1 año", bertolacciniRole: "Desarrollo e integración",
+        bertolacciniText: "Desarrollo con Python, creación de APIs e integración con sistemas de negocio legacy construidos en Progress ABL.",
         nimbusDuration: "Actualidad", nimbusRole: "Desarrollo de sistemas",
         nimbusText: "Trabajo actual en desarrollo y mantenimiento de sistemas, APIs y automatizaciones, incorporando flujos asistidos por IA con planificación, tests y revisión.",
         legacySystems: "Sistemas legacy", integrations: "Integraciones", aiShort: "IA", currentBadge: "Posición actual",
@@ -776,8 +776,8 @@
         "marketSearchPlaceholder": "Backpack, bottle, Sendero…",
         "marketShop": "Shop",
         "marketCategory": "Category",
-        "marketAllShops": "All shops",
-        "marketAllCategories": "All categories",
+        "marketAllShops": "All",
+        "marketAllCategories": "All",
         "marketEquipment": "Equipment",
         "marketAccessories": "Accessories",
         "marketClothing": "Clothing",
@@ -900,8 +900,8 @@
         experienceIntro: "Since 2020, I have worked on products, integrations and business systems across modern stacks and legacy platforms.",
         unrafDuration: "Since 2020 · nearly 4 years", unrafRole: "Web and API development",
         unrafText: "Development of institutional systems, REST APIs, administration portals and mobile solutions with Symfony as the backend foundation.",
-        bertolachiniDuration: "1 year", bertolachiniRole: "Development and integration",
-        bertolachiniText: "Python development, API creation and integration with legacy business systems built with Progress ABL.",
+        bertolacciniDuration: "1 year", bertolacciniRole: "Development and integration",
+        bertolacciniText: "Python development, API creation and integration with legacy business systems built with Progress ABL.",
         nimbusDuration: "Present", nimbusRole: "Systems development",
         nimbusText: "Current work on developing and maintaining systems, APIs and automations, incorporating AI-assisted workflows with planning, tests and review.",
         legacySystems: "Legacy systems", integrations: "Integrations", aiShort: "AI", currentBadge: "Current position",
@@ -1006,6 +1006,19 @@
     });
 
     navMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    // Keep the disclosure usable with touch, keyboard and orientation changes.
+    document.addEventListener("click", (event) => {
+      if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
+    });
+    document.addEventListener("focusin", (event) => {
+      if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
+    });
+    const compactNavigation = window.matchMedia("(max-width: 1100px)");
+    compactNavigation.addEventListener("change", () => {
+      if (compactNavigation.matches && navMenu.contains(document.activeElement)) menuToggle.focus();
+      closeMenu();
+    });
+    document.documentElement.classList.add("navigation-ready");
     languageButtons.forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.language)));
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && navMenu.classList.contains("is-open")) {
