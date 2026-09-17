@@ -625,6 +625,69 @@
     try { savedLanguage = localStorage.getItem("portfolio-language") || "es"; } catch (_) { /* Use Spanish. */ }
     setLanguage(savedLanguage, false);
     document.getElementById("current-year").textContent = new Date().getFullYear();
+
+    function initScrollAnimations() {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (reducedMotion.matches || !("IntersectionObserver" in window)) return;
+
+      const targets = Array.from(document.querySelectorAll([
+        ".intro-grid > *", ".section-heading", ".experience-card", ".project-card",
+        ".stack-card", ".ai-intro", ".workflow-list > li",
+        ".education-grid > div:first-child", ".credentials > *", ".contact-content > *"
+      ].join(", ")));
+      // Keep the initial viewport and restored scroll positions immediately readable.
+      const pending = targets.filter((element) => element.getBoundingClientRect().top >= window.innerHeight);
+
+      function clearAnimation(element) {
+        element.classList.remove("scroll-reveal-pending", "scroll-reveal-entering");
+        element.style.removeProperty("--reveal-delay");
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        const rows = [];
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || !entry.target.classList.contains("scroll-reveal-pending")) return;
+
+          const element = entry.target;
+          // Stagger siblings entering on the same row, without delaying stacked mobile cards.
+          let row = rows.find((item) => item.parent === element.parentElement && Math.abs(item.top - entry.boundingClientRect.top) < 32);
+          if (!row) {
+            row = { parent: element.parentElement, top: entry.boundingClientRect.top, count: 0 };
+            rows.push(row);
+          }
+          element.style.setProperty("--reveal-delay", `${Math.min(row.count++, 2) * 90}ms`);
+          element.classList.remove("scroll-reveal-pending");
+          element.classList.add("scroll-reveal-entering");
+          observer.unobserve(element);
+        });
+      }, { threshold: 0, rootMargin: "0px 0px -32px 0px" });
+
+      pending.forEach((element) => {
+        observer.observe(element);
+        element.classList.add("scroll-reveal-pending");
+        element.addEventListener("animationend", (event) => {
+          if (event.target === element && event.animationName === "scroll-reveal") clearAnimation(element);
+        });
+      });
+
+      // Keyboard navigation must never land inside an invisible or delayed block.
+      document.addEventListener("focusin", (event) => {
+        const element = event.target.closest(".scroll-reveal-pending, .scroll-reveal-entering");
+        if (element) {
+          observer.unobserve(element);
+          clearAnimation(element);
+        }
+      });
+
+      reducedMotion.addEventListener("change", (event) => {
+        if (event.matches) {
+          observer.disconnect();
+          pending.forEach(clearAnimation);
+        }
+      });
+    }
+
+    initScrollAnimations();
   </script>
 </body>
 </html>
