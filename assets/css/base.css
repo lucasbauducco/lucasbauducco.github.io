@@ -1,27 +1,28 @@
 :root {
-  --navy-950: #04111d;
+  --navy-950: #03131f;
   --navy-900: #071a2b;
-  --navy-800: #0d2a3d;
-  --navy-700: #17445b;
-  --glacier-500: #79cedf;
-  --glacier-300: #b9e8ef;
-  --glacier-100: #e7f7f9;
-  --stone-50: #f6f3ec;
-  --stone-100: #ece8df;
-  --stone-300: #c8c2b7;
-  --stone-600: #68675f;
-  --ink: #14222c;
-  --burgundy: #7e2743;
-  --burgundy-dark: #5d1831;
+  --navy-800: #123247;
+  --navy-700: #24485c;
+  --glacier-500: #78c7d6;
+  --glacier-300: #a8dde7;
+  --glacier-100: #e6f4f6;
+  --stone-50: #f5f8f7;
+  --stone-100: #e8eeec;
+  --stone-300: #c8d2cf;
+  --stone-600: #596965;
+  --ink: #15262d;
+  --burgundy: #a63d4f;
+  --burgundy-dark: #812a3b;
   --white: #ffffff;
-  --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-serif: "Lora", Georgia, serif;
-  --container: 1180px;
-  --radius-sm: 10px;
-  --radius-md: 18px;
-  --radius-lg: 28px;
-  --shadow-soft: 0 24px 70px rgba(4, 17, 29, 0.14);
-  --shadow-dark: 0 26px 80px rgba(0, 0, 0, 0.3);
+  --font-sans: "Archivo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Archivo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-code: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  --container: 1240px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --shadow-soft: 0 22px 60px rgba(3, 19, 31, 0.12);
+  --shadow-dark: 0 30px 90px rgba(0, 0, 0, 0.32);
 }
 
 *,
@@ -2100,5 +2101,955 @@ details[open] > summary .case-toggle-icon {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+}
+
+/* Rediseño 2026: mapa de sistemas. La única pieza expresiva vive en el hero;
+   el resto de la página usa estructura, contraste y relaciones reales. */
+body {
+  background: var(--stone-50);
+  letter-spacing: -0.008em;
+}
+
+.container {
+  width: min(calc(100% - 4rem), var(--container));
+}
+
+.site-header {
+  border-bottom-color: rgba(168, 221, 231, 0.2);
+}
+
+.nav-shell {
+  width: min(calc(100% - 4rem), var(--container));
+  min-height: 76px;
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background: rgba(3, 19, 31, 0.36);
+  color: var(--glacier-300);
+  font-family: var(--font-sans);
+  font-weight: 800;
+}
+
+.nav-menu a {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.nav-menu a::after {
+  bottom: -0.35rem;
+  background: var(--glacier-300);
+}
+
+.language-switch {
+  border-radius: 2px;
+  background: rgba(3, 19, 31, 0.42);
+}
+
+.hero {
+  min-height: 820px;
+  background: var(--navy-950);
+}
+
+.hero-landscape {
+  object-position: 50% 48%;
+  filter: saturate(0.58) contrast(1.07);
+  transform: scale(1.02);
+}
+
+.hero-shade {
+  background:
+    linear-gradient(90deg, rgba(3, 19, 31, 0.98) 0%, rgba(3, 19, 31, 0.9) 48%, rgba(7, 26, 43, 0.48) 76%, rgba(3, 19, 31, 0.62) 100%),
+    linear-gradient(0deg, rgba(3, 19, 31, 0.84) 0%, transparent 46%);
+}
+
+.hero::before {
+  position: absolute;
+  inset: 0 0 0 48%;
+  z-index: -1;
+  background:
+    url("../img/topography.svg") right -110px center / 820px auto no-repeat,
+    linear-gradient(90deg, transparent, rgba(168, 221, 231, 0.04));
+  content: "";
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.hero::after {
+  right: 2rem;
+  bottom: 2rem;
+  width: min(42vw, 620px);
+  height: 1px;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(90deg, transparent, rgba(168, 221, 231, 0.5));
+  box-shadow: none;
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1.08fr) minmax(390px, 0.92fr);
+  gap: clamp(3.5rem, 7vw, 7.5rem);
+  padding-block: 9rem 6.5rem;
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.4rem;
+  color: var(--burgundy);
+  font-size: 0.83rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.eyebrow::before {
+  width: 2.25rem;
+  height: 1px;
+  flex: 0 0 auto;
+  background: currentColor;
+  content: "";
+}
+
+.hero .eyebrow::before {
+  display: none;
+}
+
+.availability-dot {
+  margin-right: 0;
+  border-radius: 2px;
+  box-shadow: 0 0 0 5px rgba(120, 199, 214, 0.12);
+}
+
+.hero h1 {
+  max-width: 720px;
+  font-size: clamp(3.6rem, 7.4vw, 7rem);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 0.86;
+}
+
+.hero h1 em {
+  margin-top: 1rem;
+  padding-left: 0.1em;
+  color: var(--glacier-300);
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.hero-lead {
+  max-width: 620px;
+  margin-top: 2rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(1rem, 1.6vw, 1.16rem);
+  line-height: 1.72;
+}
+
+.button {
+  min-height: 52px;
+  border-radius: 2px;
+  font-size: 0.86rem;
+  font-weight: 650;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.button:hover {
+  transform: none;
+}
+
+.button-primary {
+  background: var(--glacier-300);
+}
+
+.button-primary:hover {
+  background: var(--white);
+}
+
+.button-ghost {
+  border-color: rgba(168, 221, 231, 0.38);
+}
+
+.hero-facts {
+  max-width: 610px;
+  margin-top: 2.6rem;
+  padding-top: 1.1rem;
+}
+
+.hero-facts li {
+  gap: 0.18rem;
+  border-left: 1px solid rgba(168, 221, 231, 0.25);
+  padding-left: 1rem;
+}
+
+.hero-facts strong {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.hero-facts span {
+  font-size: 0.72rem;
+}
+
+.portrait-card {
+  position: relative;
+  width: min(100%, 470px);
+  min-height: 560px;
+  margin: 0;
+  justify-self: end;
+}
+
+.portrait-card::before {
+  display: none;
+}
+
+.portrait-frame {
+  position: absolute;
+  top: 118px;
+  right: 72px;
+  z-index: 2;
+  width: 238px;
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(168, 221, 231, 0.5);
+  border-radius: 3px;
+  box-shadow: 26px 28px 0 rgba(3, 19, 31, 0.48);
+  transform: rotate(2deg);
+}
+
+.portrait-frame::after {
+  position: absolute;
+  inset: 0;
+  border: 10px solid rgba(3, 19, 31, 0.16);
+  content: "";
+  pointer-events: none;
+}
+
+.portrait-frame img {
+  filter: saturate(0.72) contrast(1.08);
+}
+
+.system-route {
+  position: absolute;
+  inset: 0;
+}
+
+.system-route svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.system-route path {
+  fill: none;
+  stroke: rgba(168, 221, 231, 0.62);
+  stroke-dasharray: 3 10;
+  stroke-linecap: round;
+  stroke-width: 1.4;
+}
+
+.system-route circle {
+  fill: var(--glacier-300);
+  stroke: rgba(3, 19, 31, 0.9);
+  stroke-width: 6;
+}
+
+.route-node {
+  position: absolute;
+  z-index: 3;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(168, 221, 231, 0.38);
+  border-radius: 2px;
+  background: rgba(3, 19, 31, 0.84);
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.67rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.route-node-api {
+  top: 8px;
+  left: 8px;
+}
+
+.route-node-integrations {
+  top: 226px;
+  right: 0;
+}
+
+.route-node-quality {
+  right: 16px;
+  bottom: 20px;
+}
+
+.portrait-caption {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  display: grid;
+  z-index: 4;
+  max-width: 235px;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.7rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.73rem;
+  line-height: 1.55;
+}
+
+.portrait-caption > span:first-child {
+  width: 8px;
+  height: 8px;
+  margin-top: 0.25rem;
+  background: var(--burgundy);
+}
+
+.scroll-cue {
+  left: auto;
+  right: max(2rem, calc((100vw - var(--container)) / 2));
+  letter-spacing: 0;
+  text-transform: none;
+  transform: none;
+}
+
+.section {
+  padding-block: clamp(5.5rem, 10vw, 9rem);
+}
+
+.intro-section {
+  background: var(--white);
+}
+
+.intro-section::after {
+  right: -220px;
+  width: 620px;
+  height: 620px;
+  opacity: 0.17;
+}
+
+.intro-grid {
+  grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
+  align-items: start;
+}
+
+.intro-grid h2,
+.section-heading h2,
+.ai-intro h2,
+.education-grid h2,
+.contact-content h2 {
+  max-width: 900px;
+  font-size: clamp(2.45rem, 5.3vw, 5.1rem);
+  font-weight: 750;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.intro-copy {
+  max-width: 610px;
+  color: var(--stone-600);
+  font-size: 1.03rem;
+}
+
+.pull-quote {
+  margin-top: 2.4rem;
+  padding: 1.4rem 0 0;
+  border-top: 1px solid var(--stone-300);
+  border-left: 0;
+  color: var(--navy-800);
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  font-weight: 650;
+}
+
+.experience-section {
+  background: var(--stone-50);
+}
+
+.experience-section::before {
+  background: url("../img/topography.svg") right -230px top -130px / 900px auto no-repeat;
+  opacity: 0.2;
+}
+
+.experience-heading {
+  margin-bottom: 3.5rem;
+}
+
+.journey-caption {
+  margin-bottom: 1rem;
+  color: var(--navy-700);
+  font-size: 0.78rem;
+}
+
+.journey-caption > span:first-child {
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+}
+
+.experience-timeline {
+  gap: 0;
+  padding-top: 3.4rem;
+}
+
+.experience-timeline::before {
+  top: 1.25rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--burgundy), var(--glacier-500));
+}
+
+.experience-card {
+  min-height: 350px;
+  padding: 2rem clamp(1.4rem, 3vw, 2.4rem);
+  border: 0;
+  border-left: 1px solid var(--stone-300);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.experience-card:last-child {
+  border-right: 1px solid var(--stone-300);
+}
+
+.experience-card::before {
+  top: -2.6rem;
+  left: 2rem;
+  width: 9px;
+  height: 9px;
+  border: 5px solid var(--stone-50);
+  background: var(--burgundy);
+  box-shadow: 0 0 0 1px var(--burgundy);
+}
+
+.experience-card-current {
+  background: linear-gradient(180deg, rgba(168, 221, 231, 0.24), transparent 78%);
+}
+
+.experience-card-current::before {
+  background: var(--glacier-500);
+  box-shadow: 0 0 0 1px var(--navy-700);
+}
+
+.experience-company {
+  margin: 2.3rem 0 1.2rem;
+}
+
+.experience-company h3 {
+  font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+
+.experience-company p {
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.experience-stack span,
+.project-meta span {
+  border: 1px solid var(--stone-300);
+  border-radius: 2px;
+  background: transparent;
+  font-weight: 600;
+}
+
+.current-badge {
+  top: 0;
+  right: 1.4rem;
+  border-radius: 0 0 3px 3px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.projects-section {
+  background: var(--stone-100);
+}
+
+.section-heading {
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  align-items: start;
+  gap: clamp(3rem, 8vw, 7rem);
+  margin-bottom: 4.5rem;
+}
+
+.section-heading > p {
+  padding-top: 2.3rem;
+  line-height: 1.75;
+}
+
+.project-grid {
+  gap: 2rem;
+}
+
+.project-card {
+  border: 0;
+  border-top: 2px solid var(--navy-800);
+  border-radius: 0;
+  background: var(--white);
+  box-shadow: none;
+  transition: border-color 180ms ease;
+}
+
+.project-card:hover {
+  border-color: var(--burgundy);
+  box-shadow: none;
+  transform: none;
+}
+
+.project-card-featured {
+  border-top: 0;
+}
+
+.project-card-featured .project-body {
+  border-top: 2px solid var(--burgundy);
+}
+
+.project-media,
+.project-card-featured .project-media {
+  min-height: 310px;
+}
+
+.project-card-featured .project-media {
+  min-height: 430px;
+}
+
+.project-visual-market {
+  background:
+    linear-gradient(rgba(168, 221, 231, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 221, 231, 0.05) 1px, transparent 1px),
+    linear-gradient(145deg, #123247, #03131f);
+  background-size: 34px 34px, 34px 34px, auto;
+}
+
+.product-window,
+.capture-window,
+.api-preview {
+  border-radius: 3px;
+}
+
+.project-kicker {
+  color: var(--stone-600);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.project-kicker span {
+  display: none;
+}
+
+.project-body h3 {
+  margin-top: 0.85rem;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+
+.project-body p,
+.project-points,
+.project-case dd {
+  color: var(--stone-600);
+}
+
+.project-case {
+  border-top-color: var(--stone-300);
+}
+
+.project-case summary {
+  color: var(--navy-800);
+}
+
+.project-case dl {
+  border-left-color: var(--burgundy);
+}
+
+.demo-heading h3 {
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
+  font-weight: 700;
+}
+
+.demo-toolbar {
+  background: var(--navy-900);
+}
+
+.demo-toolbar > strong > span,
+.demo-reset {
+  border-radius: 2px;
+}
+
+.text-link {
+  color: var(--burgundy);
+}
+
+.stack-section {
+  background: var(--navy-950);
+}
+
+.stack-section::before {
+  background-image:
+    url("../img/topography.svg"),
+    linear-gradient(rgba(168, 221, 231, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 221, 231, 0.04) 1px, transparent 1px);
+  background-position: right -280px center, 0 0, 0 0;
+  background-repeat: no-repeat, repeat, repeat;
+  background-size: 880px auto, 48px 48px, 48px 48px;
+  opacity: 0.7;
+  mask-image: linear-gradient(to right, transparent, black 30%, black);
+}
+
+.stack-grid {
+  gap: 0;
+  border-top: 1px solid rgba(168, 221, 231, 0.24);
+  border-bottom: 1px solid rgba(168, 221, 231, 0.24);
+}
+
+.stack-card {
+  padding: 2rem clamp(1.4rem, 3vw, 2.4rem);
+  border: 0;
+  border-right: 1px solid rgba(168, 221, 231, 0.2);
+  border-radius: 0;
+  background: rgba(3, 19, 31, 0.35);
+}
+
+.stack-card:last-child {
+  border-right: 0;
+}
+
+.stack-index {
+  display: none;
+}
+
+.stack-card h3 {
+  margin: 0 0 1.6rem;
+  font-size: 1.35rem;
+  font-weight: 650;
+}
+
+.stack-card li {
+  border-radius: 2px;
+}
+
+.ai-section {
+  background: var(--white);
+}
+
+.ai-section::before {
+  left: calc(50% + 1rem);
+}
+
+.ai-statement {
+  color: var(--navy-800);
+}
+
+.ai-statement > span,
+.ai-statement p {
+  font-family: var(--font-sans);
+}
+
+.workflow-list li {
+  grid-template-columns: 38px 1fr 48px;
+}
+
+.workflow-mark {
+  font-family: var(--font-code);
+}
+
+.workflow-tool {
+  border-radius: 2px;
+  font-family: var(--font-code);
+}
+
+.education-section {
+  background: var(--glacier-100);
+}
+
+.credentials {
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.credential-main,
+.credentials > a {
+  min-height: 98px;
+}
+
+.credential-main > span,
+.credentials > a > span {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.credential-main h3 {
+  font-size: 1.16rem;
+  font-weight: 650;
+}
+
+.contact-section {
+  min-height: 650px;
+  border-top: 8px solid var(--burgundy);
+}
+
+.contact-landscape {
+  background:
+    linear-gradient(90deg, rgba(3, 19, 31, 0.98), rgba(7, 26, 43, 0.54)),
+    url("../img/IMG_20230310_113859179.jpg") center 62% / cover;
+  filter: saturate(0.7);
+}
+
+.contact-section::after {
+  background:
+    url("../img/topography.svg") right -180px center / 800px auto no-repeat,
+    linear-gradient(0deg, rgba(3, 19, 31, 0.9), transparent 78%);
+  opacity: 0.82;
+}
+
+.contact-content h2 {
+  max-width: 900px;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+}
+
+.site-footer {
+  background: #020e16;
+}
+
+@media (max-width: 1100px) {
+  .container,
+  .nav-shell {
+    width: auto;
+  }
+
+  .nav-shell {
+    min-height: 72px;
+  }
+
+  .menu-toggle,
+  .nav-menu,
+  .language-switch {
+    border-radius: 2px;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(330px, 0.72fr);
+    padding-block: 8rem 5rem;
+  }
+
+  .portrait-card {
+    min-height: 520px;
+  }
+
+  .portrait-frame {
+    right: 54px;
+    width: 216px;
+  }
+}
+
+@media (max-width: 980px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 2.5rem;
+  }
+
+  .portrait-card {
+    min-height: 490px;
+  }
+
+  .portrait-frame {
+    top: 108px;
+    right: 42px;
+    width: 190px;
+  }
+
+  .route-node-integrations {
+    right: -4px;
+  }
+
+  .experience-timeline {
+    gap: 0;
+  }
+
+  .experience-timeline::before {
+    top: 0;
+    left: 8px;
+    height: auto;
+    background: linear-gradient(180deg, var(--burgundy), var(--glacier-500));
+  }
+
+  .experience-card {
+    margin-left: 2rem;
+    border: 0;
+    border-top: 1px solid var(--stone-300);
+  }
+
+  .experience-card:last-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--stone-300);
+  }
+
+  .experience-card::before {
+    top: 2rem;
+    left: calc(-2rem - 2px);
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-landscape {
+    transform: none;
+  }
+
+  .hero::before {
+    inset: 0;
+    background-position: right -320px center;
+    opacity: 0.34;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-block: calc(6.8rem + env(safe-area-inset-top)) 3.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .portrait-card {
+    width: min(100%, 420px);
+    min-height: 410px;
+    justify-self: stretch;
+  }
+
+  .portrait-frame {
+    top: 74px;
+    right: 18%;
+    width: 158px;
+  }
+
+  .system-route svg {
+    height: 410px;
+  }
+
+  .route-node-api {
+    top: 2px;
+  }
+
+  .route-node-integrations {
+    top: 176px;
+    right: 2px;
+  }
+
+  .route-node-quality {
+    right: 12px;
+    bottom: 2px;
+  }
+
+  .portrait-caption {
+    bottom: 18px;
+    max-width: 210px;
+  }
+
+  .intro-grid,
+  .section-heading,
+  .demo-heading,
+  .ai-layout,
+  .education-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .section-heading > p {
+    padding-top: 0;
+  }
+
+  .project-card-featured .project-media,
+  .project-media {
+    min-height: 290px;
+  }
+
+  .project-grid {
+    gap: 1rem;
+  }
+
+  .stack-grid {
+    border-bottom: 0;
+  }
+
+  .stack-card {
+    border-right: 0;
+    border-bottom: 1px solid rgba(168, 221, 231, 0.2);
+  }
+}
+
+@media (max-width: 520px) {
+  .hero h1 {
+    font-size: clamp(2.85rem, 15vw, 4rem);
+    line-height: 0.9;
+  }
+
+  .hero-facts {
+    gap: 1.1rem 0.5rem;
+  }
+
+  .portrait-card {
+    min-height: 370px;
+  }
+
+  .portrait-frame {
+    top: 68px;
+    right: 12%;
+    width: 145px;
+  }
+
+  .system-route svg {
+    height: 360px;
+  }
+
+  .route-node-integrations {
+    top: 165px;
+  }
+
+  .route-node-quality {
+    bottom: 0;
+  }
+
+  .portrait-caption {
+    bottom: 4px;
+    max-width: 178px;
+    font-size: 0.68rem;
+  }
+
+  .experience-card {
+    margin-left: 1.35rem;
+    padding-inline: 1.15rem;
+  }
+
+  .experience-card::before {
+    left: calc(-1.35rem - 2px);
+  }
+
+  .project-card-featured .project-media,
+  .project-media {
+    min-height: 235px;
+  }
+
+  .project-body {
+    padding: 1.35rem;
   }
 }

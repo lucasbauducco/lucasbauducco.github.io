@@ -14,7 +14,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%23071a2b%22/><text x=%2232%22 y=%2241%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2226%22 font-weight=%22700%22 fill=%22%238ed8e8%22>LB</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/market-demo.css">
   <script src="assets/js/market-demo.js" defer></script>
@@ -68,7 +68,6 @@
           <div class="hero-actions">
             <a class="button button-primary" href="#proyectos">
               <span data-i18n="viewProjects">Ver proyectos</span>
-              <span aria-hidden="true">→</span>
             </a>
             <a class="button button-ghost" href="assets/documents/CV-LUCASBAUDUCCO.pdf" download>
               <span data-i18n="downloadCv">Descargar CV</span>
@@ -82,10 +81,25 @@
           </ul>
         </div>
 
-        <figure class="portrait-card">
+        <figure class="portrait-card" aria-labelledby="hero-map-caption">
+          <div class="system-route" aria-hidden="true">
+            <svg viewBox="0 0 480 560" preserveAspectRatio="none">
+              <path d="M54 70 C 205 68, 126 224, 278 248 S 420 350, 386 506"></path>
+              <circle cx="54" cy="70" r="7"></circle>
+              <circle cx="278" cy="248" r="7"></circle>
+              <circle cx="386" cy="506" r="7"></circle>
+            </svg>
+            <span class="route-node route-node-api" data-i18n="systemNodeApi">Diseño de API</span>
+            <span class="route-node route-node-integrations" data-i18n="systemNodeIntegrations">Integraciones</span>
+            <span class="route-node route-node-quality" data-i18n="systemNodeQuality">Calidad verificable</span>
+          </div>
           <div class="portrait-frame">
             <img src="assets/img/profile-professional.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Retrato profesional de Lucas Bauducco en la montaña" data-i18n-alt="portraitAlt">
           </div>
+          <figcaption class="portrait-caption" id="hero-map-caption">
+            <span aria-hidden="true"></span>
+            <span data-i18n="heroMapCaption">Del problema al sistema, con decisiones que se pueden explicar.</span>
+          </figcaption>
         </figure>
       </div>
       <a class="scroll-cue" href="#sobre-mi" aria-label="Continuar hacia Sobre mí" data-i18n-aria="scrollAria">
@@ -456,7 +470,7 @@
         <p data-i18n="contactText">Estoy abierto a proyectos y oportunidades donde pueda aportar experiencia técnica, autonomía y una mirada práctica.</p>
         <div class="contact-actions">
           <a class="button button-primary" href="mailto:lucasbauducco@gmail.com">
-            <span data-i18n="sendEmail">Enviar un correo</span><span aria-hidden="true">→</span>
+            <span data-i18n="sendEmail">Enviar un correo</span>
           </a>
           <a class="button button-ghost" href="https://www.linkedin.com/in/lucas-bauducco-804604237/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           <a class="button button-ghost" href="https://github.com/lucasbauducco" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
@@ -582,6 +596,8 @@
         heroLead: "Construyo APIs y sistemas web robustos, combinando experiencia backend con un flujo de desarrollo asistido por IA, verificable de principio a fin.",
         viewProjects: "Ver proyectos", downloadCv: "Descargar CV", years: "desarrollando software",
         location: "Argentina · Remoto", specialty: "Backend & integraciones", factsAria: "Datos profesionales",
+        systemNodeApi: "Diseño de API", systemNodeIntegrations: "Integraciones", systemNodeQuality: "Calidad verificable",
+        heroMapCaption: "Del problema al sistema, con decisiones que se pueden explicar.",
         portraitAlt: "Retrato profesional de Lucas Bauducco en la montaña", scrollAria: "Continuar hacia Sobre mí", explore: "Explorar",
         aboutEyebrow: "Perfil profesional", aboutTitle: "Soluciones simples para problemas que no lo son.",
         aboutP1: "Soy desarrollador web con foco en backend. Trabajo con Symfony, Django y APIs REST para convertir procesos complejos en productos mantenibles, seguros y fáciles de evolucionar.",
@@ -720,6 +736,8 @@
         heroLead: "I build robust APIs and web systems, combining backend experience with an AI-assisted development workflow that is verifiable from start to finish.",
         viewProjects: "View projects", downloadCv: "Download résumé", years: "building software",
         location: "Argentina · Remote", specialty: "Backend & integrations", factsAria: "Professional facts",
+        systemNodeApi: "API design", systemNodeIntegrations: "Integrations", systemNodeQuality: "Verifiable quality",
+        heroMapCaption: "From problem to system, with decisions that can be explained.",
         portraitAlt: "Professional portrait of Lucas Bauducco in the mountains", scrollAria: "Continue to About", explore: "Explore",
         aboutEyebrow: "Professional profile", aboutTitle: "Simple solutions for problems that are not.",
         aboutP1: "I am a web developer focused on backend engineering. I use Symfony, Django and REST APIs to turn complex processes into maintainable, secure products that are easy to evolve.",

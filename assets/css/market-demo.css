@@ -508,3 +508,149 @@ body.market-dialog-open {
     grid-column: 1 / -1;
   }
 }
+
+/* Integración con el sistema visual "mapa de sistemas". */
+.market-demo {
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--stone-300);
+  border-radius: 0;
+  background: var(--white);
+}
+
+.market-storefront {
+  overflow: hidden;
+  border: 1px solid var(--navy-800);
+  border-radius: 2px;
+  background: var(--white);
+  box-shadow: none;
+}
+
+.market-storefront-body {
+  background:
+    linear-gradient(rgba(36, 72, 92, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 72, 92, 0.035) 1px, transparent 1px),
+    var(--stone-50);
+  background-size: 32px 32px, 32px 32px, auto;
+}
+
+.market-filters {
+  border-top: 1px solid var(--stone-300);
+  border-bottom: 1px solid var(--stone-300);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.market-filters label {
+  color: var(--navy-800);
+  font-weight: 600;
+}
+
+.market-filters input,
+.market-filters select,
+.demo-reset {
+  border-radius: 2px;
+}
+
+.market-product {
+  border: 0;
+  border-top: 2px solid var(--navy-800);
+  border-radius: 0;
+  background: var(--white);
+  box-shadow: none;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.market-product:hover,
+.market-product:focus-visible {
+  border-color: var(--burgundy);
+  background: var(--glacier-100);
+  box-shadow: none;
+  transform: none;
+}
+
+.market-product-visual,
+.market-discount,
+.market-product-action,
+.market-empty,
+.market-api,
+.market-api-content code {
+  border-radius: 2px;
+}
+
+.market-product-shop,
+.market-product-category {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.market-product-name {
+  color: var(--navy-900);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.market-product-action {
+  color: var(--burgundy);
+}
+
+.market-api {
+  border-color: var(--stone-300);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.market-api-content code {
+  font-family: var(--font-code);
+}
+
+.market-dialog {
+  border-radius: 3px;
+  box-shadow: 0 30px 90px rgba(3, 19, 31, 0.28);
+}
+
+.market-dialog-toolbar {
+  border-bottom-color: var(--stone-300);
+  background: var(--navy-900);
+}
+
+.market-dialog-close {
+  border-radius: 2px;
+}
+
+.market-dialog-layout {
+  background: var(--white);
+}
+
+.market-dialog-visual {
+  border-radius: 2px;
+  background:
+    linear-gradient(rgba(36, 72, 92, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(36, 72, 92, 0.04) 1px, transparent 1px),
+    var(--glacier-100);
+  background-size: 28px 28px, 28px 28px, auto;
+}
+
+.market-dialog-copy h3 {
+  font-family: var(--font-sans);
+  font-weight: 750;
+  letter-spacing: -0.05em;
+}
+
+.market-dialog-copy dt {
+  color: var(--navy-800);
+}
+
+.market-dialog-copy .market-dialog-note {
+  border-radius: 2px;
+}
+
+@media (max-width: 760px) {
+  .market-demo {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .market-demo {
+    padding: 1rem;
+  }
+}
