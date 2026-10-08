@@ -49,15 +49,16 @@ test('persisted English initializes the portfolio with complete translations', (
   assert.deepEqual(invalid, []);
 }, {}, 'en'));
 
-test('production-systems theme exposes a real architecture flow and five case flows', () => withPage(async page => {
-  assert.equal(await page.locator('.hero-landscape').count(), 0);
-  assert.equal(await page.locator('.system-flow [data-system-stage]').count(), 6);
-  assert.equal(await page.locator('.case-flow').count(), 5);
-  assert.match(await text(page, '.system-flow'), /Solicitud.*Autenticación.*API.*Integraciones.*Datos.*Respuesta/s);
-  assert.equal(await page.locator('.hero').evaluate(element => getComputedStyle(element, '::before').backgroundImage.includes('topography.svg')), false);
+test('Patagonia route hero connects three real engineering capabilities', () => withPage(async page => {
+  assert.equal(await page.locator('.system-console').count(), 0);
+  assert.equal(await page.locator('.hero-landscape').count(), 1);
+  assert.equal(await page.locator('.software-route [data-route-node]').count(), 3);
+  assert.match(await text(page, '.software-route'), /Diseño de API.*Integraciones.*Calidad verificable/s);
+  assert.equal(await page.locator('.hero').evaluate(element => getComputedStyle(element, '::before').backgroundImage.includes('topography.svg')), true);
+  assert.equal(await page.locator('.route-progress').count(), 1);
 
   await page.locator('[data-language="en"]').click();
-  assert.match(await text(page, '.system-flow'), /Request.*Authentication.*API.*Integrations.*Data.*Response/s);
+  assert.match(await text(page, '.software-route'), /API design.*Integrations.*Verifiable quality/s);
 }));
 
 test('five case studies expose all four dimensions and retain the OCR limitation', () => withPage(async page => {
@@ -93,9 +94,9 @@ for (const width of [1440, 980, 760, 390, 320]) {
       assert.ok(box.x >= 0 && box.x + box.width <= width && box.height >= 44);
     }
     assert.equal(await page.locator('.project-case dd').first().isVisible(), true);
-    assert.equal(await page.locator('.experience-section').evaluate(element => getComputedStyle(element, '::before').backgroundImage.includes('topography.svg')), false);
-    const flow = await page.locator('.system-flow').boundingBox();
-    assert.ok(flow && flow.x >= 0 && flow.x + flow.width <= width, 'System flow stays inside the viewport');
+    assert.equal(await page.locator('.experience-section').evaluate(element => getComputedStyle(element, '::before').backgroundImage.includes('topography.svg')), true);
+    const route = await page.locator('.software-route').boundingBox();
+    assert.ok(route && route.x >= 0 && route.x + route.width <= width, 'Software route stays inside the viewport');
     if (process.env.PORTFOLIO_SCREENSHOTS) {
       const output = path.resolve(process.env.PORTFOLIO_SCREENSHOTS);
       fs.mkdirSync(output, { recursive: true });

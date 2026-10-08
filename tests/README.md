@@ -16,7 +16,7 @@ $env:PORTFOLIO_SCREENSHOTS = '.codex/validation/portfolio'
 node --test tests/portfolio.test.cjs
 ```
 
-`PORTFOLIO_SCREENSHOTS` es opcional. Las pruebas abren el HTML local en contextos de navegador aislados y usan únicamente los datos ficticios de Multi-Market. Cubren los cinco casos de estudio, traducciones, teclado, ausencia de JavaScript, movimiento reducido y viewports de 320 a 1440 px.
+`PORTFOLIO_SCREENSHOTS` es opcional. Las pruebas abren el HTML local en contextos de navegador aislados y usan únicamente los datos ficticios de Multi-Market. Cubren el hero Patagonia y su ruta de tres hitos, los cinco casos de estudio, traducciones, teclado, ausencia de JavaScript, movimiento reducido y viewports de 320 a 1440 px.
 
 Multi-Market incluye búsqueda sin distinción de tildes o mayúsculas, catálogo ilustrado, precios y descuentos, filtros combinados, estado vacío, reset, combinaciones de rutas equivalentes del backend, consultas codificadas sin solicitudes de red y fichas de producto con foco, Escape y cierre por botón o fondo. Las capturas opcionales incluyen catálogo y ficha en escritorio y móvil.
 
