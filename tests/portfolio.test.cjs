@@ -2,8 +2,10 @@ const { test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const fs = require('node:fs');
+const crypto = require('node:crypto');
 const { pathToFileURL } = require('node:url');
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || 'playwright');
+const { encryptPayload, decryptPayload } = require('../scripts/encrypt-gift-assets.cjs');
 
 const root = path.resolve(__dirname, '..');
 const url = pathToFileURL(path.join(root, 'index.html')).href;
@@ -456,3 +458,121 @@ test('market reveals on scroll and respects a switch to reduced motion', () => w
   await marketCards(page).first().click();
   assert.equal(await page.locator('#market-product-dialog').isVisible(), true);
 }, { reducedMotion: 'no-preference' }));
+
+const giftTestKey = Buffer.from(Array.from({ length: 32 }, (_, index) => index + 1));
+const giftTestFragment = `#para-antonela-${giftTestKey.toString('base64url')}`;
+const giftPixel = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=', 'base64');
+
+function encryptedGiftFixtures(key = giftTestKey) {
+  const content = {
+    version: 1,
+    title: 'Dos personas de prueba',
+    subtitle: 'Una carta cifrada',
+    salutation: 'Hola:',
+    opening: 'Este contenido existe sólo para probar el descifrado.',
+    sections: Array.from({ length: 5 }, (_, index) => ({
+      title: `Motivo ${index + 1}`,
+      body: `Texto privado de prueba ${index + 1}.`
+    })),
+    closing: 'Cierre de prueba.',
+    signature: 'L',
+    photos: Array.from({ length: 4 }, (_, index) => ({
+      file: `photo-0${index + 1}.enc`,
+      mime: 'image/png',
+      alt: `Recuerdo de prueba ${index + 1}`,
+      position: '50% 50%'
+    }))
+  };
+  const fixtures = new Map([
+    ['content.enc', encryptPayload(Buffer.from(JSON.stringify(content)), key)]
+  ]);
+  content.photos.forEach(photo => fixtures.set(photo.file, encryptPayload(giftPixel, key)));
+  return fixtures;
+}
+
+async function serveGiftFixtures(page, fixtures, requests = []) {
+  await page.route('**/assets/gift/*', async route => {
+    const filename = new URL(route.request().url()).pathname.split('/').pop();
+    requests.push(filename);
+    const body = fixtures.get(filename);
+    if (!body) return route.fulfill({ status: 404, body: 'missing' });
+    return route.fulfill({ status: 200, contentType: 'application/octet-stream', body });
+  });
+}
+
+test('gift encryption round-trips and rejects tampered ciphertext', () => {
+  const payload = Buffer.from('contenido privado de prueba');
+  const encrypted = encryptPayload(payload, giftTestKey);
+  assert.deepEqual(decryptPayload(encrypted, giftTestKey), payload);
+  const tampered = Buffer.from(encrypted);
+  tampered[20] ^= 1;
+  assert.throws(() => decryptPayload(tampered, giftTestKey));
+  assert.notEqual(encrypted.subarray(0, 4).toString('hex'), '89504e47');
+  assert.notEqual(encrypted.subarray(0, 3).toString('hex'), 'ffd8ff');
+});
+
+test('unrelated hashes keep the portfolio visible without requesting gift assets', () => {
+  const requests = [];
+  return withPage(async page => {
+    await page.evaluate(() => { location.hash = '#proyectos'; });
+    await page.waitForFunction(() => location.hash === '#proyectos');
+    assert.equal(await page.locator('#gift-experience').isVisible(), false);
+    assert.equal(await page.locator('#contenido').isVisible(), true);
+    assert.deepEqual(requests, []);
+  }, {}, undefined, page => serveGiftFixtures(page, encryptedGiftFixtures(), requests));
+});
+
+test('the complete secret link decrypts the gift and opens it from the keyboard', () => {
+  const requests = [];
+  return withPage(async page => {
+    await page.evaluate(fragment => { location.hash = fragment; }, giftTestFragment);
+    await page.waitForFunction(() => document.body.classList.contains('gift-route-active') && !document.querySelector('[data-gift-envelope]').hidden);
+    assert.equal(await page.locator('#contenido').isVisible(), false);
+    assert.equal(await page.locator('[data-gift-letter]').isVisible(), false);
+    assert.deepEqual(requests.sort(), ['content.enc', 'photo-01.enc', 'photo-02.enc', 'photo-03.enc', 'photo-04.enc']);
+
+    const envelope = page.locator('[data-gift-envelope]');
+    await envelope.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForFunction(() => !document.querySelector('[data-gift-letter]').hidden);
+    assert.equal(await page.locator('[data-gift-title]').textContent(), 'Dos personas de prueba');
+    assert.equal(await page.locator('[data-gift-section]').count(), 5);
+    assert.equal(await page.locator('[data-gift-photo]').count(), 4);
+    assert.equal(await page.locator('[data-gift-title]').evaluate(node => node === document.activeElement), true);
+    assert.equal((await page.locator('[data-gift-photo]').first().getAttribute('src')).startsWith('blob:'), true);
+    assert.equal((await page.locator('body').textContent()).includes(giftTestKey.toString('base64url')), false);
+
+    const revokedUrl = await page.locator('[data-gift-photo]').first().getAttribute('src');
+    await page.evaluate(() => { location.hash = '#inicio'; });
+    await page.waitForFunction(() => document.querySelector('#gift-experience').hidden);
+    assert.equal(await page.locator('#contenido').isVisible(), true);
+    assert.equal(await page.evaluate(url => fetch(url).then(() => false, () => true), revokedUrl), true);
+  }, {}, undefined, page => serveGiftFixtures(page, encryptedGiftFixtures(), requests));
+});
+
+test('invalid or incorrect gift keys never reveal partial content', () => {
+  const requests = [];
+  return withPage(async page => {
+    await page.evaluate(() => { location.hash = '#para-antonela-incompleta'; });
+    await page.waitForFunction(() => document.body.classList.contains('gift-route-active'));
+    assert.match(await page.locator('[data-gift-status]').textContent(), /enlace completo/i);
+    assert.equal(await page.locator('[data-gift-letter]').isVisible(), false);
+    assert.deepEqual(requests, []);
+
+    const wrongKey = crypto.randomBytes(32).toString('base64url');
+    const encryptedRequest = page.waitForRequest('**/assets/gift/content.enc');
+    await page.evaluate(key => { location.hash = `#para-antonela-${key}`; }, wrongKey);
+    await encryptedRequest;
+    await page.waitForFunction(() => document.querySelector('#gift-experience').dataset.state === 'error');
+    assert.equal(await page.locator('[data-gift-letter]').isVisible(), false);
+    assert.deepEqual(requests, ['content.enc']);
+  }, {}, undefined, page => serveGiftFixtures(page, encryptedGiftFixtures(), requests));
+});
+
+test('reduced motion opens the encrypted letter without an animation delay', () => withPage(async page => {
+  await page.evaluate(fragment => { location.hash = fragment; }, giftTestFragment);
+  await page.waitForFunction(() => !document.querySelector('[data-gift-envelope]').hidden);
+  await page.locator('[data-gift-envelope]').click();
+  assert.equal(await page.locator('[data-gift-letter]').isVisible(), true);
+  assert.equal(await page.locator('#gift-experience').getAttribute('data-state'), 'open');
+}, { reducedMotion: 'reduce' }, undefined, page => serveGiftFixtures(page, encryptedGiftFixtures())));

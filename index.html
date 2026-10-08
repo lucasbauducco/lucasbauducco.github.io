@@ -17,10 +17,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/market-demo.css">
+  <link rel="stylesheet" href="assets/css/gift.css">
   <script src="assets/js/market-demo.js" defer></script>
+  <script src="assets/js/gift.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido" data-i18n="skip">Saltar al contenido</a>
+
+  <section class="gift-experience" id="gift-experience" aria-label="Carta privada" data-state="idle" hidden>
+    <div class="gift-stage">
+      <div class="gift-botanical gift-botanical-left" aria-hidden="true"></div>
+      <div class="gift-botanical gift-botanical-right" aria-hidden="true"></div>
+      <p class="gift-status" data-gift-status role="status" aria-live="polite"></p>
+      <button class="gift-envelope-button" type="button" data-gift-envelope aria-expanded="false" aria-controls="gift-letter" hidden>
+        <span class="gift-envelope-object" aria-hidden="true">
+          <span class="gift-envelope-back"></span>
+          <span class="gift-envelope-paper">Para vos</span>
+          <span class="gift-envelope-front"></span>
+          <span class="gift-envelope-flap"></span>
+          <span class="gift-envelope-seal">LA</span>
+        </span>
+        <span class="gift-envelope-prompt">Abrí esta carta</span>
+      </button>
+      <article class="gift-letter" id="gift-letter" data-gift-letter hidden></article>
+    </div>
+  </section>
 
   <header class="site-header" id="inicio">
     <div class="nav-shell">
