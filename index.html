@@ -48,10 +48,12 @@
         <button type="button" data-language="en" aria-pressed="false">EN</button>
       </div>
     </div>
+    <div class="route-progress" aria-hidden="true"><span></span></div>
   </header>
 
   <main id="contenido">
     <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-landscape" src="assets/img/IMG_20230310_113859179.jpg" width="4000" height="2250" fetchpriority="high" alt="">
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-grid container">
         <div class="hero-copy">
@@ -60,7 +62,7 @@
             <span data-i18n="availability">Disponible para nuevos desafíos</span>
           </p>
           <h1 id="hero-title">
-            <span>Lucas Bauducco</span>
+            <span>Lucas<br>Bauducco</span>
             <em data-i18n="role">Backend Developer</em>
           </h1>
           <p class="hero-lead" data-i18n="heroLead">Construyo APIs y sistemas web robustos, combinando experiencia backend con un flujo de desarrollo asistido por IA, verificable de principio a fin.</p>
@@ -80,21 +82,23 @@
           </ul>
         </div>
 
-        <figure class="system-console" aria-labelledby="hero-system-caption">
-          <header class="system-console-header">
-            <span class="system-live"><i aria-hidden="true"></i><span data-i18n="systemStatus">Sistema en producción</span></span>
-            <code>request_id: LB-2026</code>
-          </header>
-          <ol class="system-flow" aria-label="Flujo de una solicitud en un sistema backend" data-i18n-aria="systemFlowAria">
-            <li data-system-stage="request"><span>01</span><strong data-i18n="systemRequest">Solicitud</strong><small data-i18n="systemRequestDetail">Cliente e interfaz</small></li>
-            <li data-system-stage="authentication"><span>02</span><strong data-i18n="systemAuth">Autenticación</strong><small>JWT / OAuth</small></li>
-            <li data-system-stage="api"><span>03</span><strong>API</strong><small>Symfony / Django</small></li>
-            <li data-system-stage="integrations"><span>04</span><strong data-i18n="systemIntegrations">Integraciones</strong><small data-i18n="systemIntegrationDetail">REST / servicios</small></li>
-            <li data-system-stage="data"><span>05</span><strong data-i18n="systemData">Datos</strong><small data-i18n="systemDataDetail">Modelos / reglas</small></li>
-            <li data-system-stage="response"><span>06</span><strong data-i18n="systemResponse">Respuesta</strong><small data-i18n="systemResponseDetail">Verificada y observable</small></li>
-          </ol>
-          <figcaption class="system-console-footer" id="hero-system-caption">
+        <figure class="portrait-card" aria-labelledby="hero-route-caption">
+          <div class="software-route" aria-label="Ruta de software: diseño de API, integraciones y calidad verificable" data-i18n-aria="routeAria">
+            <svg viewBox="0 0 480 560" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M54 70 C 205 68, 126 224, 278 248 S 420 350, 386 506"></path>
+              <circle cx="54" cy="70" r="7"></circle>
+              <circle cx="278" cy="248" r="7"></circle>
+              <circle cx="386" cy="506" r="7"></circle>
+            </svg>
+            <span class="route-node route-node-api" data-route-node data-i18n="systemNodeApi">Diseño de API</span>
+            <span class="route-node route-node-integrations" data-route-node data-i18n="systemNodeIntegrations">Integraciones</span>
+            <span class="route-node route-node-quality" data-route-node data-i18n="systemNodeQuality">Calidad verificable</span>
+          </div>
+          <div class="portrait-frame">
             <img src="assets/img/profile-professional.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Retrato profesional de Lucas Bauducco en la montaña" data-i18n-alt="portraitAlt">
+          </div>
+          <figcaption class="portrait-caption" id="hero-route-caption">
+            <span aria-hidden="true"></span>
             <span data-i18n="heroSystemCaption">Diseño el recorrido completo: del pedido inicial a una respuesta que se puede probar y explicar.</span>
           </figcaption>
         </figure>
@@ -185,7 +189,6 @@
                 </div>
               </div>
             </div>
-            <div class="case-flow" aria-hidden="true"><span>Vue</span><i></i><span>Django REST</span><i></i><span>JWT</span><i></i><span data-i18n="flowCatalog">Catálogo</span></div>
             <div class="project-body">
               <div class="project-kicker"><span>01</span><strong data-i18n="marketType">Plataforma full stack</strong></div>
               <h3>Multi-Market</h3>
@@ -257,7 +260,6 @@
                 <img src="assets/img/ApiRest.png" width="1366" height="681" loading="lazy" decoding="async" alt="Documentación OpenAPI del sistema académico" data-i18n-alt="apiAlt">
               </div>
             </div>
-            <div class="case-flow" aria-hidden="true"><span data-i18n="flowExternalClient">Cliente externo</span><i></i><span>JWT</span><i></i><span>Symfony</span><i></i><span>OpenAPI</span></div>
             <div class="project-body">
               <div class="project-kicker"><span>02</span><strong data-i18n="apiType">Integración institucional</strong></div>
               <h3 data-i18n="apiTitle">API REST · Sistema académico</h3>
@@ -284,7 +286,6 @@
                 <div><b>POST</b><i></i><span></span></div><div><b>GET</b><i></i><span></span></div><div><b>PUT</b><i></i><span></span></div><div><b>DELETE</b><i></i><span></span></div>
               </div>
             </div>
-            <div class="case-flow" aria-hidden="true"><span data-i18n="flowClient">Cliente</span><i></i><span>JWT</span><i></i><span>DRF</span><i></i><span data-i18n="flowProducts">Productos</span></div>
             <div class="project-body">
               <div class="project-kicker"><span>03</span><strong data-i18n="djangoType">API demostrable</strong></div>
               <h3 data-i18n="djangoTitle">API REST · Productos y autenticación</h3>
@@ -309,7 +310,6 @@
               <div class="phone-shell"><span aria-hidden="true"></span><img src="assets/img/appUNRaf.jpg" width="225" height="500" loading="lazy" decoding="async" alt="Aplicación móvil de UNRaf" data-i18n-alt="appAlt"></div>
               <div class="phone-caption" aria-hidden="true"><i></i><i></i><i></i></div>
             </div>
-            <div class="case-flow" aria-hidden="true"><span data-i18n="flowStudent">Estudiante</span><i></i><span>Ionic + Vue</span><i></i><span>PWA</span><i></i><span>Capacitor</span></div>
             <div class="project-body">
               <div class="project-kicker"><span>04</span><strong data-i18n="appType">Producto multiplataforma</strong></div>
               <h3 data-i18n="appTitle">PWA y aplicación universitaria</h3>
@@ -335,7 +335,6 @@
               <img src="assets/img/ocr-read.png" width="300" height="168" loading="lazy" decoding="async" alt="Ilustración del lector OCR de documentos" data-i18n-alt="ocrAlt">
               <span class="scan-line" aria-hidden="true"></span>
             </div>
-            <div class="case-flow" aria-hidden="true"><span data-i18n="flowImage">Imagen / PDF</span><i></i><span>OpenCV</span><i></i><span>EasyOCR</span><i></i><span data-i18n="systemData">Datos</span></div>
             <div class="project-body">
               <div class="project-kicker"><span>05</span><strong data-i18n="ocrType">Prototipo experimental</strong></div>
               <h3 data-i18n="ocrTitle">Extracción de comprobantes · OCR</h3>
@@ -598,13 +597,9 @@
         heroLead: "Construyo APIs y sistemas web robustos, combinando experiencia backend con un flujo de desarrollo asistido por IA, verificable de principio a fin.",
         viewProjects: "Ver proyectos", downloadCv: "Descargar CV", years: "desarrollando software",
         location: "Argentina · Remoto", specialty: "Backend & integraciones", factsAria: "Datos profesionales",
-        systemStatus: "Sistema en producción", systemFlowAria: "Flujo de una solicitud en un sistema backend",
-        systemRequest: "Solicitud", systemRequestDetail: "Cliente e interfaz", systemAuth: "Autenticación",
-        systemIntegrations: "Integraciones", systemData: "Datos", systemResponse: "Respuesta",
-        systemIntegrationDetail: "REST / servicios", systemDataDetail: "Modelos / reglas", systemResponseDetail: "Verificada y observable",
+        routeAria: "Ruta de software: diseño de API, integraciones y calidad verificable",
+        systemNodeApi: "Diseño de API", systemNodeIntegrations: "Integraciones", systemNodeQuality: "Calidad verificable",
         heroSystemCaption: "Diseño el recorrido completo: del pedido inicial a una respuesta que se puede probar y explicar.",
-        flowCatalog: "Catálogo", flowExternalClient: "Cliente externo", flowClient: "Cliente",
-        flowProducts: "Productos", flowStudent: "Estudiante", flowImage: "Imagen / PDF",
         portraitAlt: "Retrato profesional de Lucas Bauducco en la montaña", scrollAria: "Continuar hacia Sobre mí", explore: "Explorar",
         aboutEyebrow: "Perfil profesional", aboutTitle: "Soluciones simples para problemas que no lo son.",
         aboutP1: "Soy desarrollador web con foco en backend. Trabajo con Symfony, Django y APIs REST para convertir procesos complejos en productos mantenibles, seguros y fáciles de evolucionar.",
@@ -743,13 +738,9 @@
         heroLead: "I build robust APIs and web systems, combining backend experience with an AI-assisted development workflow that is verifiable from start to finish.",
         viewProjects: "View projects", downloadCv: "Download résumé", years: "building software",
         location: "Argentina · Remote", specialty: "Backend & integrations", factsAria: "Professional facts",
-        systemStatus: "System in production", systemFlowAria: "Request flow through a backend system",
-        systemRequest: "Request", systemRequestDetail: "Client and interface", systemAuth: "Authentication",
-        systemIntegrations: "Integrations", systemData: "Data", systemResponse: "Response",
-        systemIntegrationDetail: "REST / services", systemDataDetail: "Models / rules", systemResponseDetail: "Verified and observable",
+        routeAria: "Software route: API design, integrations and verifiable quality",
+        systemNodeApi: "API design", systemNodeIntegrations: "Integrations", systemNodeQuality: "Verifiable quality",
         heroSystemCaption: "I design the full journey: from the initial request to a response that can be tested and explained.",
-        flowCatalog: "Catalog", flowExternalClient: "External client", flowClient: "Client",
-        flowProducts: "Products", flowStudent: "Student", flowImage: "Image / PDF",
         portraitAlt: "Professional portrait of Lucas Bauducco in the mountains", scrollAria: "Continue to About", explore: "Explore",
         aboutEyebrow: "Professional profile", aboutTitle: "Simple solutions for problems that are not.",
         aboutP1: "I am a web developer focused on backend engineering. I use Symfony, Django and REST APIs to turn complex processes into maintainable, secure products that are easy to evolve.",
@@ -887,6 +878,29 @@
     setLanguage(savedLanguage, false);
     document.getElementById("current-year").textContent = new Date().getFullYear();
 
+    function initRouteProgress() {
+      const progress = document.querySelector(".route-progress span");
+      if (!progress) return;
+
+      let scheduled = false;
+      function updateProgress() {
+        const distance = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = distance > 0 ? Math.min(Math.max(window.scrollY / distance, 0), 1) : 0;
+        progress.style.setProperty("--route-progress", ratio);
+        scheduled = false;
+      }
+      function scheduleProgress() {
+        if (scheduled) return;
+        scheduled = true;
+        window.requestAnimationFrame(updateProgress);
+      }
+
+      document.documentElement.classList.add("route-ready");
+      window.addEventListener("scroll", scheduleProgress, { passive: true });
+      window.addEventListener("resize", scheduleProgress);
+      scheduleProgress();
+    }
+
     function initScrollAnimations() {
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       if (reducedMotion.matches || !("IntersectionObserver" in window)) return;
@@ -948,6 +962,7 @@
       });
     }
 
+    initRouteProgress();
     initScrollAnimations();
   </script>
 </body>
