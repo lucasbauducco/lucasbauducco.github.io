@@ -1,5 +1,8 @@
 .market-demo {
   grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
+  grid-column: 1 / -1;
   min-width: 0;
   margin-block: 1rem 2rem;
   padding: clamp(1rem, 3vw, 2.5rem);
@@ -509,51 +512,59 @@ body.market-dialog-open {
   }
 }
 
-/* Integración con el sistema visual "mapa de sistemas". */
+/* Integración con el sistema visual "sistemas en producción". */
 .market-demo {
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.4rem, 4vw, 3rem);
   border: 1px solid var(--stone-300);
-  border-radius: 0;
+  border-radius: 3px;
   background: var(--white);
 }
 
 .market-storefront {
   overflow: hidden;
-  border: 1px solid var(--navy-800);
-  border-radius: 2px;
+  border: 1px solid var(--navy-700);
+  border-radius: 3px;
   background: var(--white);
   box-shadow: none;
 }
 
+.demo-toolbar {
+  border-bottom: 1px solid rgba(120, 199, 214, 0.2);
+  background: var(--navy-900);
+}
+
+.demo-toolbar > strong > span,
+.demo-reset,
+.demo-badge {
+  border-radius: 2px;
+}
+
 .market-storefront-body {
-  background:
-    linear-gradient(rgba(36, 72, 92, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(36, 72, 92, 0.035) 1px, transparent 1px),
-    var(--stone-50);
-  background-size: 32px 32px, 32px 32px, auto;
+  background: var(--stone-50);
 }
 
 .market-filters {
   border-top: 1px solid var(--stone-300);
   border-bottom: 1px solid var(--stone-300);
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.82);
 }
 
 .market-filters label {
   color: var(--navy-800);
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .market-filters input,
 .market-filters select,
 .demo-reset {
+  min-height: 44px;
   border-radius: 2px;
 }
 
 .market-product {
-  border: 0;
-  border-top: 2px solid var(--navy-800);
-  border-radius: 0;
+  border: 1px solid var(--stone-300);
+  border-top: 3px solid var(--navy-700);
+  border-radius: 2px;
   background: var(--white);
   box-shadow: none;
   transition: border-color 180ms ease, background 180ms ease;
@@ -585,7 +596,7 @@ body.market-dialog-open {
 .market-product-name {
   color: var(--navy-900);
   font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 720;
   letter-spacing: -0.03em;
 }
 
@@ -595,24 +606,30 @@ body.market-dialog-open {
 
 .market-api {
   border-color: var(--stone-300);
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.78);
 }
 
 .market-api-content code {
+  border-left: 3px solid var(--glacier-500);
   font-family: var(--font-code);
 }
 
 .market-dialog {
+  border: 1px solid var(--stone-300);
   border-radius: 3px;
-  box-shadow: 0 30px 90px rgba(3, 19, 31, 0.28);
+  box-shadow: 0 30px 90px rgba(16, 35, 44, 0.3);
 }
 
 .market-dialog-toolbar {
-  border-bottom-color: var(--stone-300);
+  pointer-events: none;
+  border-bottom-color: rgba(120, 199, 214, 0.2);
   background: var(--navy-900);
 }
 
 .market-dialog-close {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
   border-radius: 2px;
 }
 
@@ -622,11 +639,7 @@ body.market-dialog-open {
 
 .market-dialog-visual {
   border-radius: 2px;
-  background:
-    linear-gradient(rgba(36, 72, 92, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(36, 72, 92, 0.04) 1px, transparent 1px),
-    var(--glacier-100);
-  background-size: 28px 28px, 28px 28px, auto;
+  background: var(--glacier-100);
 }
 
 .market-dialog-copy h3 {

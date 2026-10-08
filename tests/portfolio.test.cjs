@@ -49,6 +49,17 @@ test('persisted English initializes the portfolio with complete translations', (
   assert.deepEqual(invalid, []);
 }, {}, 'en'));
 
+test('production-systems theme exposes a real architecture flow and five case flows', () => withPage(async page => {
+  assert.equal(await page.locator('.hero-landscape').count(), 0);
+  assert.equal(await page.locator('.system-flow [data-system-stage]').count(), 6);
+  assert.equal(await page.locator('.case-flow').count(), 5);
+  assert.match(await text(page, '.system-flow'), /Solicitud.*Autenticación.*API.*Integraciones.*Datos.*Respuesta/s);
+  assert.equal(await page.locator('.hero').evaluate(element => getComputedStyle(element, '::before').backgroundImage.includes('topography.svg')), false);
+
+  await page.locator('[data-language="en"]').click();
+  assert.match(await text(page, '.system-flow'), /Request.*Authentication.*API.*Integrations.*Data.*Response/s);
+}));
+
 test('five case studies expose all four dimensions and retain the OCR limitation', () => withPage(async page => {
   assert.equal(await page.locator('.project-case').count(), 5);
   for (const details of await page.locator('.project-case').all()) {
@@ -82,7 +93,9 @@ for (const width of [1440, 980, 760, 390, 320]) {
       assert.ok(box.x >= 0 && box.x + box.width <= width && box.height >= 44);
     }
     assert.equal(await page.locator('.project-case dd').first().isVisible(), true);
-    assert.match(await page.locator('.experience-section').evaluate(element => getComputedStyle(element, '::before').backgroundImage), /topography\.svg/);
+    assert.equal(await page.locator('.experience-section').evaluate(element => getComputedStyle(element, '::before').backgroundImage.includes('topography.svg')), false);
+    const flow = await page.locator('.system-flow').boundingBox();
+    assert.ok(flow && flow.x >= 0 && flow.x + flow.width <= width, 'System flow stays inside the viewport');
     if (process.env.PORTFOLIO_SCREENSHOTS) {
       const output = path.resolve(process.env.PORTFOLIO_SCREENSHOTS);
       fs.mkdirSync(output, { recursive: true });
