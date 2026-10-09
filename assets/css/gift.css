@@ -396,17 +396,26 @@ body.gift-route-active > .site-footer {
 
 .gift-photo {
   position: relative;
+  align-self: start;
   margin: 0;
-  padding: .35rem;
-  background: #d9c7a6;
-  border: 1px solid rgba(105, 77, 47, .38);
-  box-shadow: 0 .8rem 1.7rem rgba(63, 42, 31, .23);
+  padding: clamp(.65rem, 1.5vw, 1rem);
+  background:
+    linear-gradient(135deg, rgba(255, 241, 192, .52), transparent 38%, rgba(62, 41, 22, .32)),
+    repeating-linear-gradient(92deg, rgba(83, 55, 29, .12) 0 1px, transparent 1px 5px),
+    #b69a61;
+  border: 3px ridge #c9ad74;
+  box-shadow:
+    inset 0 0 0 2px #715536,
+    inset 0 0 0 4px rgba(243, 220, 163, .65),
+    0 .35rem .5rem rgba(58, 40, 22, .16),
+    0 1rem 1.8rem rgba(63, 42, 31, .27);
 }
 
 .gift-photo::after {
   position: absolute;
-  inset: .7rem;
-  border: 1px solid rgba(243, 233, 210, .64);
+  inset: .3rem;
+  border: 1px solid rgba(255, 232, 178, .72);
+  box-shadow: inset 0 0 0 1px rgba(77, 54, 28, .45);
   pointer-events: none;
   content: "";
 }
@@ -414,14 +423,14 @@ body.gift-route-active > .site-footer {
 .gift-photo img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  outline: 2px ridge #dcc79b;
 }
 
-.gift-photo-sea { aspect-ratio: .84; transform: rotate(-1.5deg); }
-.gift-photo-daily { aspect-ratio: .88; border-radius: 50% 50% 4% 4% / 25% 25% 4% 4%; overflow: hidden; }
-.gift-photo-evening { aspect-ratio: 1.15; transform: rotate(1.2deg); }
-.gift-photo-promise { aspect-ratio: .78; transform: rotate(-1deg); }
+.gift-photo-sea { transform: rotate(-1.5deg); }
+.gift-photo-daily { transform: rotate(.6deg); }
+.gift-photo-evening { transform: rotate(1.2deg); }
+.gift-photo-promise { transform: rotate(-1deg); }
 
 .gift-letter-closing {
   position: relative;
@@ -476,8 +485,6 @@ body.gift-route-active > .site-footer {
   .gift-intro { gap: 2rem; }
   .gift-intro-copy { order: -1; }
   .gift-memory-evening .gift-prose { order: 2; }
-  .gift-photo-evening { aspect-ratio: .92; }
-  .gift-photo-promise { aspect-ratio: .9; }
   .gift-letter-closing {
     min-height: 27rem;
     padding: 12rem 1.35rem 2.5rem;
