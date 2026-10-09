@@ -4,6 +4,7 @@
   const PREFIX = '#para-antonela-';
   const MAGIC = [65, 71, 70, 84, 49]; // AGFT1
   const IV_BYTES = 12;
+  const GIFT_FONT_ID = 'gift-fonts';
   const root = document.getElementById('gift-experience');
   const envelope = root?.querySelector('[data-gift-envelope]');
   const letter = root?.querySelector('[data-gift-letter]');
@@ -19,6 +20,15 @@
 
   function setPublicSurfaceHidden(hidden) {
     publicSurface.forEach(element => { element.inert = hidden; });
+  }
+
+  function ensureGiftFonts() {
+    if (document.getElementById(GIFT_FONT_ID)) return;
+    const stylesheet = document.createElement('link');
+    stylesheet.id = GIFT_FONT_ID;
+    stylesheet.rel = 'stylesheet';
+    stylesheet.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Italiana&display=swap';
+    document.head.append(stylesheet);
   }
 
   function revokePhotos() {
@@ -50,6 +60,7 @@
 
   function enterGift() {
     resetPrivateContent();
+    ensureGiftFonts();
     root.hidden = false;
     root.dataset.state = 'loading';
     document.body.classList.add('gift-route-active');
