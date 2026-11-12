@@ -200,14 +200,10 @@
 
         <div class="project-grid">
           <article class="project-card project-card-featured case-market">
-            <div class="project-media project-visual project-visual-market" role="img" aria-label="Vista conceptual de un marketplace con múltiples tiendas" data-i18n-aria="marketVisualAlt">
-              <div class="product-window" aria-hidden="true">
+            <div class="project-media project-visual project-visual-market">
+              <div class="capture-window">
                 <div class="window-bar"><i></i><i></i><i></i><span>MULTI-MARKET</span></div>
-                <div class="market-preview">
-                  <div class="market-nav"><b>M</b><span></span><i></i></div>
-                  <div class="market-copy"><strong></strong><span></span></div>
-                  <div class="market-products"><i></i><i></i><i></i></div>
-                </div>
+                <img src="assets/img/multi-market/01-home.png" width="1360" height="860" decoding="async" alt="Portada de Multi-Market con ofertas y categorías" data-i18n-alt="marketAlt">
               </div>
             </div>
             <div class="project-body">
@@ -215,11 +211,11 @@
               <h3>Multi-Market</h3>
               <p data-i18n="marketDescription">Marketplace que organiza múltiples tiendas, sus catálogos y productos mediante una API Django y un cliente Vue.</p>
               <ul class="project-points">
-                <li data-i18n="marketPoint1">Usuarios, tiendas, categorías, subcategorías y productos.</li>
-                <li data-i18n="marketPoint2">Búsqueda, filtros por tienda y categoría, y descuentos.</li>
-                <li data-i18n="marketPoint3">Frontend desacoplado que consume la API mediante Axios.</li>
+                <li data-i18n="marketPoint1">Catálogo con ofertas, filtros, galería de fotos y páginas de tienda.</li>
+                <li data-i18n="marketPoint2">Carrito y checkout por pasos, con un pedido por tienda y precios calculados en el servidor.</li>
+                <li data-i18n="marketPoint3">Panel para cada tienda y pagos con Mercado Pago, transferencia, efectivo o link de pago.</li>
               </ul>
-              <div class="project-meta"><span>Django REST</span><span>Vue 3</span><span>Vuex</span><span>JWT</span></div>
+              <div class="project-meta"><span>Django REST</span><span>Vue 3</span><span>Vuex</span><span>Mercado Pago</span><span>Docker</span></div>
               <details class="project-case">
                 <summary data-i18n-aria="marketCaseAria" aria-label="Cómo lo resolví: Multi-Market"><span data-i18n="caseToggle">Cómo lo resolví</span><span class="case-toggle-icon" aria-hidden="true">+</span></summary>
                 <dl>
@@ -231,11 +227,19 @@
               </details>
               <div class="project-actions">
                 <a class="text-link" href="#demo-market"><span data-i18n="demoTry">Probá la demo</span><span aria-hidden="true">↓</span></a>
-                <a class="text-link" href="https://github.com/lucasbauducco/backend-multi-market" target="_blank" rel="noopener noreferrer"><span data-i18n="viewBackend">Ver backend</span><span aria-hidden="true">↗</span></a>
-                <a class="text-link" href="https://github.com/lucasbauducco/FrontEnd-multi-market" target="_blank" rel="noopener noreferrer"><span data-i18n="viewFrontend">Ver frontend</span><span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="https://github.com/lucasbauducco/multi-market" target="_blank" rel="noopener noreferrer"><span data-i18n="viewRepository">Ver repositorio</span><span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
+
+          <section class="market-shots" aria-labelledby="market-shots-title">
+            <h3 id="market-shots-title" data-i18n="marketShotsTitle">Cómo quedó</h3>
+            <ul>
+              <li><figure><img src="assets/img/multi-market/04b-producto-galeria.png" width="1360" height="860" loading="lazy" decoding="async" alt="Ficha de producto con galería de fotos" data-i18n-alt="shotProductAlt"><figcaption data-i18n="shotProduct">Ficha con galería, descuento, stock y medios de pago.</figcaption></figure></li>
+              <li><figure><img src="assets/img/multi-market/07-checkout-pago.png" width="1360" height="860" loading="lazy" decoding="async" alt="Checkout por pasos con medios de pago" data-i18n-alt="shotCheckoutAlt"><figcaption data-i18n="shotCheckout">Checkout por pasos: cada tienda ofrece sus medios de pago.</figcaption></figure></li>
+              <li><figure><img src="assets/img/multi-market/13-panel-resumen.png" width="1360" height="860" loading="lazy" decoding="async" alt="Panel de la tienda con resumen de ventas" data-i18n-alt="shotPanelAlt"><figcaption data-i18n="shotPanel">Panel de la tienda: ventas, pedidos y stock bajo.</figcaption></figure></li>
+            </ul>
+          </section>
 
           <section class="market-demo" id="demo-market" aria-labelledby="market-demo-title">
             <div class="demo-heading">
@@ -641,10 +645,14 @@
         "academicCaseDecision": "Usé Symfony y API Platform para publicar el contrato OpenAPI, con JWT para las operaciones protegidas.",
         "academicCaseOutcome": "Endpoints agrupados en una documentación navegable y un flujo de autenticación y renovación de tokens para integraciones.",
         "marketCaseAria": "Cómo lo resolví: Multi-Market",
-        "marketCaseProblem": "Organizar tiendas y catálogos en una plataforma común, con productos que puedan buscarse y filtrarse.",
-        "marketCaseContribution": "Trabajé en la API del catálogo y en el cliente que presenta tiendas, categorías y productos.",
-        "marketCaseDecision": "Desacoplé el backend Django REST del frontend Vue, con Axios como punto de comunicación.",
-        "marketCaseOutcome": "Dos proyectos complementarios: una API para el catálogo y una interfaz para explorarlo por tienda y categoría.",
+        "marketCaseProblem": "Que varias tiendas publiquen en un mismo lugar y que el comprador pueda armar un carrito y pedir a cada una, sin cuenta y con el pago que prefiera cada tienda.",
+        "marketCaseContribution": "Construí la API, el cliente Vue, el checkout por pasos, el panel de cada tienda y la integración de pagos.",
+        "marketCaseDecision": "Precios y stock se calculan en el servidor; el webhook de Mercado Pago valida la firma y consulta el pago a la API antes de marcar el pedido como pagado, y los tokens de cada tienda se guardan cifrados.",
+        "marketCaseOutcome": "Un marketplace completo con datos de demostración y despliegue con Docker. Mercado Pago está probado con respuestas simuladas; todavía no se validó contra el sandbox real.",
+    "marketAlt": "Portada de Multi-Market con ofertas y categorías", "marketShotsTitle": "Cómo quedó",
+    "shotProductAlt": "Ficha de producto con galería de fotos", "shotProduct": "Ficha con galería, descuento, stock y medios de pago.",
+    "shotCheckoutAlt": "Checkout por pasos con medios de pago", "shotCheckout": "Checkout por pasos: cada tienda ofrece sus medios de pago.",
+    "shotPanelAlt": "Panel de la tienda con resumen de ventas", "shotPanel": "Panel de la tienda: ventas, pedidos y stock bajo.",
         pageTitle: "Lucas Bauducco · Backend Developer",
         description: "Portfolio de Lucas Bauducco, Backend Developer especializado en Symfony, Django, APIs y desarrollo asistido por IA.",
         ogDescription: "Backend, APIs y productos digitales construidos con criterio técnico y flujos de desarrollo asistidos por IA.",
@@ -675,9 +683,9 @@
         projectsEyebrow: "Trabajo seleccionado", projectsTitle: "Sistemas reales, decisiones técnicas visibles.",
         projectsIntro: "Casos seleccionados por lo que demuestran: integración, producto, automatización y capacidad de entrega.",
         marketVisualAlt: "Vista conceptual de un marketplace con múltiples tiendas", marketType: "Plataforma full stack",
-        marketDescription: "Marketplace que organiza múltiples tiendas, sus catálogos y productos mediante una API Django y un cliente Vue.",
-        marketPoint1: "Usuarios, tiendas, categorías, subcategorías y productos.", marketPoint2: "Búsqueda, filtros por tienda y categoría, y descuentos.",
-        marketPoint3: "Frontend desacoplado que consume la API mediante Axios.", viewBackend: "Ver backend", viewFrontend: "Ver frontend",
+        marketDescription: "Marketplace donde varias tiendas publican sus productos y los clientes arman un carrito y envían pedidos a cada una, con pagos por tienda.",
+        marketPoint1: "Catálogo con ofertas, filtros, galería de fotos y páginas de tienda.", marketPoint2: "Carrito y checkout por pasos, con un pedido por tienda y precios calculados en el servidor.",
+        marketPoint3: "Panel para cada tienda y pagos con Mercado Pago, transferencia, efectivo o link de pago.", viewBackend: "Ver backend", viewFrontend: "Ver frontend",
         apiAlt: "Documentación OpenAPI del sistema académico", apiType: "Integración institucional", apiTitle: "API REST · Sistema académico",
         apiDescription: "Servicio documentado para integrar información académica y exponer operaciones protegidas con autenticación JWT.",
         apiPoint1: "Contrato OpenAPI navegable con endpoints agrupados.", apiPoint2: "Autenticación y renovación de tokens para clientes externos.",
@@ -793,10 +801,14 @@
         "academicCaseDecision": "I used Symfony and API Platform to publish the OpenAPI contract, with JWT for protected operations.",
         "academicCaseOutcome": "Endpoints grouped in browsable documentation and a token authentication and renewal flow for integrations.",
         "marketCaseAria": "How I built it: Multi-Market",
-        "marketCaseProblem": "Organize stores and catalogs in a shared platform where products can be searched and filtered.",
-        "marketCaseContribution": "I worked on the catalog API and the client that displays stores, categories and products.",
-        "marketCaseDecision": "I decoupled the Django REST backend from the Vue frontend, using Axios for communication.",
-        "marketCaseOutcome": "Two complementary projects: a catalog API and an interface to explore it by store and category.",
+        "marketCaseProblem": "Let several stores publish in one place, and let buyers build a cart and order from each one without an account, using the payment method each store prefers.",
+        "marketCaseContribution": "I built the API, the Vue client, the step-by-step checkout, each store's dashboard and the payment integration.",
+        "marketCaseDecision": "Prices and stock are computed on the server; the Mercado Pago webhook verifies the signature and queries the payment API before marking an order as paid, and each store's tokens are stored encrypted.",
+        "marketCaseOutcome": "A complete marketplace with demo data and Docker deployment. Mercado Pago is tested with simulated responses; it has not yet been validated against the real sandbox.",
+    "marketAlt": "Multi-Market home page with deals and categories", "marketShotsTitle": "How it turned out",
+    "shotProductAlt": "Product page with photo gallery", "shotProduct": "Product page with gallery, discount, stock and payment methods.",
+    "shotCheckoutAlt": "Step-by-step checkout with payment methods", "shotCheckout": "Step-by-step checkout: each store offers its own payment methods.",
+    "shotPanelAlt": "Store dashboard with sales summary", "shotPanel": "Store dashboard: sales, orders and low stock.",
         pageTitle: "Lucas Bauducco · Backend Developer",
         description: "Portfolio of Lucas Bauducco, a Backend Developer specializing in Symfony, Django, APIs and AI-assisted development.",
         ogDescription: "Backend systems, APIs and digital products built with technical judgment and AI-assisted development workflows.",
@@ -827,9 +839,9 @@
         projectsEyebrow: "Selected work", projectsTitle: "Real systems, visible technical decisions.",
         projectsIntro: "Cases selected for what they demonstrate: integration, product thinking, automation and delivery capability.",
         marketVisualAlt: "Conceptual view of a multi-store marketplace", marketType: "Full-stack platform",
-        marketDescription: "Marketplace that organizes multiple stores, catalogs and products through a Django API and a Vue client.",
-        marketPoint1: "Users, stores, categories, subcategories and products.", marketPoint2: "Search, store and category filters, and discounts.",
-        marketPoint3: "Decoupled frontend that consumes the API through Axios.", viewBackend: "View backend", viewFrontend: "View frontend",
+        marketDescription: "Marketplace where several stores publish their products and customers build a cart and send orders to each one, with per-store payments.",
+        marketPoint1: "Catalog with deals, filters, photo gallery and store pages.", marketPoint2: "Step-by-step cart and checkout, one order per store, with prices computed on the server.",
+        marketPoint3: "Dashboard for each store and payments through Mercado Pago, bank transfer, cash or a payment link.", viewBackend: "View backend", viewFrontend: "View frontend",
         apiAlt: "OpenAPI documentation for the academic system", apiType: "Institutional integration", apiTitle: "REST API · Academic system",
         apiDescription: "Documented service for integrating academic information and exposing operations protected with JWT authentication.",
         apiPoint1: "Browsable OpenAPI contract with grouped endpoints.", apiPoint2: "Authentication and token refresh for external clients.",
