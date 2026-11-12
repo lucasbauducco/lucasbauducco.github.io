@@ -374,6 +374,32 @@
               <div class="project-actions"><a class="text-link" href="https://github.com/lucasbauducco/zygo_api" target="_blank" rel="noopener noreferrer"><span data-i18n="viewExperiment">Ver experimento</span><span aria-hidden="true">↗</span></a></div>
             </div>
           </article>
+
+          <article class="project-card case-quorum">
+            <div class="project-media project-capture project-capture-api">
+              <div class="capture-window">
+                <div class="window-bar"><i></i><i></i><i></i><span>QUÓRUM</span></div>
+                <img src="assets/img/quorum-comite.png" width="1440" height="900" loading="lazy" decoding="async" alt="Grafo del comité de inversión de Quórum" data-i18n-alt="quorumAlt">
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker"><span>06</span><strong data-i18n="quorumType">Producto de datos</strong></div>
+              <h3 data-i18n="quorumTitle">Quórum · Comité de inversión</h3>
+              <p data-i18n="quorumDescription">Aplicación Django + Celery que ordena activos argentinos, mide el riesgo de la cartera en dólares y registra cada decisión para medirla después contra el Merval.</p>
+              <ul class="project-points"><li data-i18n="quorumPoint1">Screener de acciones, CEDEAR, bonos, letras y ON; riesgo en USD con VaR, CVaR, Sharpe y beta.</li><li data-i18n="quorumPoint2">Ingesta programada desde BYMA, Yahoo Finance y ArgentinaDatos. No ejecuta órdenes.</li></ul>
+              <div class="project-meta"><span>Django</span><span>Celery</span><span>Redis</span><span>Docker</span></div>
+              <details class="project-case">
+                <summary data-i18n-aria="quorumCaseAria" aria-label="Cómo lo resolví: Quórum"><span data-i18n="caseToggle">Cómo lo resolví</span><span class="case-toggle-icon" aria-hidden="true">+</span></summary>
+                <dl>
+                  <div><dt data-i18n="caseProblem">El problema</dt><dd data-i18n="quorumCaseProblem">Quien invierte en pesos y dólares en Argentina necesita ver la evidencia antes de decidir y comprobar después si el criterio acertó.</dd></div>
+                  <div><dt data-i18n="caseContribution">Mi aporte</dt><dd data-i18n="quorumCaseContribution">Diseñé y construí el backend, las tareas programadas, los motores de cálculo y un comité de 14 agentes en el navegador.</dd></div>
+                  <div><dt data-i18n="caseDecision">La decisión técnica</dt><dd data-i18n="quorumCaseDecision">Separé ingesta, base y motores; Celery Beat actualiza los datos en horario de mercado y, si BYMA no tiene precios vigentes, usa el último respaldo marcado como desactualizado.</dd></div>
+                  <div><dt data-i18n="caseOutcome">El resultado</dt><dd data-i18n="quorumCaseOutcome">Una herramienta informativa que corre en el propio servidor, con medición de cada selección a 30, 90 y 180 días contra el Merval en USD.</dd></div>
+                </dl>
+              </details>
+              <div class="project-actions"><a class="text-link" href="https://github.com/lucasbauducco/quorum" target="_blank" rel="noopener noreferrer"><span data-i18n="viewRepository">Ver repositorio</span><span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -588,6 +614,17 @@
         "ocrCaseContribution": "Construí un prototipo de carga de archivos, lectura OCR y extracción de campos.",
         "ocrCaseDecision": "Combiné preprocesamiento con OpenCV, lectura con EasyOCR y reglas con expresiones regulares.",
         "ocrCaseOutcome": "Un flujo experimental de archivo a respuesta estructurada. La extracción todavía presenta errores y requiere iteración según el documento.",
+        "quorumAlt": "Grafo del comité de inversión de Quórum",
+        "quorumType": "Producto de datos",
+        "quorumTitle": "Quórum · Comité de inversión",
+        "quorumDescription": "Aplicación Django + Celery que ordena activos argentinos, mide el riesgo de la cartera en dólares y registra cada decisión para medirla después contra el Merval.",
+        "quorumPoint1": "Screener de acciones, CEDEAR, bonos, letras y ON; riesgo en USD con VaR, CVaR, Sharpe y beta.",
+        "quorumPoint2": "Ingesta programada desde BYMA, Yahoo Finance y ArgentinaDatos. No ejecuta órdenes.",
+        "quorumCaseAria": "Cómo lo resolví: Quórum",
+        "quorumCaseProblem": "Quien invierte en pesos y dólares en Argentina necesita ver la evidencia antes de decidir y comprobar después si el criterio acertó.",
+        "quorumCaseContribution": "Diseñé y construí el backend, las tareas programadas, los motores de cálculo y un comité de 14 agentes en el navegador.",
+        "quorumCaseDecision": "Separé ingesta, base y motores; Celery Beat actualiza los datos en horario de mercado y, si BYMA no tiene precios vigentes, usa el último respaldo marcado como desactualizado.",
+        "quorumCaseOutcome": "Una herramienta informativa que corre en el propio servidor, con medición de cada selección a 30, 90 y 180 días contra el Merval en USD.",
         "mobileCaseAria": "Cómo lo resolví: Aplicación UNRaf",
         "mobileCaseProblem": "Acercar servicios universitarios a estudiantes desde una experiencia que funcione en distintos dispositivos.",
         "mobileCaseContribution": "Desarrollé el cliente de la aplicación con Ionic y Vue, reutilizando una base de interfaz web.",
@@ -729,6 +766,17 @@
         "ocrCaseContribution": "I built a prototype for file uploads, OCR reading and field extraction.",
         "ocrCaseDecision": "I combined OpenCV preprocessing, EasyOCR reading and regular-expression rules.",
         "ocrCaseOutcome": "An experimental file-to-structured-response flow. Extraction still produces errors and requires iteration depending on the document.",
+        "quorumAlt": "Investment committee graph in Quórum",
+        "quorumType": "Data product",
+        "quorumTitle": "Quórum · Investment committee",
+        "quorumDescription": "Django + Celery application that ranks Argentine assets, measures portfolio risk in dollars and records every decision to later measure it against the Merval.",
+        "quorumPoint1": "Screener for stocks, CEDEARs, bonds, T-bills and corporate bonds; USD risk with VaR, CVaR, Sharpe and beta.",
+        "quorumPoint2": "Scheduled ingestion from BYMA, Yahoo Finance and ArgentinaDatos. It never places orders.",
+        "quorumCaseAria": "How I built it: Quórum",
+        "quorumCaseProblem": "Anyone investing in pesos and dollars in Argentina needs to see the evidence before deciding, and check afterwards whether the criteria were right.",
+        "quorumCaseContribution": "I designed and built the backend, scheduled tasks, calculation engines and a 14-agent committee in the browser.",
+        "quorumCaseDecision": "I separated ingestion, storage and engines; Celery Beat refreshes data during market hours and, if BYMA has no current prices, falls back to the last snapshot flagged as stale.",
+        "quorumCaseOutcome": "An informational tool that runs on your own server, measuring every screener pick at 30, 90 and 180 days against the Merval in USD.",
         "mobileCaseAria": "How I built it: UNRaf application",
         "mobileCaseProblem": "Bring university services to students through an experience that works across devices.",
         "mobileCaseContribution": "I developed the application client with Ionic and Vue, reusing a web interface codebase.",

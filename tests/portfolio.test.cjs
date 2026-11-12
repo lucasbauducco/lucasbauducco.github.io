@@ -63,8 +63,8 @@ test('Patagonia route hero connects three real engineering capabilities', () => 
   assert.match(await text(page, '.software-route'), /API design.*Integrations.*Verifiable quality/s);
 }));
 
-test('five case studies expose all four dimensions and retain the OCR limitation', () => withPage(async page => {
-  assert.equal(await page.locator('.project-case').count(), 5);
+test('six case studies expose all four dimensions and retain the OCR limitation', () => withPage(async page => {
+  assert.equal(await page.locator('.project-case').count(), 6);
   for (const details of await page.locator('.project-case').all()) {
     await details.locator('summary').focus();
     await page.keyboard.press('Enter');
