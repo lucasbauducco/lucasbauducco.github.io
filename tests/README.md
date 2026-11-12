@@ -16,10 +16,8 @@ $env:PORTFOLIO_SCREENSHOTS = '.codex/validation/portfolio'
 node --test tests/portfolio.test.cjs
 ```
 
-`PORTFOLIO_SCREENSHOTS` es opcional. Las pruebas abren el HTML local en contextos de navegador aislados y usan únicamente los datos ficticios de Multi-Market. Cubren el hero Patagonia y su ruta de tres hitos, los cinco casos de estudio, traducciones, teclado, ausencia de JavaScript, movimiento reducido y viewports de 320 a 1440 px.
+`PORTFOLIO_SCREENSHOTS` es opcional. Las pruebas abren el HTML local en contextos de navegador aislados. Cubren el hero Patagonia y su ruta de tres hitos, los seis casos de estudio, traducciones, teclado, ausencia de JavaScript, movimiento reducido y viewports de 320 a 1440 px.
 
-Multi-Market incluye búsqueda sin distinción de tildes o mayúsculas, catálogo ilustrado, precios y descuentos, filtros combinados, estado vacío, reset, combinaciones de rutas equivalentes del backend, consultas codificadas sin solicitudes de red y fichas de producto con foco, Escape y cierre por botón o fondo. Las capturas opcionales incluyen catálogo y ficha en escritorio y móvil.
-
-La navegación se prueba con pantallas táctiles emuladas de 320×568, 390×844, 768×1024, 844×390, 1024×768 y 1366×1024. Se comprueban objetivos táctiles, menú al hacer scroll, cierre exterior/Escape, foco al cambiar de breakpoint y navegación sin JavaScript. La ficha de Multi-Market mantiene el cierre disponible en horizontal. Estas pruebas no sustituyen una revisión en dispositivos físicos o Safari.
+La navegación se prueba con pantallas táctiles emuladas de 320×568, 390×844, 768×1024, 844×390, 1024×768 y 1366×1024. Se comprueban objetivos táctiles, menú al hacer scroll, cierre exterior/Escape, foco al cambiar de breakpoint y navegación sin JavaScript. Estas pruebas no sustituyen una revisión en dispositivos físicos o Safari.
 
 La carta privada se prueba con contenido ficticio cifrado en memoria. La suite nunca necesita ni imprime la clave real: comprueba AES-256-GCM, manipulación del ciphertext, hashes ajenos, claves inválidas, apertura con teclado, movimiento reducido y limpieza de object URLs. Los originales y el enlace completo deben permanecer bajo rutas ignoradas; sólo los archivos `.enc` se versionan.
